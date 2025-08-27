@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -49,7 +49,7 @@ namespace cauldron
         uint64_t resourceViewSize[6];            // Memory placeholder
         const ResourceViewInfoInternal* GetImpl() const { return (const ResourceViewInfoInternal*)resourceViewSize; }
     };
-    
+
     struct TextureDesc;
     struct BufferDesc;
 
@@ -89,7 +89,7 @@ namespace cauldron
          * @brief   Returns the <c><i>ResourceViewInfo</i></c>.
          */
         virtual const ResourceViewInfo GetViewInfo(uint32_t index = 0) const = 0;
-        
+
         /**
          * @brief   Binds a texture resource view.
          */
@@ -117,5 +117,5 @@ namespace cauldron
         ResourceViewHeapType m_Type  = ResourceViewHeapType::GPUResourceView;
         uint32_t             m_Count = 0;
     };
-    
+
 } // namespace cauldron

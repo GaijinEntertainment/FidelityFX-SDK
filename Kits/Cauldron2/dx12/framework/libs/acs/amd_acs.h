@@ -44,11 +44,11 @@ extern "C" {
 /// @}
 
 ///
-/// Function used to get a recommended number of hardware threads to use for running your game, 
+/// Function used to get a recommended number of hardware threads to use for running your game,
 /// taking into account processor family and configuration
-/// For Ryzen processors with a number of physical cores below the configured threshold, logical 
+/// For Ryzen processors with a number of physical cores below the configured threshold, logical
 /// processor cores are added to the recommended thread count
-/// 
+///
 /// This advice is specific only to AMD processors and is NOT general guidance for all processor manufacturers
 ///									Remember to profile!
 //
@@ -56,11 +56,11 @@ extern "C" {
 
 
 ///
-/// Function used to get a recommended number of hardware threads to use for initialising your game, 
+/// Function used to get a recommended number of hardware threads to use for initialising your game,
 /// taking into account processor family and configuration
-/// For Ryzen processors with a number of physical cores below the configured threshold, logical 
+/// For Ryzen processors with a number of physical cores below the configured threshold, logical
 /// processor cores are added to the recommended thread count
-/// 
+///
 /// This advice is specific only to AMD processors and is NOT general guidance for all processor manufacturers
 ///									Remember to profile!
 //
@@ -68,7 +68,7 @@ extern "C" {
 
 ///
 /// Function to print all of the processor information to debug output
-/// 
+///
 	AMD_ACS_API void acsPrintProcessorInfo();
 
 #ifdef __cplusplus

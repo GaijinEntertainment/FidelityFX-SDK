@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -242,7 +242,7 @@ void releaseUiBlitGpuResources()
 
     SafeRelease(s_uiCompositionDescRingBuffer);
     s_uiCompositionDescRingBufferBase = 0;
-    
+
     SafeRelease(s_uiCompositionDescHeapRtvCpu);
     s_uiCompositionNextRtvDescriptor = 0;
 }
@@ -262,7 +262,7 @@ FFX_API FfxErrorCode ffxFrameInterpolationUiComposition(const FfxPresentCallback
     FfxErrorCode res = verifyUiBlitGpuResources(dx12Device, desc.Format);
     if (res != FFX_OK)
         return res;
-    
+
     ID3D12CommandList*         pCommandList            = reinterpret_cast<ID3D12CommandList*>(params->commandList);
     ID3D12GraphicsCommandList* pCmdList                = (ID3D12GraphicsCommandList*)pCommandList;
     ID3D12PipelineState*       dx12PipelineStateObject = nullptr;
@@ -355,7 +355,7 @@ FFX_API FfxErrorCode ffxFrameInterpolationUiComposition(const FfxPresentCallback
         // set up the descriptor table
         D3D12_GPU_DESCRIPTOR_HANDLE gpuView = dx12DescriptorHeap->GetGPUDescriptorHandleForHeapStart();
         gpuView.ptr += s_uiCompositionDescRingBufferBase * dx12Device->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
-        
+
         D3D12_CPU_DESCRIPTOR_HANDLE cpuView = dx12DescriptorHeap->GetCPUDescriptorHandleForHeapStart();
         cpuView.ptr += s_uiCompositionDescRingBufferBase * dx12Device->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
 
@@ -367,7 +367,7 @@ FFX_API FfxErrorCode ffxFrameInterpolationUiComposition(const FfxPresentCallback
         dx12Device->CreateShaderResourceView(pResBackbuffer, &dx12SrvDescription, cpuView);
 
         cpuView.ptr += dx12Device->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
-        
+
         const D3D12_RESOURCE_DESC uiDesc                    = pResUI->GetDesc();
         dx12SrvDescription.Format              = convertFormatSrv(ffxGetDX12FormatFromSurfaceFormat((FfxApiSurfaceFormat)params->currentUI.description.format));
         dx12SrvDescription.Texture2D.MipLevels              = uiDesc.MipLevels;

@@ -70,7 +70,7 @@ bool EnableAMDExtensions(void* pvDevice)
             break;
         }
     }
-    
+
     pAmdExtDevice->Release();
 
     if (!fp8Found)

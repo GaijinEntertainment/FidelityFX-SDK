@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -116,7 +116,6 @@ void GetExternalProviders(ID3D12Device* device, uint64_t descType)
             }
         }
     }
-    
 }
 
 const ffxProvider* GetffxProvider(ffxStructType_t descType, uint64_t overrideId, void* device)

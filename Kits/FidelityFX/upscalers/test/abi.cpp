@@ -142,7 +142,7 @@ UTEST(ffx_api_upscale_abi_size, ffxQueryDescUpscaleGetGPUMemoryUsage) {
 
 UTEST(ffx_api_upscale_abi_offsets, ffxQueryDescUpscaleGetGPUMemoryUsage) {
   EXPECT_EQ(offsetof(struct ffxQueryDescUpscaleGetGPUMemoryUsage, header) , 0);
-  EXPECT_EQ(offsetof(struct ffxQueryDescUpscaleGetGPUMemoryUsage, gpuMemoryUsageUpscaler) , 16); 
+  EXPECT_EQ(offsetof(struct ffxQueryDescUpscaleGetGPUMemoryUsage, gpuMemoryUsageUpscaler) , 16);
 }
 
 UTEST(ffx_api_upscale_enums, FfxApiUpscaleQualityMode) {

@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -67,7 +67,7 @@ PS_INPUT VS_StructuredBuffer( uint VertexId : SV_VertexID )
 {
     PS_INPUT Output = (PS_INPUT)0;
 
-    // Particle index 
+    // Particle index
     uint particleIndex = VertexId / 4;
 
     // Per-particle corner index
@@ -247,7 +247,7 @@ PS_OUTPUT PS_Billboard( PS_INPUT In )
 
     float Alpha = 0.f;
     float ReactiveMask = 0.f;
-    
+
     if ( In.Reactive > 0.0 )
     {
         ReactiveMask = max(output.color.r, max(output.color.g, output.color.b)) * albedo.a;

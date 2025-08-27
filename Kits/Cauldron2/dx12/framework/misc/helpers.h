@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -55,7 +55,7 @@
 
 /// \def NO_MOVE(typeName)
 /// Deletes move constructors from \typeName class so the class can not be moved.
-/// 
+///
 /// @ingroup CauldronHelpers
 #define ENUM_FLAG_OPERATORS(ENUMTYPE) \
     inline ENUMTYPE operator | (ENUMTYPE a, ENUMTYPE b) { return ENUMTYPE(((int)a)|((int)b)); } \

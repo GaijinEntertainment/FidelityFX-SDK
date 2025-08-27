@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -49,7 +49,7 @@ void waitForPerformanceCount(const int64_t targetCount, const int64_t frequency,
     QueryPerformanceCounter(reinterpret_cast<LARGE_INTEGER*>(&currentCount));
     if (currentCount >= targetCount)
         return;
-        
+
     double millis = static_cast<double>(((targetCount - currentCount) * 1000000) / frequency) / 1000.;
 
     //Sleep if safe, to free up cores.
@@ -57,7 +57,7 @@ void waitForPerformanceCount(const int64_t targetCount, const int64_t frequency,
     {
         MMRESULT result = timeBeginPeriod(timerResolution);           //Request 1ms timer resolution from OS. Necessary to prevent overshooting sleep.
         if (result != TIMERR_NOERROR)
-            break; //Can't guarantee sleep precision.              
+            break; //Can't guarantee sleep precision.
         Sleep(static_cast<DWORD>((millis - timerResolution*spinTime)));  //End sleep a few timer resolution units early to prevent overshooting.
         timeEndPeriod(timerResolution);
 
@@ -159,7 +159,7 @@ bool isTearingSupported(IDXGIFactory* dxgiFactory)
     IDXGIFactory5* pFactory5 = nullptr;
     if (dxgiFactory && SUCCEEDED(dxgiFactory->QueryInterface(IID_PPV_ARGS(&pFactory5))))
     {
-        
+
         if (SUCCEEDED(pFactory5->CheckFeatureSupport(DXGI_FEATURE_PRESENT_ALLOW_TEARING, &bTearingSupported, sizeof(bTearingSupported)))) {
 
         }

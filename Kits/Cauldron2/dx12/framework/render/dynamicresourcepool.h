@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -89,7 +89,7 @@ namespace cauldron
         const Texture* CreateTexture(const TextureDesc* pDesc, ResourceState initialState, TextureResizeFunction fn = nullptr);
 
         /**
-         * @brief   Creates a <c><i>Texture</i></c> resource for rendering. Will automatically add AllowRenderTarget/AllowDepthTarget 
+         * @brief   Creates a <c><i>Texture</i></c> resource for rendering. Will automatically add AllowRenderTarget/AllowDepthTarget
          *          resource flag based on the resource type.
          */
         const Texture* CreateRenderTexture(const TextureDesc* pDesc, TextureResizeFunction fn = nullptr);
@@ -102,7 +102,7 @@ namespace cauldron
     private:
         std::vector<std::pair<std::wstring, Texture*>>  m_Textures;
         std::vector<std::pair<std::wstring, Buffer*>>   m_Buffers;
-        std::vector<Texture*>                           m_ResizableTextures; 
+        std::vector<Texture*>                           m_ResizableTextures;
         std::vector<Buffer*>                            m_ResizableBuffers;
         std::mutex m_CriticalSection;
     };

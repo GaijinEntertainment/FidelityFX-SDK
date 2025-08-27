@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -69,32 +69,32 @@ namespace cauldron
          * @brief   Assigns a root constant buffer resource to a specific slot index.
          */
         virtual void SetRootConstantBufferResource(const GPUResource* pResource, const size_t size, uint32_t slotIndex) = 0;
-        
+
         /**
          * @brief   Assigns a texture SRV resource view to a specific slot index.
          */
         virtual void SetTextureSRV(const Texture* pTexture, ViewDimension dimension, uint32_t slotIndex = 0, int32_t mip = -1, int32_t arraySize = -1, int32_t firstSlice = -1) = 0;
-        
+
         /**
          * @brief   Assigns a texture UAV resource view to a specific slot index.
          */
         virtual void SetTextureUAV(const Texture* pTexture, ViewDimension dimension, uint32_t slotIndex = 0, int32_t mip = -1, int32_t arraySize = -1, int32_t firstSlice = -1) = 0;
-        
+
         /**
          * @brief   Assigns a buffer SRV resource view to a specific slot index.
          */
         virtual void SetBufferSRV(const Buffer* pBuffer, uint32_t slotIndex = 0, uint32_t firstElement = -1, uint32_t numElements = -1) = 0;
-        
+
         /**
          * @brief   Assigns a buffer UAV resource view to a specific slot index.
          */
         virtual void SetBufferUAV(const Buffer* pBuffer, uint32_t slotIndex = 0, uint32_t firstElement = -1, uint32_t numElements = -1) = 0;
-        
+
         /**
          * @brief   Assigns a sampler resource to a specific slot index.
          */
         virtual void SetSampler(const Sampler* pSampler, uint32_t slotIndex = 0) = 0;
-        
+
         /**
          * @brief   Assigns an acceleration structure resource to a specific slot index.
          */
@@ -104,12 +104,12 @@ namespace cauldron
          * @brief   Updates a specified constant root buffer with current buffer address information.
          */
         virtual void UpdateRootConstantBuffer(const BufferAddressInfo* pRootConstantBuffer, uint32_t rootBufferIndex) = 0;
-        
+
         /**
          * @brief   Updates one or more root 32-bit constants starting at a specified entry.
          */
         virtual void UpdateRoot32BitConstant(const uint32_t numEntries, const uint32_t* pConstData, uint32_t rootBufferIndex) = 0;
-        
+
         /**
          * @brief   Binds all resources to the pipeline for GPU workload execution.
          */

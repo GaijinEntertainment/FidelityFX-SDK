@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -57,7 +57,7 @@ bool ffxProvider_FSR3Upscale::CanProvide(uint64_t type) const
 }
 
 #define STRINGIFY_(X) #X
-#define STRINGIFY(X) STRINGIFY_(X) 
+#define STRINGIFY(X) STRINGIFY_(X)
 #define MAKE_VERSION_STRING(major, minor, patch) STRINGIFY major "." STRINGIFY minor "." STRINGIFY patch
 
 uint64_t ffxProvider_FSR3Upscale::GetId() const
@@ -114,7 +114,7 @@ ffxReturnCode_t ffxProvider_FSR3Upscale::CreateContext(ffxContext* context, ffxC
 
         // Create the FSR3UPSCALER context
         TRY2(ffxFsr3UpscalerContextCreate(&internal_context->context, &initializationParameters));
-        
+
         ffxFsr3UpscalerSetGlobalDebugMessage(reinterpret_cast<ffxMessageCallback>(desc->fpMessage), 0);
 
         // set up FSR3Upscaler "shared" resources (no resource sharing in the upscaler provider though, since providers are fully independent and we can't guarantee all upscale providers will be compatible with other effects)
@@ -292,7 +292,7 @@ ffxReturnCode_t ffxProvider_FSR3Upscale::Query(ffxContext* context, ffxQueryDesc
 
         InternalFsr3UpscalerUContext* internal_context = reinterpret_cast<InternalFsr3UpscalerUContext*>(*context);
         auto desc = reinterpret_cast<ffxQueryDescUpscaleGetGPUMemoryUsage*>(header);
-        
+
         VERIFY(desc->gpuMemoryUsageUpscaler, FFX_API_RETURN_ERROR_PARAMETER);
 
         memset(desc->gpuMemoryUsageUpscaler, 0, sizeof(FfxApiEffectMemoryUsage));
@@ -304,17 +304,17 @@ ffxReturnCode_t ffxProvider_FSR3Upscale::Query(ffxContext* context, ffxQueryDesc
     case FFX_API_QUERY_DESC_TYPE_UPSCALE_GPU_MEMORY_USAGE_V2:
     {
         ffxQueryDescUpscaleGetGPUMemoryUsageV2* desc = reinterpret_cast<ffxQueryDescUpscaleGetGPUMemoryUsageV2*>(header);
-        
+
         VERIFY(desc->gpuMemoryUsageUpscaler, FFX_API_RETURN_ERROR_PARAMETER);
 
         memset(desc->gpuMemoryUsageUpscaler, 0, sizeof(FfxApiEffectMemoryUsage));
 
         TRY2(ffxFsr3UpscalerGetGpuMemoryUsage(
         static_cast<FfxDevice> (desc->device),
-        &(desc->maxRenderSize), 
-        &(desc->maxUpscaleSize), 
+        &(desc->maxRenderSize),
+        &(desc->maxUpscaleSize),
         desc->gpuMemoryUsageUpscaler));
-    
+
         break;
     }
     case FFX_API_QUERY_DESC_TYPE_UPSCALE_GET_RESOURCE_REQUIREMENTS:

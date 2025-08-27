@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -37,7 +37,7 @@ namespace cauldron
      * @class Entity
      *
      * Represents an entity instance. An entity is any node that is present in our scene
-     * representation. It can be a simple transform or contain multiple components adding 
+     * representation. It can be a simple transform or contain multiple components adding
      * various functionality support to the entity (i.e. Mesh, Lighting, Camera, Animation, etc.)
      *
      * @ingroup CauldronCore

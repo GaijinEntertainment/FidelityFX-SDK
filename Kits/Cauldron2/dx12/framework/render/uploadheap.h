@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -33,7 +33,7 @@ namespace cauldron
     class CommandList;
     class GPUResource;
 
-    /// A structure representing an allocation block used to upload CPU-side memory to 
+    /// A structure representing an allocation block used to upload CPU-side memory to
     /// a GPU resource.
     ///
     /// @ingroup CauldronRender
@@ -127,7 +127,7 @@ namespace cauldron
         GPUResource*    m_pResource     = nullptr;
         size_t          m_Size          = 0;
 
-        uint8_t*        m_pDataEnd      = nullptr; // Ending position of upload heap 
+        uint8_t*        m_pDataEnd      = nullptr; // Ending position of upload heap
         uint8_t*        m_pDataBegin    = nullptr; // Starting position of upload heap
 
         std::vector<AllocationBlock>    m_AvailableAllocations;

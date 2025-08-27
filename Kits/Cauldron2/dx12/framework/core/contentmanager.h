@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -128,7 +128,7 @@ namespace cauldron
         void LoadTextures(const std::vector<TextureLoadInfo>& loadInfoList, TextureLoadCompletionCallbackFn pCompletionCallback = nullptr, void* pAdditionalParams = nullptr);
 
         /**
-         * @brief   Tells the content manager it can start managing the texture content once it's been 
+         * @brief   Tells the content manager it can start managing the texture content once it's been
          *          fully loaded and initialized.
          */
         bool StartManagingContent(std::wstring contentName, Texture*& pTextureContent);
@@ -158,7 +158,7 @@ namespace cauldron
          * @brief   Registers a <c><i>ContentListener</i></c>-derived class for content load/unload callbacks.
          */
         void AddContentListener(ContentListener* pListener);
-        
+
         /**
          * @brief   Removes a <c><i>ContentListener</i></c>-derived class from content load/unload callbacks.
          */

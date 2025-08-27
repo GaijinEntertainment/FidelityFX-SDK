@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -82,7 +82,7 @@ void GPUParticleRenderModule::Init(const json& initData)
 
         m_pResetParticlesPipelineObj = PipelineObject::CreatePipelineObject(L"ResetParticles_PipelineObj", psoDesc);
     }
-    
+
     {
         // Setup the pipeline object
         PipelineDesc psoDesc;
@@ -260,7 +260,7 @@ void GPUParticleRenderModule::Execute(double deltaTime, CommandList* pCmdList, P
                                Barrier::UAV(pParticleSystem->m_pIndirectArgsBuffer->GetResource())};
         ResourceBarrier(pCmdList, 2, barriers);
     }
-    
+
 
     // If we are resetting the particle system, then initialize the dead list
     if (m_bResetSystem)

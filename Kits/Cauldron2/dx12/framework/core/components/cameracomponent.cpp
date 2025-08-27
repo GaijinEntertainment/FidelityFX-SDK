@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -231,7 +231,7 @@ namespace cauldron
         m_PrevViewMatrix = m_ViewMatrix;
         m_PrevViewProjectionMatrix = m_ViewProjectionMatrix;
         m_PrevProjJittered         = m_ProjJittered;
-        
+
         // Reset camera reset status (in case it was set)
         m_CameraReset              = false;
 
@@ -291,7 +291,7 @@ namespace cauldron
                     m_Pitch += inputState.GetMouseAxisDelta(Mouse_YAxis) / 100.f;
                     hasRotation = true;
                 }
-                
+
                 // If hitting the 'r' key or back button on game pad, reset camera to original transform
                 if (inputState.GetKeyState(Key_R) || inputState.GetGamePadButtonState(Pad_Back))
                 {
@@ -375,7 +375,7 @@ namespace cauldron
                 if (m_Dirty)
                 {
                     LookAt(eyePos, lookAt);
-                    UpdateMatrices();         
+                    UpdateMatrices();
                 }
             }
         }

@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -140,7 +140,7 @@ namespace cauldron
         std::wstring    LogMessage;         ///< The message to log
 
         LogMessageEntry(LogLevel level, time_t time, wchar_t* msg) :
-            LogPriority(level) 
+            LogPriority(level)
         {
             tm ts;
             localtime_s(&ts, &time);
@@ -227,7 +227,7 @@ namespace cauldron
          * @brief   Gets all the messages with the requested levels. It returns a vector with all of the individual messages.
          */
         static void GetMessages(std::vector<LogMessageEntry>& messages, int32_t flags = 0xffff);
-        
+
         /**
          * @brief   Gets the number of messages for each message type.
          */
@@ -250,7 +250,7 @@ namespace cauldron
         std::thread m_thread;
 
         std::wofstream m_output; // the file output
-        
+
         std::mutex m_messagesLock;
         static constexpr size_t s_MAX_SAVED_MESSAGES = 1024;
         size_t m_messageStartIndex;

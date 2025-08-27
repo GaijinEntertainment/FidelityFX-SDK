@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -49,7 +49,7 @@ FfxUInt32 FfxLoadKey(FfxUInt32 index)
 {
 #if defined(FFX_PARALLELSORT_BIND_UAV_SOURCE_KEYS)
     return LoadSourceKey(index);
-#else 
+#else
     return 0;
 #endif // #if defined(FFX_PARALLELSORT_BIND_UAV_SOURCE_KEYS)
 }
@@ -81,7 +81,7 @@ FfxUInt32 FfxLoadSum(FfxUInt32 index)
 {
 #if defined(FFX_PARALLELSORT_BIND_UAV_SUM_TABLE)
     return LoadSumTable(index);
-#else 
+#else
     return 0;
 #endif // #if defined(FFX_PARALLELSORT_BIND_UAV_SUM_TABLE)
 }
@@ -104,7 +104,7 @@ FfxUInt32 FfxLoadScanSource(FfxUInt32 index)
 {
 #if defined(FFX_PARALLELSORT_BIND_UAV_SCAN_SOURCE)
     return LoadScanSource(index);
-#else 
+#else
     return 0;
 #endif // #if defined(FFX_PARALLELSORT_BIND_UAV_SCAN_SOURCE)
 }

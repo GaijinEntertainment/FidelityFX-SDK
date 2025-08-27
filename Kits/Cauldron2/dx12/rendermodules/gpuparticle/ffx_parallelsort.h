@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -29,7 +29,7 @@
 
 /// @defgroup FfxParallelSort FidelityFX Parallel Sort
 /// FidelityFX Single Pass Downsampler runtime library
-/// 
+///
 /// @ingroup SDKComponents
 
 /// FidelityFX Parallel Sort major version.
@@ -48,7 +48,7 @@
 #define FFX_PARALLELSORT_VERSION_PATCH     (0)
 
 /// FidelityFX SPD context count
-/// 
+///
 /// Defines the number of internal effect contexts required by SPD
 ///
 /// @ingroup FfxParallelSort
@@ -91,7 +91,7 @@ typedef enum FfxParallelSortPass
 typedef enum FfxParallelSortInitializationFlagBits {
 
     FFX_PARALLELSORT_INDIRECT_SORT  = (1 << 0),     ///< A bit indicating if we should use indirect version of sort algorithm
-    FFX_PARALLELSORT_PAYLOAD_SORT   = (1 << 1),     ///< A bit indicating if we should sort a payload buffer    
+    FFX_PARALLELSORT_PAYLOAD_SORT   = (1 << 1),     ///< A bit indicating if we should sort a payload buffer
 
 } FfxParallelSortInitializationFlagBits;
 
@@ -171,7 +171,7 @@ FFX_API FfxErrorCode ffxParallelSortContextCreate(FfxParallelSortContext* pConte
 
 /// Execute a FidelityFX Parallel Sort context to sort the provided data
 /// according to the passed in dispatch description.
-/// 
+///
 /// @param [out] pContext                A pointer to a <c><i>FfxParallelSortContext</i></c> structure to populate.
 /// @param [in]  pDispatchDescription        A pointer to a <c><i>FfxParallelSortDispatchDescription</i></c> structure.
 ///

@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -22,12 +22,12 @@
 
 /// @defgroup DX12Backend DX12 Backend
 /// FidelityFX SDK native backend implementation for DirectX 12.
-/// 
+///
 /// @ingroup Backends
 
 /// @defgroup DX12FrameInterpolation DX12 FrameInterpolation
 /// FidelityFX SDK native frame interpolation implementation for DirectX 12 backend.
-/// 
+///
 /// @ingroup DX12Backend
 
 #pragma once
@@ -41,7 +41,7 @@ extern "C" {
 #endif // #if defined(__cplusplus)
 
 /// Query how much memory is required for the DirectX 12 backend's scratch buffer.
-/// 
+///
 /// @param [in] maxContexts                 The maximum number of simultaneous effect contexts that will share the backend.
 ///                                         (Note that some effects contain internal contexts which count towards this maximum)
 ///
@@ -79,7 +79,7 @@ FFX_API FfxErrorCode ffxGetInterfaceDX12(
     FfxInterface* backendInterface,
     FfxDevice device,
     void* scratchBuffer,
-    size_t scratchBufferSize, 
+    size_t scratchBufferSize,
     size_t maxContexts);
 
 /// Create a <c><i>FfxCommandList</i></c> from a <c><i>ID3D12CommandList</i></c>.
@@ -265,7 +265,7 @@ FFX_API FfxErrorCode ffxWaitForPresents(FfxSwapchain gameSwapChain);
 /// @param [in] gameSwapChain           The <c><i>FfxSwapchain</i></c> to to register the UI resource with.
 /// @param [in] uiResource              The <c><i>FfxApiResource</i></c> representing the UI resource.
 /// @param [in] flags                   A set of <c><i>FfxUiCompositionFlags</i></c>.
-/// 
+///
 /// @retval
 /// FFX_OK                              The operation completed successfully.
 /// @retval
@@ -321,7 +321,7 @@ typedef enum FfxFrameInterpolationSwapchainConfigureKey
 /// @param [in] gameSwapChain           The <c><i>FfxSwapchain</i></c> to configure via KeyValue API
 /// @param [in] key                     The <c><i>FfxFrameInterpolationSwapchainConfigureKey</i></c> is key
 /// @param [in] valuePtr                The <c><i><void *></i></c> pointer to value. What this pointer deference to depends on key.
-/// 
+///
 /// @retval
 /// FFX_OK                              The operation completed successfully.
 /// @retval
@@ -334,7 +334,7 @@ FFX_API FfxErrorCode ffxConfigureFrameInterpolationSwapchainDX12(FfxSwapchain ga
 ///
 /// @param [in] gameSwapChain           The <c><i>FfxSwapchain</i></c>
 /// @param [in out] vramUsage           The <c><i>FfxApiEffectMemoryUsage</i></c> is the GPU memory created by FrameInterpolationSwapchain
-/// 
+///
 /// @retval
 /// FFX_OK                              The operation completed successfully.
 /// @retval
@@ -353,7 +353,7 @@ FFX_API FfxErrorCode ffxFrameInterpolationSwapchainGetGpuMemoryUsageDX12(FfxSwap
 /// @param [in] uiResourceFormat        The <c><i>FfxApiSurfaceFormat</i></c> structure.
 /// @param [in] flags                   The <c><i>uint32_t</i></c> value
 /// @param [in out] vramUsage           The <c><i>FfxApiEffectMemoryUsage</i></c> is the GPU memory created by FrameInterpolationSwapchain
-/// 
+///
 /// @retval
 /// FFX_OK                              The operation completed successfully.
 /// @retval
@@ -376,7 +376,7 @@ typedef FfxErrorCode (*FfxReleaseFiSwapchain)(FfxFrameInterpolationContext* fiCo
 /// @retval
 /// FFX_OK                              The operation completed successfully.
 /// @retval
-/// FFX_ERROR_INVALID_ARGUMENT          Could not query <c><i>ID3D12Device</i></c> from <c><i>FfxDevice</i></c> to call 
+/// FFX_ERROR_INVALID_ARGUMENT          Could not query <c><i>ID3D12Device</i></c> from <c><i>FfxDevice</i></c> to call
 ///
 /// @ingroup DX12Backend
 FFX_API FfxErrorCode ffxGetResourceSizeFromDescriptionDX12(FfxDevice device, const FfxCreateResourceDescription* createResourceDescription, uint64_t* sizeInBytes);

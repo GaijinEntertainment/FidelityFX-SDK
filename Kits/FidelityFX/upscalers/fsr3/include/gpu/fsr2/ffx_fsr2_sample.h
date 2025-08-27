@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -167,7 +167,7 @@ FFX_MIN16_F Lanczos2ApproxSqNoClamp(FFX_MIN16_F x2)
 FFX_MIN16_F2 PairedLanczos2ApproxSqNoClamp(FFX_MIN16_F2 x2)
 {
     // Xbox ATG (Pavel):
-    // 
+    //
     //     2.0 * x2 - 5.0     25.0           25.0 - 16.0     (2.0 * x2 - 5.0)^2 - (3.0)^2    (2.0 * x2 - 8.0) * (2.0 * x2 - 2.0)   (x2 - 4.0) * (x2 - 1.0)
     // a = -------------- ==> ---- * a^2 - -------------- = ----------------------------- =  ---------------------------------- =  ----------------------- = b * (x2 - 1.0)
     //           5.0          16.0              16.0                16.0                                     16.0                            4.0

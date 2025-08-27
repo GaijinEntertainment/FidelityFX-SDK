@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -105,7 +105,7 @@ namespace cauldron
         m_pAliveDistanceBuffer = GetDynamicResourcePool()->CreateBuffer(&bufferDescAliveDistanceBuffer, m_WriteBufferStates);
 
         // Create the single element buffer which is used to store the count of alive particles
-        BufferDesc bufferDescAliveCountBuffer = 
+        BufferDesc bufferDescAliveCountBuffer =
             BufferDesc::Data(std::wstring(particleSpawnerDesc.Name + L"_AliveCountBuffer").c_str(), sizeof(UINT), sizeof(UINT), 0, ResourceFlags::AllowUnorderedAccess);
         m_pAliveCountBuffer = GetDynamicResourcePool()->CreateBuffer(&bufferDescAliveCountBuffer, m_ReadBufferStates);
 

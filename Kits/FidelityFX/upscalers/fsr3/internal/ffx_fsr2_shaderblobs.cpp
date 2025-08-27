@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -259,7 +259,7 @@ static FfxShaderBlob fsr2GetRCASPassPermutationBlobByIndex(uint32_t permutationO
 #endif
 
     if (isWave64) {
-        
+
         const int32_t tableIndex = g_ffx_fsr2_rcas_pass_wave64_IndirectionTable[key.index];
         return POPULATE_SHADER_BLOB_FFX(g_ffx_fsr2_rcas_pass_wave64_PermutationInfo, tableIndex);
 

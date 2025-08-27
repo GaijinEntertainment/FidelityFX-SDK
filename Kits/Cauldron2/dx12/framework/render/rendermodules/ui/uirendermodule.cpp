@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -510,7 +510,7 @@ namespace cauldron
                     Barrier rtBarrier = Barrier::Transition(m_pRenderTarget->GetResource(), ResourceState::CopyDest, ResourceState::ShaderResource);
                     ResourceBarrier(pCmdList, 1, &rtBarrier);
                 }
-            } 
+            }
         }
     }
 
@@ -689,7 +689,7 @@ namespace cauldron
         // Render modules expect resources coming in/going out to be in a shader read state
         ResourceState state0     = m_pRenderTarget->GetResource()->GetCurrentResourceState();
         ResourceState state1     = m_pHudLessRenderTarget[m_curUiTextureIndex]->GetResource()->GetCurrentResourceState();
-        Barrier       barriers[] = {Barrier::Transition(m_pRenderTarget->GetResource(), state0, ResourceState::PixelShaderResource), 
+        Barrier       barriers[] = {Barrier::Transition(m_pRenderTarget->GetResource(), state0, ResourceState::PixelShaderResource),
                                     Barrier::Transition(m_pHudLessRenderTarget[m_curUiTextureIndex]->GetResource(), state1, ResourceState::RenderTargetResource)};
         ResourceBarrier(pCmdList, _countof(barriers), barriers);
 

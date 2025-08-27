@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -40,8 +40,8 @@ namespace cauldron
 
     void RootSignatureDesc::UpdatePipelineType(ShaderBindStage bindStages)
     {
-        if (static_cast<bool>(bindStages & ShaderBindStage::Vertex) || 
-            static_cast<bool>(bindStages & ShaderBindStage::Pixel) || 
+        if (static_cast<bool>(bindStages & ShaderBindStage::Vertex) ||
+            static_cast<bool>(bindStages & ShaderBindStage::Pixel) ||
             static_cast<bool>(bindStages & ShaderBindStage::VertexAndPixel) )
         {
             CauldronAssert(ASSERT_CRITICAL, m_PipelineType == PipelineType::Graphics || m_PipelineType == PipelineType::Undefined, L"Root signature is already set for another pipeline than graphics.");

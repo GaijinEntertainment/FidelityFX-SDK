@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -125,7 +125,7 @@ FfxUInt32 ShiftBit()
     #if defined(FFX_PARALLELSORT_BIND_UAV_SOURCE_PAYLOADS)
         RWStructuredBuffer<FfxUInt32>                               rw_source_payloads              : FFX_PARALLELSORT_DECLARE_UAV(FFX_PARALLELSORT_BIND_UAV_SOURCE_PAYLOADS);
     #endif // #if defined(FFX_PARALLELSORT_BIND_UAV_SOURCE_PAYLOADS)
-    
+
     #if defined(FFX_PARALLELSORT_BIND_UAV_DEST_PAYLOADS)
         RWStructuredBuffer<FfxUInt32>                               rw_dest_payloads               : FFX_PARALLELSORT_DECLARE_UAV(FFX_PARALLELSORT_BIND_UAV_DEST_PAYLOADS);
     #endif // #if defined(FFX_PARALLELSORT_BIND_UAV_DEST_PAYLOADS)

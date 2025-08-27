@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -39,7 +39,7 @@ FfxFloat32x4 SpdLoadSourceImage(FfxInt32x2 tex, FfxUInt32 slice)
     VectorFieldEntry gameMv;
     FfxUInt32x2      packedGameFieldMv = LoadGameFieldMv(tex);
     UnpackVectorFieldEntries(packedGameFieldMv, gameMv);
-    
+
     return FfxFloat32x4(gameMv.fMotionVector, gameMv.uHighPriorityFactor, gameMv.uLowPriorityFactor) * FfxFloat32(DisplaySize().x > 0);
 }
 

@@ -106,8 +106,8 @@ FFX_STATIC const FfxInt32 uintsPerChar = 2;
 FFX_STATIC const FfxInt32 columnsPerUint = 3;
 FFX_STATIC const FfxInt32 kerning = 1;
 FFX_STATIC const FfxInt32 defaultNumSigFigs = 4;
- 
-// globals 
+
+// globals
 FFX_STATIC FfxInt32 numCharInCurrentLine = 0;
 FFX_STATIC FfxInt32 fontSize = 3;
 FFX_STATIC FfxInt32x2 cursorPos = FfxInt32x2(0, 0);
@@ -203,8 +203,8 @@ void WriteOneChar(FfxInt32 valueToWrite) {
     FfxUInt32 bit_value;
     bit_value = 1 << (column * fontSizeInPixels.y + row);
 
-    
-    if (all(FFX_GREATER_THAN_EQUAL(threadPos - cursorPos, FfxInt32x2(0, 0))) && 
+
+    if (all(FFX_GREATER_THAN_EQUAL(threadPos - cursorPos, FfxInt32x2(0, 0))) &&
         all(FFX_LESS_THAN(threadPos - cursorPos, fontSizeInPixels * fontSize)))
     {
         FfxFloat32x3 outColor = (char_to_print & bit_value) > 0 ? fontColor : backgroundColor;
@@ -217,10 +217,10 @@ void WriteOneChar(FfxInt32 valueToWrite) {
         else {
             StoreWriterOutput(threadPos, FfxFloat32x4(outColor, 1.0));
         }
-        
+
     }
-    
-    AdvanceCursor(1);    
+
+    AdvanceCursor(1);
 }
 
 void WriteOneChar(FfxUInt32 valueToWrite)
@@ -230,10 +230,10 @@ void WriteOneChar(FfxUInt32 valueToWrite)
 
 
 void WriteValue(FfxInt32 intValueToWrite) {
-    
+
     FfxInt32 value_to_print = intValueToWrite;
 
-    
+
     FfxInt32 digit_array[10];
     digit_array[0] = 0; //base case
 
@@ -260,7 +260,7 @@ void WriteValue(FfxInt32 intValueToWrite) {
         digit_array[j] = digit_array[len - j - 1];
         digit_array[len - j - 1] = temp;
     }
-        
+
     for (i = 0; i < len; i++) {
         WriteOneChar(digit_array[i]);
     }
@@ -303,9 +303,9 @@ void WriteValue(FfxFloat32 floatValueToWrite) {
     FfxInt32 digit_array[10];
         digit_array[0] = 0; //base case
 
-    // Extract the sign    
+    // Extract the sign
     if (value_to_print < 0) {
-        WriteOneChar(SpecialCharDash);    
+        WriteOneChar(SpecialCharDash);
     }
 
     // Take the absolute value of the float, we already extracted the sign
@@ -315,7 +315,7 @@ void WriteValue(FfxFloat32 floatValueToWrite) {
         // write out NAN instead
         WriteOneChar(LettersStart + 13);
         WriteOneChar(LettersStart + 0);
-        WriteOneChar(LettersStart + 13);        
+        WriteOneChar(LettersStart + 13);
         return;
     }
 
@@ -332,15 +332,15 @@ void WriteValue(FfxFloat32 floatValueToWrite) {
     if (value_to_print > 1e10){
         print_exponent = true;
         exponent = FfxInt32(log(value_to_print) / log(10.0));
-        
+
         // Remove the exponent, now that we saved it
         value_to_print /= ffxPow(10.0f, exponent);
     }
-    
+
     // Extract the integer part and fractional part
     FfxFloat32 fractional_part = ffxFract(value_to_print);
     FfxInt32 integer_part = FfxInt32(value_to_print-fractional_part);
-    
+
 
     WriteValue(integer_part);
     WriteOneChar(SpecialCharDot);

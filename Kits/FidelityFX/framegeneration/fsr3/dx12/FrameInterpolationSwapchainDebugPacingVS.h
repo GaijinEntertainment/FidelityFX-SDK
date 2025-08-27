@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -25,7 +25,7 @@
 ;
 ; Name                 Index   Mask Register SysValue  Format   Used
 ; -------------------- ----- ------ -------- -------- ------- ------
-; SV_VertexID              0   x           0   VERTID    uint   x   
+; SV_VertexID              0   x           0   VERTID    uint   x
 ;
 ;
 ; Output signature:
@@ -36,7 +36,7 @@
 ;
 ; shader hash: 24c0367d79c7abfc1c908872250574ae
 ;
-; Pipeline Runtime Information: 
+; Pipeline Runtime Information:
 ;
 ; Vertex Shader
 ; OutputPositionPresent=1
@@ -46,13 +46,13 @@
 ;
 ; Name                 Index             InterpMode DynIdx
 ; -------------------- ----- ---------------------- ------
-; SV_VertexID              0                              
+; SV_VertexID              0
 ;
 ; Output signature:
 ;
 ; Name                 Index             InterpMode DynIdx
 ; -------------------- ----- ---------------------- ------
-; SV_Position              0          noperspective       
+; SV_Position              0          noperspective
 ;
 ; Buffer Definitions:
 ;

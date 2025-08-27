@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -70,7 +70,7 @@ struct InternalFgContext
 };
 
 #define STRINGIFY_(X) #X
-#define STRINGIFY(X) STRINGIFY_(X) 
+#define STRINGIFY(X) STRINGIFY_(X)
 #define MAKE_VERSION_STRING(major, minor, patch) STRINGIFY major "." STRINGIFY minor "." STRINGIFY patch
 
 uint64_t ffxProvider_Fsr3FrameGeneration::GetId() const
@@ -99,7 +99,7 @@ ffxReturnCode_t ffxProvider_Fsr3FrameGeneration::CreateContext(ffxContext* conte
             internal_context->asyncWorkloadSupported = (desc->flags & FFX_FRAMEGENERATION_ENABLE_ASYNC_WORKLOAD_SUPPORT) != 0;
 
             TRY2(internal_context->backendInterfaceShared.fpCreateBackendContext(&internal_context->backendInterfaceShared, FFX_EFFECT_SHAREDAPIBACKEND, nullptr, &internal_context->effectContextIdShared));
-        
+
             FfxOpticalflowContextDescription ofDescription = {};
             ofDescription.backendInterface                 = internal_context->backendInterfaceFi;
             ofDescription.resolution.width                 = desc->displaySize.width;
@@ -192,7 +192,7 @@ ffxReturnCode_t ffxProvider_Fsr3FrameGeneration::DestroyContext(ffxContext* cont
     VERIFY(*context, FFX_API_RETURN_ERROR_PARAMETER);
 
     InternalFgContext* internal_context = reinterpret_cast<InternalFgContext*>(*context);
-    
+
     { // copied from ffxFsr3ContextDestroy, simplified.
         for (FfxUInt32 i = 0; i < FFX_FSR3_RESOURCE_IDENTIFIER_COUNT; i++)
         {
@@ -244,9 +244,9 @@ ffxReturnCode_t ffxProvider_Fsr3FrameGeneration::Configure(ffxContext* context, 
                 InternalFgContext* internal_context = reinterpret_cast<InternalFgContext*>(ctx);
                 auto callbacks = &internal_context->callbacks[callbacksIndex];
                 VERIFY(callbacks->frameGenerationCallback, FFX_ERROR_BACKEND_API_ERROR);
-                
+
                 ffx::DispatchDescFrameGeneration dispatchDesc{};
-                
+
                 dispatchDesc.backbufferTransferFunction = desc->backBufferTransferFunction;
                 dispatchDesc.commandList = desc->commandList;
                 dispatchDesc.minMaxLuminance[0] = desc->minMaxLuminance[0];
@@ -263,7 +263,7 @@ ffxReturnCode_t ffxProvider_Fsr3FrameGeneration::Configure(ffxContext* context, 
                 dispatchDesc.generationRect.height = desc->interpolationRect.height;
                 dispatchDesc.generationRect.width = desc->interpolationRect.width;
                 dispatchDesc.frameID = desc->frameID;
-                
+
                 if (FFX_API_RETURN_OK != callbacks->frameGenerationCallback(&dispatchDesc, callbacks->frameGenerationCallbackUserContext))
                     return FFX_ERROR_BACKEND_API_ERROR;
                 return FFX_OK;
@@ -280,7 +280,7 @@ ffxReturnCode_t ffxProvider_Fsr3FrameGeneration::Configure(ffxContext* context, 
                 InternalFgContext* internal_context = reinterpret_cast<InternalFgContext*>(ctx);
                 auto callbacks = &internal_context->callbacks[callbacksIndex];
                 VERIFY(callbacks->presentCallback, FFX_ERROR_BACKEND_API_ERROR);
-                
+
                 ffxCallbackDescFrameGenerationPresent cbDesc{};
                 cbDesc.header.pNext = nullptr;
                 cbDesc.header.type = FFX_API_CALLBACK_DESC_TYPE_FRAMEGENERATION_PRESENT;
@@ -383,7 +383,7 @@ ffxReturnCode_t ffxProvider_Fsr3FrameGeneration::Configure(ffxContext* context, 
 ffxReturnCode_t ffxProvider_Fsr3FrameGeneration::Query(ffxContext* context, ffxQueryDescHeader* header) const
 {
     VERIFY(header, FFX_API_RETURN_ERROR_PARAMETER);
-    
+
     if (auto desc = ffx::DynamicCast<ffxQueryDescFrameGenerationGetGPUMemoryUsage>(header))
     {
         VERIFY(context, FFX_API_RETURN_ERROR_PARAMETER);
@@ -493,7 +493,7 @@ ffxReturnCode_t ffxProvider_Fsr3FrameGeneration::Dispatch(ffxContext* context, c
             fiDispatchDesc.cameraFar = prepDesc->cameraFar;
             fiDispatchDesc.viewSpaceToMetersFactor = prepDesc->viewSpaceToMetersFactor;
             fiDispatchDesc.cameraFovAngleVertical = prepDesc->cameraFovAngleVertical;
-            
+
             fiDispatchDesc.dilatedDepth = internal_context->backendInterfaceShared.fpGetResource( &internal_context->backendInterfaceShared, internal_context->sharedResources[FFX_FSR3_RESOURCE_IDENTIFIER_DILATED_DEPTH_0 + (internal_context->sharedResoureFrameToggle * FFX_FSR3_RESOURCE_IDENTIFIER_UPSCALED_COUNT)]);
             fiDispatchDesc.dilatedMotionVectors = internal_context->backendInterfaceShared.fpGetResource( &internal_context->backendInterfaceShared, internal_context->sharedResources[FFX_FSR3_RESOURCE_IDENTIFIER_DILATED_MOTION_VECTORS_0 + (internal_context->sharedResoureFrameToggle * FFX_FSR3_RESOURCE_IDENTIFIER_UPSCALED_COUNT)]);
             fiDispatchDesc.reconstructedPrevDepth = internal_context->backendInterfaceShared.fpGetResource( &internal_context->backendInterfaceShared, internal_context->sharedResources[FFX_FSR3_RESOURCE_IDENTIFIER_RECONSTRUCTED_PREVIOUS_NEAREST_DEPTH_0 + (internal_context->sharedResoureFrameToggle * FFX_FSR3_RESOURCE_IDENTIFIER_UPSCALED_COUNT)]);
@@ -512,13 +512,13 @@ ffxReturnCode_t ffxProvider_Fsr3FrameGeneration::Dispatch(ffxContext* context, c
                 fiDispatchDesc.interpolationRect.width  = desc->generationRect.width;
                 fiDispatchDesc.interpolationRect.height = desc->generationRect.height;
             }
-            
+
             if (internal_context->frameGenFlags & FFX_FRAMEGENERATION_FLAG_DRAW_DEBUG_TEAR_LINES)
             {
                 fiDispatchDesc.flags |= FFX_FRAMEINTERPOLATION_DISPATCH_DRAW_DEBUG_TEAR_LINES;
             }
 
-            
+
             if (internal_context->frameGenFlags & FFX_FRAMEGENERATION_FLAG_DRAW_DEBUG_RESET_INDICATORS)
             {
                 fiDispatchDesc.flags |= FFX_FRAMEINTERPOLATION_DISPATCH_DRAW_DEBUG_RESET_INDICATORS;

@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -347,7 +347,7 @@ SamplerState s_LinearClamp FFX_DECLARE_SAMPLER(1);
     #endif
     #if defined FSR2_BIND_SRV_INPUT_DEPTH
         Texture2D<FfxFloat32>                     r_input_depth                             FFX_DECLARE_SRV(FSR2_BIND_SRV_INPUT_DEPTH);
-    #endif 
+    #endif
     #if defined FSR2_BIND_SRV_INPUT_EXPOSURE
         Texture2D<FfxFloat32x2>                   r_input_exposure                          FFX_DECLARE_SRV(FSR2_BIND_SRV_INPUT_EXPOSURE);
     #endif
@@ -356,13 +356,13 @@ SamplerState s_LinearClamp FFX_DECLARE_SAMPLER(1);
     #endif
     #if defined FSR2_BIND_SRV_REACTIVE_MASK
         Texture2D<FfxFloat32>                     r_reactive_mask                           FFX_DECLARE_SRV(FSR2_BIND_SRV_REACTIVE_MASK);
-    #endif 
+    #endif
     #if defined FSR2_BIND_SRV_TRANSPARENCY_AND_COMPOSITION_MASK
         Texture2D<FfxFloat32>                     r_transparency_and_composition_mask       FFX_DECLARE_SRV(FSR2_BIND_SRV_TRANSPARENCY_AND_COMPOSITION_MASK);
     #endif
     #if defined FSR2_BIND_SRV_RECONSTRUCTED_PREV_NEAREST_DEPTH
         Texture2D<FfxUInt32>                      r_reconstructed_previous_nearest_depth    FFX_DECLARE_SRV(FSR2_BIND_SRV_RECONSTRUCTED_PREV_NEAREST_DEPTH);
-    #endif 
+    #endif
     #if defined FSR2_BIND_SRV_DILATED_MOTION_VECTORS
        Texture2D<FfxFloat32x2>                    r_dilated_motion_vectors                  FFX_DECLARE_SRV(FSR2_BIND_SRV_DILATED_MOTION_VECTORS);
     #endif
@@ -412,7 +412,7 @@ SamplerState s_LinearClamp FFX_DECLARE_SAMPLER(1);
     #if defined FSR2_BIND_SRV_PREV_POST_ALPHA_COLOR
         Texture2D<float3>                         r_input_prev_color_post_alpha             FFX_DECLARE_SRV(FFX_FSR2_RESOURCE_IDENTIFIER_PREV_POST_ALPHA_COLOR);
     #endif
-   
+
     // UAV declarations
     #if defined FSR2_BIND_UAV_RECONSTRUCTED_PREV_NEAREST_DEPTH
         RWTexture2D<FfxUInt32>                    rw_reconstructed_previous_nearest_depth   FFX_DECLARE_UAV(FSR2_BIND_UAV_RECONSTRUCTED_PREV_NEAREST_DEPTH);
@@ -585,7 +585,7 @@ FfxFloat32x4 SampleLumaHistory(FfxFloat32x2 fUV)
 
 FfxFloat32x4 LoadRCAS_Input(FfxInt32x2 iPxPos)
 {
-#if defined(FSR2_BIND_SRV_RCAS_INPUT) 
+#if defined(FSR2_BIND_SRV_RCAS_INPUT)
     return r_rcas_input[iPxPos];
 #else
     return 0.0;

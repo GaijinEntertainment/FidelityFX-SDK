@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -30,7 +30,7 @@ struct SkydomeCBData
 {
     Mat4 ClipToWorld;
 };
-#else 
+#else
 // procedural CS version of Skydome uses UpscalerInformation from upscaler.h which binds to b0. So, this needs to bind to b1.
 cbuffer SkydomeCBData : register(b1)
 {

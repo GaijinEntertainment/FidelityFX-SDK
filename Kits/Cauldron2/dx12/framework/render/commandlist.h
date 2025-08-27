@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -116,10 +116,10 @@ namespace cauldron
 
         friend void EndRaster(CommandList* pCmdList, const VariableShadingRateInfo* pVrsInfo);
         void EndVRSRendering(const VariableShadingRateInfo* pVrsInfo);
-    
+
     protected:
         CommandList(CommandQueue queueType);
-                    
+
         CommandQueue                                        m_QueueType = CommandQueue::Graphics;
         bool                                                m_Rastering = false;
     };
@@ -128,7 +128,7 @@ namespace cauldron
    /**
    * @class UploadContext
    *
-   * The <c><i>FidelityFX Cauldron Framework</i></c> api/platform-agnostic representation of an upload context. 
+   * The <c><i>FidelityFX Cauldron Framework</i></c> api/platform-agnostic representation of an upload context.
    * Used to transfer asset data from CPU memory to GPU memory via the copy queue.
    *
    * @ingroup CauldronRender
@@ -142,7 +142,7 @@ namespace cauldron
          *          internal resource type.
          */
         static UploadContext* CreateUploadContext();
-        
+
         /**
          * @brief   Destruction.
          */
@@ -230,7 +230,7 @@ namespace cauldron
                      const RasterView**             pRasterViews,
                      const RasterView*              pDepthView = nullptr,
                      const VariableShadingRateInfo* pVrsInfo   = nullptr);
-    
+
     /// Begins rasterization workload submission to the CommandList
     ///
     /// @ingroup CauldronRender
@@ -259,7 +259,7 @@ namespace cauldron
     ///
     /// @ingroup CauldronRender
     void SetScissorRects(CommandList* pCmdList, uint32_t numRects, Rect* pRectList);
-   
+
     /// Convenience function to set both viewport and scissor rect through a single call
     ///
     /// @ingroup CauldronRender

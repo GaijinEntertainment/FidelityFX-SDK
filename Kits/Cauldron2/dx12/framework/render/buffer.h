@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -55,7 +55,7 @@ namespace cauldron
     {
         BufferCopyDesc() = default;
         BufferCopyDesc(const GPUResource* pSrc, const GPUResource* pDst);
-        
+
         uint64_t bufferCopyDescMem[6];            ///< Memory placeholder
         BufferCopyDescInternal* GetImpl() { return (BufferCopyDescInternal*)bufferCopyDescMem; }
         const BufferCopyDescInternal* GetImpl() const { return (const BufferCopyDescInternal*)bufferCopyDescMem; }

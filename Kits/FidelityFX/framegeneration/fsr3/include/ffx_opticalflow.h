@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -69,7 +69,7 @@ typedef enum FfxOpticalflowInitializationFlagBits
 
 } FfxOpticalflowInitializationFlagBits;
 
-/// A structure encapsulating the parameters required to initialize 
+/// A structure encapsulating the parameters required to initialize
 /// FidelityFX OpticalFlow.
 ///
 /// @ingroup ffxOpticalflow
@@ -87,9 +87,9 @@ typedef struct FfxOpticalflowContextDescription {
 typedef struct FfxOpticalflowDispatchDescription
 {
     FfxCommandList   commandList;       ///< The <c><i>FfxCommandList</i></c> to record rendering commands into.
-    FfxApiResource      color;             ///< A <c><i>FfxApiResource</i></c> containing the input color buffer 
-    FfxApiResource      opticalFlowVector; ///< A <c><i>FfxApiResource</i></c> containing the output motion buffer 
-    FfxApiResource      opticalFlowSCD;    ///< A <c><i>FfxApiResource</i></c> containing the output scene change detection buffer 
+    FfxApiResource      color;             ///< A <c><i>FfxApiResource</i></c> containing the input color buffer
+    FfxApiResource      opticalFlowVector; ///< A <c><i>FfxApiResource</i></c> containing the output motion buffer
+    FfxApiResource      opticalFlowSCD;    ///< A <c><i>FfxApiResource</i></c> containing the output scene change detection buffer
     bool             reset;             ///< A boolean value which when set to true, indicates the camera has moved discontinuously.
     int              backbufferTransferFunction;
     FfxApiFloatCoords2D minMaxLuminance;

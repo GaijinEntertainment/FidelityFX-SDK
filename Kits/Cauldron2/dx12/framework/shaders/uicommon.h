@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -33,13 +33,13 @@ struct MagnifierCBData
     int32_t         MousePosX = 0;
     int32_t         MousePosY = 0;
     Vec4            BorderColorRGB = Vec4(0.72f, 0.002f, 0.0f, 1.f);
-    
+
     // Directly modifiable by the UI
     mutable float   MagnificationAmount = 6.f;
     mutable float   MagnifierScreenRadius = 0.35f;
     mutable int32_t MagnifierOffsetX = 500;
     mutable int32_t MagnifierOffsetY = -500;
-#else 
+#else
     uint     ImageWidth;
     uint     ImageHeight;
     int      MousePosX;

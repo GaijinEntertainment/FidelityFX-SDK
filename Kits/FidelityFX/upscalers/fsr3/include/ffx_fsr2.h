@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -28,7 +28,7 @@
 
 /// @defgroup ffxFsr2 FidelityFX FSR2
 /// FidelityFX Super Resolution 2 runtime library
-/// 
+///
 /// @ingroup SDKComponents
 
 /// FidelityFX Super Resolution 2 major version.
@@ -47,7 +47,7 @@
 #define FFX_FSR2_VERSION_PATCH      (4)
 
 /// FidelityFX Super Resolution 2 context count
-/// 
+///
 /// Defines the number of internal effect contexts required by FSR2
 ///
 /// @ingroup ffxFsr2
@@ -437,7 +437,7 @@ FFX_API FfxErrorCode ffxFsr2GetRenderResolutionFromQualityMode(
 /// For more detailed information about the application of camera jitter to
 /// your application's rendering please refer to the
 /// <c><i>ffxFsr2GetJitterOffset</i></c> function.
-/// 
+///
 /// The table below shows the jitter phase count which this function
 /// would return for each of the quality presets.
 ///
@@ -487,12 +487,12 @@ FFX_API int32_t ffxFsr2GetJitterPhaseCount(int32_t renderWidth, int32_t displayW
 ///     float jitterX = 0;
 ///     float jitterY = 0;
 ///     ffxFsr2GetJitterOffset(&jitterX, &jitterY, index, jitterPhaseCount);
-/// 
+///
 ///     const float jitterX = 2.0f * jitterX / (float)renderWidth;
 ///     const float jitterY = -2.0f * jitterY / (float)renderHeight;
 ///     const Matrix4 jitterTranslationMatrix = translateMatrix(Matrix3::identity, Vector3(jitterX, jitterY, 0));
 ///     const Matrix4 jitteredProjectionMatrix = jitterTranslationMatrix * projectionMatrix;
-/// 
+///
 /// Jitter should be applied to all rendering. This includes opaque, alpha
 /// transparent, and raytraced objects. For rasterized objects, the sub-pixel
 /// jittering values calculated by the <c><i>iffxFsr2GetJitterOffset</i></c>
@@ -500,13 +500,13 @@ FFX_API int32_t ffxFsr2GetJitterPhaseCount(int32_t renderWidth, int32_t displayW
 /// used to perform transformations during vertex shading. For raytraced
 /// rendering, the sub-pixel jitter should be applied to the ray's origin,
 /// often the camera's position.
-/// 
+///
 /// Whether you elect to use the <c><i>ffxFsr2GetJitterOffset</i></c> function
 /// or your own sequence generator, you must program the
 /// <c><i>jitterOffset</i></c> field of the
 /// <c><i>FfxFsr2DispatchParameters</i></c> structure in order to inform FSR2
 /// of the jitter offset that has been applied in order to render each frame.
-/// 
+///
 /// If not using the recommended <c><i>ffxFsr2GetJitterOffset</i></c> function,
 /// care should be taken that your jitter sequence never generates a null vector;
 /// that is value of 0 in both the X and Y dimensions.
@@ -515,14 +515,14 @@ FFX_API int32_t ffxFsr2GetJitterPhaseCount(int32_t renderWidth, int32_t displayW
 /// @param [out] pOutY                   A pointer to a <c>float</c> which will contain the subpixel jitter offset for the y dimension.
 /// @param [in] index                   The index within the jitter sequence.
 /// @param [in] phaseCount              The length of jitter phase. See <c><i>ffxFsr2GetJitterPhaseCount</i></c>.
-/// 
+///
 /// @retval
 /// FFX_OK                              The operation completed successfully.
 /// @retval
 /// FFX_ERROR_INVALID_POINTER           Either <c><i>outX</i></c> or <c><i>outY</i></c> was <c>NULL</c>.
 /// @retval
 /// FFX_ERROR_INVALID_ARGUMENT          Argument <c><i>phaseCount</i></c> must be greater than 0.
-/// 
+///
 /// @ingroup ffxFsr2
 FFX_API FfxErrorCode ffxFsr2GetJitterOffset(float* pOutX, float* pOutY, int32_t index, int32_t phaseCount);
 

@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -47,7 +47,7 @@ struct HLSLDxcShaderBinary : public IShaderBinary
     CComPtr<IDxcResult> pResults;       ///< IDxcResult data from the shader compilation process for this shader binary
     CComPtr<IDxcBlob>   pShader;        ///< IDxcBlob shader blob data for this shader binary
 
-    /// HLSL (DXC) Shader binary buffer accessor. 
+    /// HLSL (DXC) Shader binary buffer accessor.
     ///
     /// @returns
     /// Pointer to the internal HLSL (DXC) buffer representation.
@@ -72,7 +72,7 @@ struct HLSLFxcShaderBinary : public IShaderBinary
 {
     CComPtr<ID3DBlob> pShader;          ///< ID3DBlob shader blob data for this shader binary
 
-    /// HLSL (FXC) Shader binary buffer accessor. 
+    /// HLSL (FXC) Shader binary buffer accessor.
     ///
     /// @returns
     /// Pointer to the internal HLSL (FXC) buffer representation.
@@ -112,7 +112,7 @@ public:
 
 public:
     /// HLSL Compiler construction function
-    /// 
+    ///
     /// @param [in]  backend            The backend HLSL compile process to use
     /// @param [in]  dll                DXC/FXC DLL override to use when compiling
     /// @param [in]  shaderPath         Path to the shader to compile
@@ -148,7 +148,7 @@ public:
     /// @param [in]  permutation            The permutation representation to compile
     /// @param [in]  arguments              List of arguments to pass to the compiler
     /// @param [in]  wrietMutex             Mutex to use for thread safety of compile process
-    /// 
+    ///
     /// @returns
     /// true if successful, false otherwise
     ///
@@ -160,40 +160,40 @@ public:
     /// Extracts HLSL shader reflection data
     ///
     /// @param [in]  permutation            The permutation representation to extract reflection for
-    /// 
+    ///
     /// @returns
     /// true if successful, false otherwise
     ///
     /// @ingroup ShaderCompiler
     bool ExtractReflectionData(Permutation& permutation)                              override;
 
-    /// Writes HLSL reflection header data for shader permutations. 
+    /// Writes HLSL reflection header data for shader permutations.
     ///
     /// @param [in]  fp                     The file to write header information into
     /// @param [in]  permutation            The permutation representation to write to head
     /// @param [in]  wrietMutex             Mutex to use for thread safety of reflection data export
-    /// 
+    ///
     /// @returns
     /// none
     ///
     /// @ingroup ShaderCompiler
     void WriteBinaryHeaderReflectionData(FILE* fp, const Permutation& permutation, std::mutex& writeMutex) override;
 
-    /// Writes HLSL permutation reflection header data structures for shader permutations. 
+    /// Writes HLSL permutation reflection header data structures for shader permutations.
     ///
     /// @param [in]  fp                     The file to write header data structures into
-    /// 
+    ///
     /// @returns
     /// none
     ///
     /// @ingroup ShaderCompiler
     void WritePermutationHeaderReflectionStructMembers(FILE* fp) override;
 
-    /// Writes HLSL permutation reflection header data for shader permutations. 
+    /// Writes HLSL permutation reflection header data for shader permutations.
     ///
     /// @param [in]  fp                     The file to write header information into
     /// @param [in]  permutation            The permutation representation to write to head
-    /// 
+    ///
     /// @returns
     /// none
     ///

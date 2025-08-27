@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -24,7 +24,7 @@
 // Timothy Lottes tone mapper
 //--------------------------------------------------------------------------------------
 // General tonemapping operator, build 'b' term.
-float ColToneB(float hdrMax, float contrast, float shoulder, float midIn, float midOut) 
+float ColToneB(float hdrMax, float contrast, float shoulder, float midIn, float midOut)
 {
     return
         -((-pow(midIn, contrast) + (midOut*(pow(hdrMax, contrast*shoulder)*pow(midIn, contrast) -
@@ -34,17 +34,17 @@ float ColToneB(float hdrMax, float contrast, float shoulder, float midIn, float 
 }
 
 // General tonemapping operator, build 'c' term.
-float ColToneC(float hdrMax, float contrast, float shoulder, float midIn, float midOut) 
+float ColToneC(float hdrMax, float contrast, float shoulder, float midIn, float midOut)
 {
     return (pow(hdrMax, contrast*shoulder)*pow(midIn, contrast) - pow(hdrMax, contrast)*pow(midIn, contrast*shoulder)*midOut) /
            (pow(hdrMax, contrast*shoulder)*midOut - pow(midIn, contrast*shoulder)*midOut);
 }
 
 // General tonemapping operator, p := {contrast,shoulder,b,c}.
-float ColTone(float x, float4 p) 
-{ 
-    float z = pow(x, p.r); 
-    return z / (pow(z, p.g)*p.b + p.a); 
+float ColTone(float x, float4 p)
+{
+    float z = pow(x, p.r);
+    return z / (pow(z, p.g)*p.b + p.a);
 }
 
 float3 TimothyTonemapper(float3 color)
@@ -95,7 +95,7 @@ float3 DX11DSK(float3 color)
     color.rgb *= MIDDLE_GRAY;
     color.rgb *= (1.0f + color/LUM_WHITE);
     color.rgb /= (1.0f + color);
-    
+
     return color;
 }
 
@@ -124,7 +124,7 @@ float3 Uncharted2TonemapOp(float3 x)
 
 float3 Uncharted2Tonemap(float3 color)
 {
-    float W = 11.2;    
+    float W = 11.2;
     return Uncharted2TonemapOp(2.0 * color) / Uncharted2TonemapOp(W);
 }
 

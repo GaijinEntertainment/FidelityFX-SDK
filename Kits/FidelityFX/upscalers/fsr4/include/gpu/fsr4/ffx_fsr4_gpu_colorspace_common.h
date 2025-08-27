@@ -104,10 +104,10 @@ float3 RemoveMuLaw(float3 fRgb)
 #if FFX_MLSR_COLORSPACE == FFX_MLSR_COLORSPACE_NON_LINEAR
     return fRgb;
 #else
-    
+
     float3 fRgb_out = (exp(8.51788f * fRgb) - 1.f) / 150.f;
     fRgb_out = max(fRgb_out, 0);
-    
+
 #if FFX_MLSR_COLORSPACE == FFX_MLSR_COLORSPACE_SRGB
     fRgb_out = ApplySRGB(fRgb_out);
 #elif FFX_MLSR_COLORSPACE == FFX_MLSR_COLORSPACE_PQ

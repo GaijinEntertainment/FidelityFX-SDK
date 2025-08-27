@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -446,7 +446,7 @@ void ComputeUpsampledColorAndWeight(const AccumulationPassCommonParams params, F
         ));
 
     const FfxFloat32 fKernelBias             = ffxLerp(fKernelBiasMin, fKernelBiasMax, fKernelBiasWeight);
-    
+
 #if FFX_FSR3UPSCALER_USE_XBOX_PAIRED_16BIT_MATH_OPTIMIZATIONS
     // Unroll the loop to load samples on Scarlett to help the shader compiler
     const bool coordX0OnScreen = iSrcSamplePosX01.x == iSrcSamplePosX01Clamped.x;
@@ -616,7 +616,7 @@ void ComputeUpsampledColorAndWeight(const AccumulationPassCommonParams params, F
             ++iSampleIndex;
         }
     }
-	
+
 #endif // #if FFX_FSR3UPSCALER_USE_XBOX_PAIRED_16BIT_MATH_OPTIMIZATIONS
 
     RectificationBoxComputeVarianceBoxData(data.clippingBox);

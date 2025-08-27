@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 #if defined(_WINDOWS)
-    
+
 #include "framework_win.h"
 #include "uibackend_win.h"
 
@@ -388,7 +388,7 @@ namespace cauldron
                     }
                 }
             }
-            
+
             // If still good, do GPU
             dataValid = dataValid && (s_GPUTotals.size() == gpuTimings.size());
             if (dataValid)
@@ -794,13 +794,13 @@ namespace cauldron
             if (!pEntity->IsActive()) {
                 ImGui::BeginDisabled(true);
             }
-                
+
             ImGui::Text("%S", pEntity->GetName());
 
             if (!pEntity->IsActive()) {
                 ImGui::EndDisabled();
             }
-                
+
         }
     }
 

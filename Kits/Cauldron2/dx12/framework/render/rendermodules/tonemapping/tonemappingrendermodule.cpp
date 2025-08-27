@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -62,7 +62,7 @@ void ToneMappingRenderModule::Init(const json& InitData)
     // Get the proper pre-tone map color target
     m_pRenderTargetIn = GetFramework()->GetRenderTexture(L"HDR11Color");
     CauldronAssert(ASSERT_CRITICAL, m_pRenderTargetIn != nullptr, L"Couldn't find the render target for the tone mapper input");
-    
+
     // Get the proper post tone map color target
     m_pRenderTargetOut = GetFramework()->GetRenderTexture(L"SwapChainProxy");
     CauldronAssert(ASSERT_CRITICAL, m_pRenderTargetOut != nullptr, L"Couldn't find the render target for the tone mapper output");
@@ -194,7 +194,7 @@ void ToneMappingRenderModule::Init(const json& InitData)
 
     m_pTonemapperParameters = ParameterSet::CreateParameterSet(m_pTonemapperRootSignature);
     m_pTonemapperParameters->SetRootConstantBufferResource(GetDynamicBufferPool()->GetResource(), sizeof(TonemapperCBData), 0);
-    
+
     // Set our texture to the right parameter slot
     m_pTonemapperParameters->SetTextureSRV(m_pAutomaticExposureValue, ViewDimension::Texture2D, 0);
     m_pTonemapperParameters->SetTextureSRV(m_pRenderTargetIn, ViewDimension::Texture2D, 1);
@@ -344,7 +344,7 @@ void ToneMappingRenderModule::Execute(double deltaTime, CommandList* pCmdList)
             ResourceState::NonPixelShaderResource | ResourceState::PixelShaderResource);
         ResourceBarrier(pCmdList, 1, &barrier);
     }
-        
+
     if (shouldClearRenderTargets)
     {
         GPUScopedProfileCapture distortionFieldMarker(pCmdList, L"Clear Distortion Field");
@@ -362,7 +362,7 @@ void ToneMappingRenderModule::Execute(double deltaTime, CommandList* pCmdList)
         ClearRenderTarget(pCmdList, &viewInfo[0], clearColor);
         ClearRenderTarget(pCmdList, &viewInfo[1], clearColor);
         shouldClearRenderTargets = false;
-            
+
         barriers.clear();
         barriers.push_back(Barrier::Transition(m_pDistortionField[0]->GetResource(),
             ResourceState::RenderTargetResource,

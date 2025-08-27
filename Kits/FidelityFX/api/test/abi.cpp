@@ -1,6 +1,6 @@
 #include "utest.h"
 #include "../include/ffx_api.h"
-#include "../include/ffx_api_types.h" 
+#include "../include/ffx_api_types.h"
 
 UTEST(env, build_64b) {
   EXPECT_EQ(sizeof(void*) , 8);
@@ -102,13 +102,13 @@ UTEST(ffx_api_abi_offsets, ffxDispatchDescHeader) {
   EXPECT_EQ(offsetof(ffxDispatchDescHeader, type) , 0);
   EXPECT_EQ(offsetof(ffxDispatchDescHeader, pNext) , 8);
 }
- 
+
 UTEST(ffx_api_abi_offsets, ffxConfigureDescGlobalDebug1) {
   EXPECT_EQ(offsetof(struct ffxConfigureDescGlobalDebug1, header) , 0);
   EXPECT_EQ(offsetof(struct ffxConfigureDescGlobalDebug1, fpMessage) , 16);
   EXPECT_EQ(offsetof(struct ffxConfigureDescGlobalDebug1, debugLevel) , 24);
 }
- 
+
 UTEST(ffx_api_abi_offsets, ffxQueryDescGetVersions) {
   EXPECT_EQ(offsetof(struct ffxQueryDescGetVersions, header) , 0);
   EXPECT_EQ(offsetof(struct ffxQueryDescGetVersions, createDescType) , 16);
@@ -122,7 +122,7 @@ UTEST(ffx_api_abi_offsets, ffxOverrideVersion) {
   EXPECT_EQ(offsetof(struct ffxOverrideVersion, header) , 0);
   EXPECT_EQ(offsetof(struct ffxOverrideVersion, versionId) , 16);
 }
- 
+
 UTEST(ffx_api_abi_offsets, ffxAllocationCallbacks) {
   EXPECT_EQ(offsetof(struct ffxAllocationCallbacks, pUserData) , 0);
   EXPECT_EQ(offsetof(struct ffxAllocationCallbacks, alloc) , 8);

@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -33,7 +33,7 @@ FFX_MIN16_F ComputeAutoTC_01(FFX_MIN16_I2 uDispatchThreadId, FFX_MIN16_I2 iPrevI
     FfxFloat32x3 colorPrevPreAlpha = LoadPrevPreAlpha(iPrevIdx);
     FfxFloat32x3 colorPrevPostAlpha = LoadPrevPostAlpha(iPrevIdx);
 
-#if USE_YCOCG    
+#if USE_YCOCG
     colorPreAlpha = RGBToYCoCg(colorPreAlpha);
     colorPostAlpha = RGBToYCoCg(colorPostAlpha);
     colorPrevPreAlpha = RGBToYCoCg(colorPrevPreAlpha);
@@ -66,7 +66,7 @@ FFX_MIN16_F ComputeAutoTC_02(FFX_MIN16_I2 uDispatchThreadId, FFX_MIN16_I2 iPrevI
     FfxFloat32x3 colorPrevPreAlpha = LoadPrevPreAlpha(iPrevIdx);
     FfxFloat32x3 colorPrevPostAlpha = LoadPrevPostAlpha(iPrevIdx);
 
-#if USE_YCOCG    
+#if USE_YCOCG
     colorPreAlpha = RGBToYCoCg(colorPreAlpha);
     colorPostAlpha = RGBToYCoCg(colorPostAlpha);
     colorPrevPreAlpha = RGBToYCoCg(colorPrevPreAlpha);
@@ -98,8 +98,8 @@ FFX_MIN16_F ComputeAutoTC_02(FFX_MIN16_I2 uDispatchThreadId, FFX_MIN16_I2 iPrevI
 
 // This function computes the TransparencyAndComposition mask:
 // This mask indicates pixels that should discard locks and apply color clamping.
-// 
-// Typically this is the case for translucent pixels (that don't write depth values) or pixels where the correctness of 
+//
+// Typically this is the case for translucent pixels (that don't write depth values) or pixels where the correctness of
 // the MVs can not be guaranteed (e.g. procedutal movement or vegetation that does not have MVs to reduce the cost during rasterization)
 // Also, large changes in color due to changed lighting should be marked to remove locks on pixels with "old" lighting.
 //
@@ -107,7 +107,7 @@ FFX_MIN16_F ComputeAutoTC_02(FFX_MIN16_I2 uDispatchThreadId, FFX_MIN16_I2 iPrevI
 // The function tries to determine where the color changes between opaque only and final image to determine the pixels that use transparency.
 // Also it uses the previous frames and detects where the use of transparency changed to mark those pixels.
 // Additionally it marks pixels where the color changed significantly in the opaque only image, e.g. due to lighting or texture animation.
-// 
+//
 // In the final step it stores the current textures in internal textures for the next frame
 
 FFX_MIN16_F ComputeTransparencyAndComposition(FFX_MIN16_I2 uDispatchThreadId, FFX_MIN16_I2 iPrevIdx)
@@ -182,7 +182,7 @@ FFX_MIN16_F ComputeAabbOverlap(FFX_MIN16_I2 uDispatchThreadId, FFX_MIN16_I2 iPre
     FfxFloat32x3 colorPrevPreAlpha = LoadPrevPreAlpha(iPrevIdx);
     FfxFloat32x3 colorPrevPostAlpha = LoadPrevPostAlpha(iPrevIdx);
 
-#if USE_YCOCG    
+#if USE_YCOCG
     colorPreAlpha = RGBToYCoCg(colorPreAlpha);
     colorPostAlpha = RGBToYCoCg(colorPostAlpha);
     colorPrevPreAlpha = RGBToYCoCg(colorPrevPreAlpha);
@@ -232,7 +232,7 @@ FFX_MIN16_F ComputeAabbOverlap(FFX_MIN16_I2 uDispatchThreadId, FFX_MIN16_I2 iPre
 // As a result history would not be trustworthy.
 // On the other hand we don't want pixels marked where pre-alpha has a large differnce, since those would profit from accumulation
 // For mirrors we may assume the pre-alpha is pretty uniform color.
-// 
+//
 // This works well generally, but also marks edge pixels
 FFX_MIN16_F ComputeReactive(FFX_MIN16_I2 uDispatchThreadId, FFX_MIN16_I2 iPrevIdx)
 {

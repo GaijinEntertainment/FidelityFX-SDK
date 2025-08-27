@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -35,7 +35,7 @@ void ReconstructPrevDepth(FfxInt32x2 iPxPos, FfxFloat32 fDepth, FfxFloat32x2 fMo
     // Project current depth into previous frame locations.
     // Push to all pixels having some contribution if reprojection is using bilinear logic.
     for (FfxInt32 iSampleIndex = 0; iSampleIndex < 4; iSampleIndex++) {
-        
+
         const FfxInt32x2 iOffset = bilinearInfo.iOffsets[iSampleIndex];
         const FfxFloat32 fWeight = bilinearInfo.fWeights[iSampleIndex];
 

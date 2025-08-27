@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -30,13 +30,13 @@ extern "C" {
 
 /// @defgroup Messages Messages
 /// Messages used by FidelityFX SDK functions
-/// 
+///
 /// @ingroup ffxHost
 
 /// Provides the ability to set a callback for print messages.
 ///
 /// @param [in] callback                The callback function that will receive assert messages.
-/// 
+///
 /// @ingroup Messages
 FFX_API void ffxSetPrintMessageCallback(ffxMessageCallback callback, uint32_t debugLevel);
 
@@ -51,7 +51,7 @@ FFX_API void ffxPrintMessage(uint32_t type, const wchar_t* message);
 /// Macro to print message
 /// by calling application registered callback,
 /// otherwise to debugger's TTY
-/// 
+///
 /// @ingroup Messages
 #define FFX_PRINT_MESSAGE( type, msg) \
     do                                \

@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -719,11 +719,11 @@ void Application::CompilePermutation(Permutation& permutation)
     // Compile it with specified arguments.
     // ------------------------------------------------------------------------------------------------
     if (!m_Compiler->Compile(permutation, args, m_WriteMutex))
-    {   
+    {
         fprintf(stderr, "failed to compile shader : %s\n", permutation.sourcePath.generic_string().c_str());
         throw std::runtime_error("failed to compile shader: " + permutation.sourcePath.generic_string());
     }
-        
+
 
     // ------------------------------------------------------------------------------------------------
     // Retrieve reflection data
@@ -1094,7 +1094,7 @@ int wmain(int argc, wchar_t** argv)
         return 0;
     }
     catch (const std::exception& ex)
-    {   
+    {
         fprintf(stderr, "ffx_sc failed: %s\n", ex.what());
         fflush(stderr);
         return -1;

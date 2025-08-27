@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -44,7 +44,7 @@ namespace cauldron
         return new ProfilerInternal(enableCPUProfiling, enableGPUProfiling);
     }
 
-    ProfilerInternal::ProfilerInternal(bool enableCPUProfiling, bool enableGPUProfiling) : 
+    ProfilerInternal::ProfilerInternal(bool enableCPUProfiling, bool enableGPUProfiling) :
         Profiler(enableCPUProfiling, enableGPUProfiling)
     {
         if (m_GPUProfilingEnabled)
@@ -136,10 +136,10 @@ namespace cauldron
             if (res == S_OK)
             {
                 memcpy(pQueries, pTimeStampBuffer + range.Begin, numTimeStamps * sizeof(UINT64));
-                
+
                 CD3DX12_RANGE writtenRange(0, 0);
                 m_pBuffer->Unmap(0, &writtenRange);
-                
+
                 return numTimeStamps;
             }
         }

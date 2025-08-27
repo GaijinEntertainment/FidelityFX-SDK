@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -308,7 +308,7 @@ typedef enum FfxFrameInterpolationDispatchFlags
     FFX_FRAMEINTERPOLATION_DISPATCH_DRAW_DEBUG_VIEW             = (1 << 2),  ///< A bit indicating that the interpolated output resource will contain debug views with relevant information.
     FFX_FRAMEINTERPOLATION_DISPATCH_DRAW_DEBUG_PACING_LINES     = (1 << 3),  ///< A bit indicating that the debug pacing lines will be drawn to the generated output.
     FFX_FRAMEINTERPOLATION_DISPATCH_RESERVED_1 = (1 << 4),
-    FFX_FRAMEINTERPOLATION_DISPATCH_RESERVED_2 = (1 << 5), 
+    FFX_FRAMEINTERPOLATION_DISPATCH_RESERVED_2 = (1 << 5),
 } FfxFrameInterpolationDispatchFlags;
 
 typedef struct FfxFrameInterpolationDispatchDescription {

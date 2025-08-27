@@ -24,7 +24,7 @@
 /// \mainpage
 /// AGS Library Overview
 /// --------------------
-/// This document provides an overview of the AGS (AMD GPU Services) library. The AGS library provides software developers with the ability to query 
+/// This document provides an overview of the AGS (AMD GPU Services) library. The AGS library provides software developers with the ability to query
 /// AMD GPU software and hardware state information that is not normally available through standard operating systems or graphic APIs.
 ///
 /// The latest version of the API is publicly hosted here: https://github.com/GPUOpen-LibrariesAndSDKs/AGS_SDK/.
@@ -99,8 +99,8 @@
 /// * AGSSample
 /// * CrossfireSample
 /// * EyefinitySample
-/// The AGSSample application is the simplest of the three examples and demonstrates the code required to initialize AGS and use it to query the GPU and Eyefinity state. 
-/// The CrossfireSample application demonstrates the use of the new API to transfer resources on GPUs in Crossfire mode. Lastly, the EyefinitySample application provides a more 
+/// The AGSSample application is the simplest of the three examples and demonstrates the code required to initialize AGS and use it to query the GPU and Eyefinity state.
+/// The CrossfireSample application demonstrates the use of the new API to transfer resources on GPUs in Crossfire mode. Lastly, the EyefinitySample application provides a more
 /// extensive example of Eyefinity setup than the basic example provided in AGSSample.
 /// There are other samples on Github that demonstrate the DirectX shader extensions, such as the Barycentrics11 and Barycentrics12 samples.
 ///
@@ -757,7 +757,7 @@ AMD_AGS_API AGSReturnCode agsDriverExtensionsDX11_DestroyDevice( AGSContext* con
 /// There's no wait for marker 2 and 3 because there are no draws preceding the BOP commands
 /// Marker 4 is only written once DrawX finishes execution
 /// Marker 5 doesn't wait for additional draws so it is written right after marker 4
-/// Marker 6 can be written as soon as the CP reaches the command. For instance, it is very possible that CP writes marker 6 while DrawX 
+/// Marker 6 can be written as soon as the CP reaches the command. For instance, it is very possible that CP writes marker 6 while DrawX
 /// is running and therefore marker 6 gets written before markers 4 and 5
 ///
 /// \subsection eg2 Example 2:
@@ -797,7 +797,7 @@ AMD_AGS_API AGSReturnCode agsDriverExtensionsDX11_DestroyDevice( AGSContext* con
 /// In this example marker 1 is written before the start of DrawX
 /// Marker 2 is written once DrawX finishes
 /// Marker 3 is written once DrawY finishes
-/// Marker 4 is written once DrawZ finishes 
+/// Marker 4 is written once DrawZ finishes
 /// If the GPU hangs and only marker 1 is written we can conclude that the hang is happening in either DrawX, DrawY or DrawZ
 /// If the GPU hangs and only marker 1 and 2 are written we can conclude that the hang is happening in DrawY or DrawZ
 /// If the GPU hangs and only marker 4 is missing we can conclude that the hang is happening in DrawZ
@@ -835,7 +835,7 @@ AMD_AGS_API AGSReturnCode agsDriverExtensionsDX11_DestroyDevice( AGSContext* con
 /// Marker 3 is written right after DrawY is queued for execution.
 /// Marker 4 is only written once DrawY finishes execution
 /// If marker 1 is written we would know that the CP has reached the command DrawX (DrawX at the top of the pipe).
-/// If marker 2 is written we can say that DrawX has finished execution (DrawX at the bottom of the pipe). 
+/// If marker 2 is written we can say that DrawX has finished execution (DrawX at the bottom of the pipe).
 /// In case the GPU hangs and only marker 1 and 3 are written we can conclude that the hang is happening in DrawX or DrawY
 /// In case the GPU hangs and only marker 1 is written we can conclude that the hang is happening in DrawX
 /// In case the GPU hangs and only marker 4 is missing we can conclude that the hang is happening in DrawY
@@ -847,10 +847,10 @@ AMD_AGS_API AGSReturnCode agsDriverExtensionsDX11_DestroyDevice( AGSContext* con
 /// \code{.cpp}
 ///     // Force the work to be flushed to prevent CPU ahead of GPU
 ///     g_pImmediateContext->Flush();
-///     
+///
 ///     // Present the information rendered to the back buffer to the front buffer (the screen)
 ///     HRESULT hr = g_pSwapChain->Present( 0, 0 );
-///     
+///
 ///     // Read the marker data buffer once detect device lost
 ///     if ( hr != S_OK )
 ///     {
@@ -858,18 +858,18 @@ AMD_AGS_API AGSReturnCode agsDriverExtensionsDX11_DestroyDevice( AGSContext* con
 ///         {
 ///             UINT64* pTempData;
 ///             pTempData = static_cast<UINT64*>(pMarkerBuffer);
-/// 
+///
 ///             // Write the marker data to file
 ///             ofs << i << "\r\n";
 ///             ofs << std::hex << *(pTempData + i * 2) << "\r\n";
 ///             ofs << std::hex << *(pTempData + (i * 2 + 1)) << "\r\n";
-/// 
+///
 ///             WCHAR s1[256];
 ///             setlocale(LC_NUMERIC, "en_US.iso88591");
-/// 
+///
 ///             // Output the marker data to console
 ///             swprintf(s1, 256, L" The Draw count is %d; The Top maker is % 016llX and the Bottom marker is % 016llX \r\n", i, *(pTempData + i * 2), *(pTempData + (i * 2 + 1)));
-/// 
+///
 ///             OutputDebugStringW(s1);
 ///         }
 ///     }
@@ -877,18 +877,18 @@ AMD_AGS_API AGSReturnCode agsDriverExtensionsDX11_DestroyDevice( AGSContext* con
 ///
 /// The console output would resemble something like:
 /// \code{.cpp}
-/// D3D11: Removing Device. 
+/// D3D11: Removing Device.
 /// D3D11 ERROR: ID3D11Device::RemoveDevice: Device removal has been triggered for the following reason (DXGI_ERROR_DEVICE_HUNG: The Device took an unreasonable amount of time to execute its commands, or the hardware crashed/hung. As a result, the TDR (Timeout Detection and Recovery) mechanism has been triggered. The current Device Context was executing commands when the hang occurred. The application may want to respawn and fallback to less aggressive use of the display hardware). [ EXECUTION ERROR #378: DEVICE_REMOVAL_PROCESS_AT_FAULT]
-///  The Draw count is 0; The Top maker is 00000000DEADCAFE and the Bottom marker is 00000000DEADBEEF 
-///  The Draw count is 1; The Top maker is 00000000DEADCAFE and the Bottom marker is 00000000DEADBEEF 
-///  The Draw count is 2; The Top maker is 00000000DEADCAFE and the Bottom marker is 00000000DEADBEEF 
-///  The Draw count is 3; The Top maker is 00000000DEADCAFE and the Bottom marker is 00000000DEADBEEF 
-///  The Draw count is 4; The Top maker is 00000000DEADCAFE and the Bottom marker is 00000000DEADBEEF 
-///  The Draw count is 5; The Top maker is CDCDCDCDCDCDCDCD and the Bottom marker is CDCDCDCDCDCDCDCD 
-///  The Draw count is 6; The Top maker is CDCDCDCDCDCDCDCD and the Bottom marker is CDCDCDCDCDCDCDCD 
-///  The Draw count is 7; The Top maker is CDCDCDCDCDCDCDCD and the Bottom marker is CDCDCDCDCDCDCDCD 
+///  The Draw count is 0; The Top maker is 00000000DEADCAFE and the Bottom marker is 00000000DEADBEEF
+///  The Draw count is 1; The Top maker is 00000000DEADCAFE and the Bottom marker is 00000000DEADBEEF
+///  The Draw count is 2; The Top maker is 00000000DEADCAFE and the Bottom marker is 00000000DEADBEEF
+///  The Draw count is 3; The Top maker is 00000000DEADCAFE and the Bottom marker is 00000000DEADBEEF
+///  The Draw count is 4; The Top maker is 00000000DEADCAFE and the Bottom marker is 00000000DEADBEEF
+///  The Draw count is 5; The Top maker is CDCDCDCDCDCDCDCD and the Bottom marker is CDCDCDCDCDCDCDCD
+///  The Draw count is 6; The Top maker is CDCDCDCDCDCDCDCD and the Bottom marker is CDCDCDCDCDCDCDCD
+///  The Draw count is 7; The Top maker is CDCDCDCDCDCDCDCD and the Bottom marker is CDCDCDCDCDCDCDCD
 /// \endcode
-/// 
+///
 /// @{
 
 /// The breadcrumb marker struct used by \ref agsDriverExtensionsDX11_WriteBreadcrumb
@@ -936,11 +936,11 @@ typedef enum AGSPrimitiveTopologyDX11
 /// Function used to set the primitive topology. If you are using any of the extended topology types, then this function should
 /// be called to set ALL topology types.
 ///
-/// The Quad List extension is a convenient way to submit quads without using an index buffer. Note that this still submits two triangles at the driver level. 
+/// The Quad List extension is a convenient way to submit quads without using an index buffer. Note that this still submits two triangles at the driver level.
 /// In order to use this function, AGS must already be initialized and agsDriverExtensionsDX11_Init must have been called successfully.
 ///
-/// The Screen Rect extension, which is only available on GCN hardware, allows the user to pass in three of the four corners of a rectangle. 
-/// The hardware then uses the bounding box of the vertices to rasterize the rectangle primitive (i.e. as a rectangle rather than two triangles). 
+/// The Screen Rect extension, which is only available on GCN hardware, allows the user to pass in three of the four corners of a rectangle.
+/// The hardware then uses the bounding box of the vertices to rasterize the rectangle primitive (i.e. as a rectangle rather than two triangles).
 /// \note Note that this will not return valid interpolated values, only valid SV_Position values.
 /// \note If either the Quad List or Screen Rect extension are used, then agsDriverExtensionsDX11_IASetPrimitiveTopology should be called in place of the native DirectX11 equivalent all the time.
 ///

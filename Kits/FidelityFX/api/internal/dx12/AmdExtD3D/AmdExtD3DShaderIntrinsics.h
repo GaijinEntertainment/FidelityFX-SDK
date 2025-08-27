@@ -115,7 +115,7 @@ enum AmdExtD3DShaderIntrinsicsOpcode
     AmdExtD3DShaderIntrinsicsOpcode_BuiltIn1                    = 0x37,
     AmdExtD3DShaderIntrinsicsOpcode_BuiltInArg                  = 0x38,
     AmdExtD3DShaderIntrinsicsOpcode_Reserved6                   = 0x39,
-    AmdExtD3DShaderIntrinsicsOpcode_Reserved7                   = 0x3a,    
+    AmdExtD3DShaderIntrinsicsOpcode_Reserved7                   = 0x3a,
     AmdExtD3DShaderIntrinsicsOpcode_LoadByteAtAddr              = 0x3b,
     AmdExtD3DShaderIntrinsicsOpcode_LastValidOpcode             = 0x3b,
 };

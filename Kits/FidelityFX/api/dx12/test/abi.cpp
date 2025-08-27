@@ -1,6 +1,6 @@
-#include "../../include/ffx_api.h" 
-#include "../../include/ffx_api_types.h" 
-#include "../../include/dx12/ffx_api_dx12.h" 
+#include "../../include/ffx_api.h"
+#include "../../include/ffx_api_types.h"
+#include "../../include/dx12/ffx_api_dx12.h"
 
 #include "utest.h"
 
@@ -19,7 +19,7 @@ UTEST(ffx_api_dx12_abi_size, ffxCreateBackendDX12Desc) {
 
 UTEST(ffx_api_dx12_abi_offsets, ffxCreateBackendDX12Desc) {
   EXPECT_EQ(offsetof(struct ffxCreateBackendDX12Desc, header) , 0);
-  EXPECT_EQ(offsetof(struct ffxCreateBackendDX12Desc, device) , 16); 
+  EXPECT_EQ(offsetof(struct ffxCreateBackendDX12Desc, device) , 16);
 }
 
 UTEST_MAIN()

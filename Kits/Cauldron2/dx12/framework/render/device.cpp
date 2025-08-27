@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -28,7 +28,7 @@ namespace cauldron
 {
     Device::Device()
     {
-        
+
     }
 
     Device::~Device()
@@ -61,7 +61,7 @@ namespace cauldron
     {
         // Close the command list for this frame
         CloseCmdList(m_pActiveCommandList);
-        
+
         // Execute all submission command lists (only 1 for now)
         std::vector<CommandList*> cmdLists;
         cmdLists.push_back(std::move(m_pActiveCommandList));

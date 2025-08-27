@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -108,7 +108,7 @@ namespace cauldron
          * @brief   Flush all command queues.
          */
         void FlushAllCommandQueues();
-        
+
         /**
          * @brief   Runs the device through frame initialization, and returns a CommandList
          *          to record into for the duration of the frame.
@@ -194,7 +194,7 @@ namespace cauldron
          * @brief   Used to wait until a signal value has been processed.
          */
         virtual void WaitOnQueue(uint64_t waitValue, CommandQueue queueType) const = 0;
-        
+
         /**
          * @brief   Execute the provided command lists, returns a signal ID that can be used to query completion.
          */
@@ -262,26 +262,26 @@ namespace cauldron
         virtual DeviceInternal* GetImpl() = 0;
 
     protected:
-        
+
         Device();
         void DeleteCommandListAsync(void* pInFlightGPUInfo);
 
-    private:        
-        
+    private:
+
         // No copy, No move
         NO_COPY(Device)
         NO_MOVE(Device)
 
     protected:
-        
+
         DeviceFeature    m_SupportedFeatures = DeviceFeature::None;
         // VK doesn't support these queries, set to min without RT and 32 waves for now
-        ShaderModel m_MaxSupportedShaderModel = ShaderModel::SM6_2; 
+        ShaderModel m_MaxSupportedShaderModel = ShaderModel::SM6_2;
         uint32_t    m_MinWaveLaneCount        = 32;
         uint32_t    m_MaxWaveLaneCount        = 32;
 
         VariableShadingRateInfo m_VariableShadingRateInfo;
-        
+
         // Graphics command lists
         CommandList*    m_pActiveCommandList = nullptr;
         // Todo: Add async compute command lists

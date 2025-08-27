@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -31,7 +31,7 @@ namespace cauldron
 
     /// Helpers to construct the defines for the shader
     /// Adds the texcoord support
-    /// 
+    ///
     /// @ingroup CauldronRender
     void AddTextureToDefineList(DefineList&        defineList,
                                 uint32_t&          attributes,
@@ -42,7 +42,7 @@ namespace cauldron
                                 const wchar_t*     pTexCoordKey);
 
     /// Helper function to construct hash from defines and attributes in a geometric shader
-    /// 
+    ///
     /// @ingroup CauldronRender
     size_t Hash(DefineList& defineList, uint32_t usedAttributes, const Surface* pSurface);
 

@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -265,7 +265,7 @@ static FfxErrorCode createPipelineStates(FfxFrameInterpolationContext_Private* c
 
     // Root constants
     pipelineDescription.rootConstantBufferCount     = 2;
-    FfxRootConstantDescription rootConstantDescs[2] = 
+    FfxRootConstantDescription rootConstantDescs[2] =
     {
         {sizeof(FrameInterpolationConstants) / sizeof(uint32_t), FFX_BIND_COMPUTE_SHADER_STAGE},
         {sizeof(InpaintingPyramidConstants) / sizeof(uint32_t), FFX_BIND_COMPUTE_SHADER_STAGE}
@@ -297,7 +297,7 @@ static FfxErrorCode createPipelineStates(FfxFrameInterpolationContext_Private* c
 
     // Set up pipeline descriptor (basically RootSignature and binding)
     auto CreateComputePipeline = [&](FfxPass pass, const wchar_t* name, FfxPipelineState* pipeline) -> FfxErrorCode {
-        FfxShaderBlob shaderBlob = {}; 
+        FfxShaderBlob shaderBlob = {};
         frameInterpolationGetPermutationBlobByIndex((FfxFrameInterpolationPass)pass, getPipelinePermutationFlags(contextFlags, pass, supportedFP16, canForceWave64, useLut), &shaderBlob);
         ffxSafeReleasePipeline(&context->contextDescription.backendInterface, pipeline, context->effectContextId);
         wcscpy_s(pipelineDescription.name, name);
@@ -619,7 +619,7 @@ static void scheduleDispatch(FfxFrameInterpolationContext_Private* context, cons
     for (uint32_t currentUnorderedAccessViewIndex = 0; currentUnorderedAccessViewIndex < pipeline->uavBufferCount; ++currentUnorderedAccessViewIndex)
     {
         const uint32_t currentResourceId = pipeline->uavBufferBindings[currentUnorderedAccessViewIndex].resourceIdentifier;
-        jobDescriptor.uavBuffers[currentUnorderedAccessViewIndex].resource = context->uavResources[currentResourceId];        
+        jobDescriptor.uavBuffers[currentUnorderedAccessViewIndex].resource = context->uavResources[currentResourceId];
 #ifdef FFX_DEBUG
         wcscpy_s(jobDescriptor.uavBuffers[currentUnorderedAccessViewIndex].name, pipeline->uavBufferBindings[currentUnorderedAccessViewIndex].name);
 #endif
@@ -654,7 +654,7 @@ FFX_API FfxErrorCode ffxFrameInterpolationGetSharedResourceDescriptions(FfxFrame
     FfxFrameInterpolationContext_Private* contextPrivate = (FfxFrameInterpolationContext_Private*)(context);
 
     getSharedResourceDescriptions(&contextPrivate->contextDescription.maxRenderSize, &contextPrivate->contextDescription.displaySize, sharedResources);
-  
+
     return FFX_OK;
 }
 
@@ -852,7 +852,7 @@ static void setupDeviceDepthToViewSpaceDepthParams(FfxFrameInterpolationContext_
 
     constants->deviceToViewDepth[2] = (1.0f / a);
     constants->deviceToViewDepth[3] = (1.0f / b);
-    
+
 }
 
 FFX_API bool ffxFrameInterpolationResourceIsNull(FfxApiResource resource)
@@ -873,7 +873,7 @@ const size_t debugBarColorSequenceLength = 7;
 
 static void fsr3FrameInterpolationDebugCheckPrepare(FfxFrameInterpolationContext_Private* context, const FfxFrameInterpolationPrepareDescription* params)
 {
-    
+
     static const FfxFloat32x3 zeroVector3D = { 0.f,0.f,0.f };
     if ((memcmp(params->cameraPosition, zeroVector3D, sizeof(FfxFloat32x3)) == 0) &&
         (memcmp(params->cameraUp, zeroVector3D, sizeof(FfxFloat32x3)) == 0) &&
@@ -893,7 +893,7 @@ FFX_API FfxErrorCode ffxFrameInterpolationPrepare(FfxFrameInterpolationContext* 
     {
         fsr3FrameInterpolationDebugCheckPrepare(contextPrivate, params);
     }
-    
+
     contextPrivate->constants.renderSize[0]         = params->renderSize.width;
     contextPrivate->constants.renderSize[1]         = params->renderSize.height;
     contextPrivate->constants.jitter[0]             = params->jitterOffset.x;

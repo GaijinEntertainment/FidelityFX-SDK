@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -159,7 +159,7 @@ void FSRRenderModule::Init(const json& initData)
 //     const cauldron::FIQueue* pAsyncComputeQueue = cauldron::GetDevice()->GetImpl()->GetFIAsyncComputeQueue();
 //     const cauldron::FIQueue* pPresentQueue      = cauldron::GetDevice()->GetImpl()->GetFIPresentQueue();
 //     const cauldron::FIQueue* pImageAcquireQueue = cauldron::GetDevice()->GetImpl()->GetFIImageAcquireQueue();
-// 
+//
 //     m_FrameInterpolationAvailable = pPresentQueue->queue != VK_NULL_HANDLE && pImageAcquireQueue->queue != VK_NULL_HANDLE;
 //     m_AsyncComputeAvailable       = m_FrameInterpolationAvailable && pAsyncComputeQueue->queue != VK_NULL_HANDLE;
 
@@ -238,7 +238,7 @@ void FSRRenderModule::Init(const json& initData)
         // Create frameinterpolation swapchain
 //         cauldron::SwapChain* pSwapchain       = cauldron::GetFramework()->GetSwapChain();
 //         VkSwapchainKHR       currentSwapchain = pSwapchain->GetImpl()->VKSwapChain();
-// 
+//
 //         ffx::CreateContextDescFrameGenerationSwapChainVK createSwapChainDesc{};
 //         createSwapChainDesc.physicalDevice        = cauldron::GetDevice()->GetImpl()->VKPhysicalDevice();
 //         createSwapChainDesc.device                = cauldron::GetDevice()->GetImpl()->VKDevice();
@@ -248,22 +248,22 @@ void FSRRenderModule::Init(const json& initData)
 //         createSwapChainDesc.gameQueue.queue       = cauldron::GetDevice()->GetImpl()->VKCmdQueue(cauldron::CommandQueue::Graphics);
 //         createSwapChainDesc.gameQueue.familyIndex = cauldron::GetDevice()->GetImpl()->VKCmdQueueFamily(cauldron::CommandQueue::Graphics);
 //         createSwapChainDesc.gameQueue.submitFunc  = nullptr;  // this queue is only used in vkQueuePresentKHR, hence doesn't need a callback
-// 
+//
 //         createSwapChainDesc.asyncComputeQueue.queue       = pAsyncComputeQueue->queue;
 //         createSwapChainDesc.asyncComputeQueue.familyIndex = pAsyncComputeQueue->family;
 //         createSwapChainDesc.asyncComputeQueue.submitFunc  = nullptr;
-// 
+//
 //         createSwapChainDesc.presentQueue.queue       = pPresentQueue->queue;
 //         createSwapChainDesc.presentQueue.familyIndex = pPresentQueue->family;
 //         createSwapChainDesc.presentQueue.submitFunc  = nullptr;
-// 
+//
 //         createSwapChainDesc.imageAcquireQueue.queue       = pImageAcquireQueue->queue;
 //         createSwapChainDesc.imageAcquireQueue.familyIndex = pImageAcquireQueue->family;
 //         createSwapChainDesc.imageAcquireQueue.submitFunc  = nullptr;
-// 
+//
 //         // make sure swapchain is not holding a ref to real swapchain
 //         cauldron::GetFramework()->GetSwapChain()->GetImpl()->SetVKSwapChain(VK_NULL_HANDLE);
-// 
+//
 //         auto convertQueueInfo = [](VkQueueInfoFFXAPI queueInfo) {
 //             VkQueueInfoFFX info;
 //             info.queue       = queueInfo.queue;
@@ -271,7 +271,7 @@ void FSRRenderModule::Init(const json& initData)
 //             info.submitFunc  = queueInfo.submitFunc;
 //             return info;
 //         };
-// 
+//
 //         VkFrameInterpolationInfoFFX frameInterpolationInfo = {};
 //         frameInterpolationInfo.device                      = createSwapChainDesc.device;
 //         frameInterpolationInfo.physicalDevice              = createSwapChainDesc.physicalDevice;
@@ -280,9 +280,9 @@ void FSRRenderModule::Init(const json& initData)
 //         frameInterpolationInfo.asyncComputeQueue           = convertQueueInfo(createSwapChainDesc.asyncComputeQueue);
 //         frameInterpolationInfo.presentQueue                = convertQueueInfo(createSwapChainDesc.presentQueue);
 //         frameInterpolationInfo.imageAcquireQueue           = convertQueueInfo(createSwapChainDesc.imageAcquireQueue);
-// 
+//
 //         ffx::ReturnCode retCode = ffx::CreateContext(m_SwapChainContext, nullptr, createSwapChainDesc);
-// 
+//
 //         ffx::QueryDescSwapchainReplacementFunctionsVK replacementFunctions{};
 //         ffx::Query(m_SwapChainContext, replacementFunctions);
 //         cauldron::GetDevice()->GetImpl()->SetSwapchainMethodsAndContext(nullptr,
@@ -297,10 +297,10 @@ void FSRRenderModule::Init(const json& initData)
 //                                                                         replacementFunctions.pOutGetLastPresentCountFFXAPI,
 //                                                                         m_SwapChainContext,
 //                                                                         &frameInterpolationInfo);
-// 
+//
 //         // Set frameinterpolation swapchain to engine
 //         cauldron::GetFramework()->GetSwapChain()->GetImpl()->SetVKSwapChain(currentSwapchain, true);
-// 
+//
 //         // we need to re initialize HDR info since swapchain was re created
 //         cauldron::GetSwapChain()->SetHDRMetadataAndColorspace();
 #endif //defined(FFX_API_VK)
@@ -1590,7 +1590,7 @@ void FSRRenderModule::Execute(double deltaTime, CommandList* pCmdList)
 //         retCode = ffx::Query(m_SwapChainContext, queryCmdList);
 //        CauldronAssert(ASSERT_CRITICAL, retCode == ffx::ReturnCode::Ok,
 //            L"ffx::Query(SwapChainContext,InterpolationCommandList) returned %d", (uint32_t)retCode);
-// 
+//
 //         ffx::QueryDescFrameGenerationSwapChainInterpolationTextureVK queryFiTexture{};
 //         queryFiTexture.pOutTexture = &dispatchFg.outputs[0];
 //         retCode = ffx::Query(m_SwapChainContext, queryFiTexture);

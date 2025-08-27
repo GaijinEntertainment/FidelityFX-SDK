@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -32,14 +32,14 @@ float3 ProjectPosition(float3 origin, float4x4 mat)
 }
 
 // Origin and direction must be in the same space and mat must be able to transform from that space into clip space.
-float3 ProjectDirection(float3 origin, float3 direction, float3 screen_space_origin, float4x4 mat) 
+float3 ProjectDirection(float3 origin, float3 direction, float3 screen_space_origin, float4x4 mat)
 {
     float3 offsetted = ProjectPosition(origin + direction, mat);
     return offsetted - screen_space_origin;
 }
 
 // Mat must be able to transform origin from texture space to a linear space.
-float3 InvProjectPosition(float3 coord, float4x4 mat) 
+float3 InvProjectPosition(float3 coord, float4x4 mat)
 {
     coord.y = (1 - coord.y);
     coord.xy = 2 * coord.xy - 1;
@@ -54,12 +54,12 @@ float3 ScreenSpaceToViewSpace(float3 screen_uv_coord, float4x4 invProj)
 }
 
 float3 ViewSpaceToWorldSpace(float4 view_space_coord, float4x4 invView)
-{ 
+{
     return mul(invView, view_space_coord).xyz;
 }
 
 float3 WorldSpaceToScreenSpacePrevious(float3 world_coord, float4x4 prevViewProj)
-{ 
+{
     return ProjectPosition(world_coord, prevViewProj);
 }
 

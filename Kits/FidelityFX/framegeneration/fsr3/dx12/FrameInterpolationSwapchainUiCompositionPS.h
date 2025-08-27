@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -25,7 +25,7 @@
 ;
 ; Name                 Index   Mask Register SysValue  Format   Used
 ; -------------------- ----- ------ -------- -------- ------- ------
-; SV_Position              0   xyzw        0      POS   float   xy  
+; SV_Position              0   xyzw        0      POS   float   xy
 ;
 ;
 ; Output signature:
@@ -36,7 +36,7 @@
 ;
 ; shader hash: 3e4ab44bf2df6e4dc30a8dc1fdb1bf50
 ;
-; Pipeline Runtime Information: 
+; Pipeline Runtime Information:
 ;
 ; Pixel Shader
 ; DepthOutput=0
@@ -47,13 +47,13 @@
 ;
 ; Name                 Index             InterpMode DynIdx
 ; -------------------- ----- ---------------------- ------
-; SV_Position              0          noperspective       
+; SV_Position              0          noperspective
 ;
 ; Output signature:
 ;
 ; Name                 Index             InterpMode DynIdx
 ; -------------------- ----- ---------------------- ------
-; SV_Target                0                              
+; SV_Target                0
 ;
 ; Buffer Definitions:
 ;

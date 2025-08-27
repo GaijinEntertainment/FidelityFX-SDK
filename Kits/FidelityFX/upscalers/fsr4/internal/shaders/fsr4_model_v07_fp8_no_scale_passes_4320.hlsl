@@ -28,7 +28,7 @@ void fsr4_model_v07_fp8_no_scale_pass0(
 )
 {
     const uint3 ml2c_numThreads = uint3(32, 1, 1);
-    
+
     const BufferStorage storage_NHWC_inputs = { buffer_NHWC_inputs };
     const Tensor3h_NHWC< BufferStorage > NHWC_inputs = {
         uint3(7680, 4320, 7), // logicalSize
@@ -77,7 +77,7 @@ void fsr4_model_v07_fp8_no_scale_pass0(
     // /encoder1/DownscaleStridedConv2x2/downscale_conv/Conv (7, 4320, 7680), (16, 7, 2, 2), (16,) -> (16, 2160, 3840)
     ComputeShaderParams computeShaderParams = {ml2c_numThreads, ml2c_groupId, ml2c_groupThreadId, ml2c_dispatchThreadId};
     Conv2D_k2s2b(NHWC_inputs, encoder1_DownscaleStridedConv2x2_downscale_conv_weight, encoder1_DownscaleStridedConv2x2_downscale_conv_bias, slice_0, computeShaderParams);
-    
+
 }
 #endif // #ifdef MLSR_PASS_0
 #ifdef MLSR_PASS_0_POST
@@ -104,7 +104,7 @@ void fsr4_model_v07_fp8_no_scale_pass0_post(
     const float quantizationScale_slice_1 = 1.0;
     const RWBufferStorage storage_slice_1 = { ScratchBuffer };
     const QuantizedTensor3f8_NHWC<RWBufferStorage> slice_1 = { logicalSize_slice_1, groupStart_slice_1, groupSize_slice_1, storageSize_slice_1, tensorByteStrides_slice_1, paddingBegin_slice_1, paddingEnd_slice_1, threadGroupByteOffsetInTensor_slice_1 + 0, quantizationScale_slice_1, storage_slice_1 };
-    
+
     StoreDefaultConstBatchOperation < 16, QuantizedTensor3f8_NHWC<RWBufferStorage> > batchOp_0 = { DefaultDword };
     ResetPaddingSeparate(slice_1, ml2c_dispatchThreadId, true, true, batchOp_0, (1, 1));
 }
@@ -124,7 +124,7 @@ void fsr4_model_v07_fp8_no_scale_pass1(
 )
 {
     const uint3 ml2c_numThreads = uint3(32, 1, 1);
-    
+
     const RWBufferStorage storage_quantized_NHWC__encoder2_ResidualBlock_0_body_input_quantization_act_quant_export_handler_QuantizeLinear_output_0 = { ScratchBuffer };
     const QuantizedTensor3f8_NHWC< RWBufferStorage > quantized_NHWC__encoder2_ResidualBlock_0_body_input_quantization_act_quant_export_handler_QuantizeLinear_output_0 = {
         uint3(3840, 2160, 16), // logicalSize
@@ -136,7 +136,7 @@ void fsr4_model_v07_fp8_no_scale_pass1(
         uint3(1, 1, 0), // paddingEnd
         0, // threadGroupStorageByteOffset
         1.0, storage_quantized_NHWC__encoder2_ResidualBlock_0_body_input_quantization_act_quant_export_handler_QuantizeLinear_output_0 };
-    
+
     const BufferStorage storage_hwnc__encoder2_ResidualBlock_0_body_conv_dw_weight_quant_export_handler_QuantizeLinear_output_0 = { InitializerBuffer };
     const QuantizedTensor4f8_HWNC< BufferStorage > hwnc__encoder2_ResidualBlock_0_body_conv_dw_weight_quant_export_handler_QuantizeLinear_output_0 = {
         uint4(3, 3, 16, 16), // logicalSize
@@ -218,7 +218,7 @@ void fsr4_model_v07_fp8_no_scale_pass1(
     // ConvNextBlock (16, 2160, 3840), (16, 16, 3, 3), (16,), (32, 16, 1, 1), (32,), (16, 32, 1, 1), (16,) -> (16, 2160, 3840)
     ComputeShaderParams computeShaderParams = {ml2c_numThreads, ml2c_groupId, ml2c_groupThreadId, ml2c_dispatchThreadId};
     ConvNextBlock(1.0, 1.0, 1.0, 1.0, quantized_NHWC__encoder2_ResidualBlock_0_body_input_quantization_act_quant_export_handler_QuantizeLinear_output_0, hwnc__encoder2_ResidualBlock_0_body_conv_dw_weight_quant_export_handler_QuantizeLinear_output_0, encoder2_ResidualBlock_0_body_conv_dw_bias, hwnc__encoder2_ResidualBlock_0_body_conv_pw_expand_weight_quant_export_handler_QuantizeLinear_output_0, encoder2_ResidualBlock_0_body_conv_pw_expand_bias, hwnc__encoder2_ResidualBlock_0_body_conv_pw_contract_weight_quant_export_handler_QuantizeLinear_output_0, encoder2_ResidualBlock_0_body_conv_pw_contract_bias, slice_2, computeShaderParams);
-    
+
 }
 #endif // #ifdef MLSR_PASS_1
 #ifdef MLSR_PASS_1_POST
@@ -245,7 +245,7 @@ void fsr4_model_v07_fp8_no_scale_pass1_post(
     const float quantizationScale_slice_3 = 1.0;
     const RWBufferStorage storage_slice_3 = { ScratchBuffer };
     const QuantizedTensor3f8_NHWC<RWBufferStorage> slice_3 = { logicalSize_slice_3, groupStart_slice_3, groupSize_slice_3, storageSize_slice_3, tensorByteStrides_slice_3, paddingBegin_slice_3, paddingEnd_slice_3, threadGroupByteOffsetInTensor_slice_3 + 132902464, quantizationScale_slice_3, storage_slice_3 };
-    
+
     StoreDefaultConstBatchOperation < 16, QuantizedTensor3f8_NHWC<RWBufferStorage> > batchOp_0 = { DefaultDword };
     ResetPaddingSeparate(slice_3, ml2c_dispatchThreadId, true, true, batchOp_0, (1, 1));
 }
@@ -265,7 +265,7 @@ void fsr4_model_v07_fp8_no_scale_pass2(
 )
 {
     const uint3 ml2c_numThreads = uint3(32, 1, 1);
-    
+
     const RWBufferStorage storage_fused_quantized_NHWC__encoder2_ResidualBlock_1_body_input_quantization_act_quant_export_handler_QuantizeLinear_output_0 = { ScratchBuffer };
     const QuantizedTensor3f8_NHWC< RWBufferStorage > fused_quantized_NHWC__encoder2_ResidualBlock_1_body_input_quantization_act_quant_export_handler_QuantizeLinear_output_0 = {
         uint3(3840, 2160, 16), // logicalSize
@@ -277,7 +277,7 @@ void fsr4_model_v07_fp8_no_scale_pass2(
         uint3(1, 1, 0), // paddingEnd
         132902464, // threadGroupStorageByteOffset
         1.0, storage_fused_quantized_NHWC__encoder2_ResidualBlock_1_body_input_quantization_act_quant_export_handler_QuantizeLinear_output_0 };
-    
+
     const BufferStorage storage_hwnc__encoder2_ResidualBlock_1_body_conv_dw_weight_quant_export_handler_QuantizeLinear_output_0 = { InitializerBuffer };
     const QuantizedTensor4f8_HWNC< BufferStorage > hwnc__encoder2_ResidualBlock_1_body_conv_dw_weight_quant_export_handler_QuantizeLinear_output_0 = {
         uint4(3, 3, 16, 16), // logicalSize
@@ -359,7 +359,7 @@ void fsr4_model_v07_fp8_no_scale_pass2(
     // ConvNextBlock (16, 2160, 3840), (16, 16, 3, 3), (16,), (32, 16, 1, 1), (32,), (16, 32, 1, 1), (16,) -> (16, 2160, 3840)
     ComputeShaderParams computeShaderParams = {ml2c_numThreads, ml2c_groupId, ml2c_groupThreadId, ml2c_dispatchThreadId};
     ConvNextBlock(1.0, 1.0, 1.0, 1.0, fused_quantized_NHWC__encoder2_ResidualBlock_1_body_input_quantization_act_quant_export_handler_QuantizeLinear_output_0, hwnc__encoder2_ResidualBlock_1_body_conv_dw_weight_quant_export_handler_QuantizeLinear_output_0, encoder2_ResidualBlock_1_body_conv_dw_bias, hwnc__encoder2_ResidualBlock_1_body_conv_pw_expand_weight_quant_export_handler_QuantizeLinear_output_0, encoder2_ResidualBlock_1_body_conv_pw_expand_bias, hwnc__encoder2_ResidualBlock_1_body_conv_pw_contract_weight_quant_export_handler_QuantizeLinear_output_0, encoder2_ResidualBlock_1_body_conv_pw_contract_bias, slice_4, computeShaderParams);
-    
+
 }
 #endif // #ifdef MLSR_PASS_2
 #ifdef MLSR_PASS_2_POST
@@ -386,7 +386,7 @@ void fsr4_model_v07_fp8_no_scale_pass2_post(
     const float quantizationScale_slice_5 = 1.0;
     const RWBufferStorage storage_slice_5 = { ScratchBuffer };
     const QuantizedTensor3f8_NHWC<RWBufferStorage> slice_5 = { logicalSize_slice_5, groupStart_slice_5, groupSize_slice_5, storageSize_slice_5, tensorByteStrides_slice_5, paddingBegin_slice_5, paddingEnd_slice_5, threadGroupByteOffsetInTensor_slice_5 + 0, quantizationScale_slice_5, storage_slice_5 };
-    
+
     StoreDefaultConstBatchOperation < 16, QuantizedTensor3f8_NHWC<RWBufferStorage> > batchOp_0 = { DefaultDword };
     ResetPaddingSeparate(slice_5, ml2c_dispatchThreadId, true, true, batchOp_0, (1, 1));
 }
@@ -406,7 +406,7 @@ void fsr4_model_v07_fp8_no_scale_pass3(
 )
 {
     const uint3 ml2c_numThreads = uint3(32, 1, 1);
-    
+
     const RWBufferStorage storage_fused_quantized_NHWC__encoder2_DownscaleStridedConv2x2_skip_func_act_quant_export_handler_QuantizeLinear_output_0 = { ScratchBuffer };
     const QuantizedTensor3f8_NHWC< RWBufferStorage > fused_quantized_NHWC__encoder2_DownscaleStridedConv2x2_skip_func_act_quant_export_handler_QuantizeLinear_output_0 = {
         uint3(3840, 2160, 16), // logicalSize
@@ -418,7 +418,7 @@ void fsr4_model_v07_fp8_no_scale_pass3(
         uint3(1, 1, 0), // paddingEnd
         0, // threadGroupStorageByteOffset
         1.0, storage_fused_quantized_NHWC__encoder2_DownscaleStridedConv2x2_skip_func_act_quant_export_handler_QuantizeLinear_output_0 };
-    
+
     const BufferStorage storage_hwnc__encoder2_DownscaleStridedConv2x2_downscale_conv_weight_quant_export_handler_QuantizeLinear_output_0 = { InitializerBuffer };
     const QuantizedTensor4f8_HWNC< BufferStorage > hwnc__encoder2_DownscaleStridedConv2x2_downscale_conv_weight_quant_export_handler_QuantizeLinear_output_0 = {
         uint4(2, 2, 16, 32), // logicalSize
@@ -455,7 +455,7 @@ void fsr4_model_v07_fp8_no_scale_pass3(
     // Fusedquantized_/encoder2/DownscaleStridedConv2x2/downscale_conv/Conv_quantized_outputs (16, 2160, 3840), (32, 16, 2, 2), (32,) -> (32, 1080, 1920)
     ComputeShaderParams computeShaderParams = {ml2c_numThreads, ml2c_groupId, ml2c_groupThreadId, ml2c_dispatchThreadId};
     FusedConv2D_k2s2b_QuantizedOutput(1.0, 1.0, fused_quantized_NHWC__encoder2_DownscaleStridedConv2x2_skip_func_act_quant_export_handler_QuantizeLinear_output_0, hwnc__encoder2_DownscaleStridedConv2x2_downscale_conv_weight_quant_export_handler_QuantizeLinear_output_0, encoder2_DownscaleStridedConv2x2_downscale_conv_bias, slice_6, computeShaderParams);
-    
+
 }
 #endif // #ifdef MLSR_PASS_3
 #ifdef MLSR_PASS_3_POST
@@ -481,7 +481,7 @@ void fsr4_model_v07_fp8_no_scale_pass3_post(
     const int threadGroupByteOffsetInTensor_slice_7 = dot(groupStart_slice_7, tensorByteStrides_slice_7);
     const RWBufferStorage storage_slice_7 = { ScratchBuffer };
     const Tensor3f8_NHWC<RWBufferStorage> slice_7 = { logicalSize_slice_7, groupStart_slice_7, groupSize_slice_7, storageSize_slice_7, tensorByteStrides_slice_7, paddingBegin_slice_7, paddingEnd_slice_7, threadGroupByteOffsetInTensor_slice_7 + 132902464, storage_slice_7 };
-    
+
     StoreDefaultConstBatchOperation < 16, Tensor3f8_NHWC<RWBufferStorage> > batchOp_0 = { DefaultDword };
     ResetPaddingSeparate(slice_7, ml2c_dispatchThreadId, true, true, batchOp_0, (1, 1));
 }
@@ -501,7 +501,7 @@ void fsr4_model_v07_fp8_no_scale_pass4(
 )
 {
     const uint3 ml2c_numThreads = uint3(32, 1, 1);
-    
+
     const RWBufferStorage storage_Fusedquantized__encoder2_DownscaleStridedConv2x2_downscale_conv_Conv_quantized_outputs_output_grouped = { ScratchBuffer };
     const Tensor3f8_NHWC< RWBufferStorage > Fusedquantized__encoder2_DownscaleStridedConv2x2_downscale_conv_Conv_quantized_outputs_output_grouped = {
         uint3(1920, 1080, 32), // logicalSize
@@ -513,7 +513,7 @@ void fsr4_model_v07_fp8_no_scale_pass4(
         uint3(1, 1, 0), // paddingEnd
         132902464, // threadGroupStorageByteOffset
         storage_Fusedquantized__encoder2_DownscaleStridedConv2x2_downscale_conv_Conv_quantized_outputs_output_grouped };
-    
+
     const BufferStorage storage_hwnc__encoder3_ResidualBlock_0_body_spatial_mixing_partial_conv_weight_quant_export_handler_QuantizeLinear_output_0 = { InitializerBuffer };
     const QuantizedTensor4f8_HWNC< BufferStorage > hwnc__encoder3_ResidualBlock_0_body_spatial_mixing_partial_conv_weight_quant_export_handler_QuantizeLinear_output_0 = {
         uint4(3, 3, 16, 16), // logicalSize
@@ -594,7 +594,7 @@ void fsr4_model_v07_fp8_no_scale_pass4(
     // Fusedquantized_/encoder3/ResidualBlock_0/residual_func/Concat_quantized_/encoder3/ResidualBlock_0/body/spatial_mixing/partial_conv/Conv_quantized_/encoder3/ResidualBlock_0/body/spatial_mixing/Concat_quantized_/encoder3/ResidualBlock_0/body/pw_expand/Conv_/encoder3/ResidualBlock_0/body/pw_expand_act/Relu_quantized_/encoder3/ResidualBlock_0/body/pw_contract/Conv_/encoder3/ResidualBlock_0/Add (32, 1080, 1920), (16, 16, 3, 3), (16,), (64, 32, 1, 1), (64,), (32, 64, 1, 1), (32,) -> (32, 1080, 1920)
     ComputeShaderParams computeShaderParams = {ml2c_numThreads, ml2c_groupId, ml2c_groupThreadId, ml2c_dispatchThreadId};
     FasterNetBlock<32, 1>(1.0, 1.0, 1.0, 1.0, 1.0, Fusedquantized__encoder2_DownscaleStridedConv2x2_downscale_conv_Conv_quantized_outputs_output_grouped, hwnc__encoder3_ResidualBlock_0_body_spatial_mixing_partial_conv_weight_quant_export_handler_QuantizeLinear_output_0, encoder3_ResidualBlock_0_body_spatial_mixing_partial_conv_bias, hwnc__encoder3_ResidualBlock_0_body_pw_expand_weight_quant_export_handler_QuantizeLinear_output_0, encoder3_ResidualBlock_0_body_pw_expand_bias, hwnc__encoder3_ResidualBlock_0_body_pw_contract_weight_quant_export_handler_QuantizeLinear_output_0, encoder3_ResidualBlock_0_body_pw_contract_bias, slice_8, computeShaderParams);
-    
+
 }
 #endif // #ifdef MLSR_PASS_4
 #ifdef MLSR_PASS_4_POST
@@ -620,7 +620,7 @@ void fsr4_model_v07_fp8_no_scale_pass4_post(
     const int threadGroupByteOffsetInTensor_slice_9 = dot(groupStart_slice_9, tensorByteStrides_slice_9);
     const RWBufferStorage storage_slice_9 = { ScratchBuffer };
     const Tensor3f8_NHWC<RWBufferStorage> slice_9 = { logicalSize_slice_9, groupStart_slice_9, groupSize_slice_9, storageSize_slice_9, tensorByteStrides_slice_9, paddingBegin_slice_9, paddingEnd_slice_9, threadGroupByteOffsetInTensor_slice_9 + 265804928, storage_slice_9 };
-    
+
     StoreDefaultConstBatchOperation < 16, Tensor3f8_NHWC<RWBufferStorage> > batchOp_0 = { DefaultDword };
     ResetPaddingSeparate(slice_9, ml2c_dispatchThreadId, true, true, batchOp_0, (1, 1));
 }
@@ -640,7 +640,7 @@ void fsr4_model_v07_fp8_no_scale_pass5(
 )
 {
     const uint3 ml2c_numThreads = uint3(32, 1, 1);
-    
+
     const RWBufferStorage storage__encoder3_ResidualBlock_1_residual_func_Split_output_grouped = { ScratchBuffer };
     const Tensor3f8_NHWC< RWBufferStorage > _encoder3_ResidualBlock_1_residual_func_Split_output_grouped = {
         uint3(1920, 1080, 32), // logicalSize
@@ -652,7 +652,7 @@ void fsr4_model_v07_fp8_no_scale_pass5(
         uint3(1, 1, 0), // paddingEnd
         265804928, // threadGroupStorageByteOffset
         storage__encoder3_ResidualBlock_1_residual_func_Split_output_grouped };
-    
+
     const BufferStorage storage_hwnc__encoder3_ResidualBlock_1_body_spatial_mixing_partial_conv_weight_quant_export_handler_QuantizeLinear_output_0 = { InitializerBuffer };
     const QuantizedTensor4f8_HWNC< BufferStorage > hwnc__encoder3_ResidualBlock_1_body_spatial_mixing_partial_conv_weight_quant_export_handler_QuantizeLinear_output_0 = {
         uint4(3, 3, 16, 16), // logicalSize
@@ -734,7 +734,7 @@ void fsr4_model_v07_fp8_no_scale_pass5(
     // Fusedquantized_/encoder3/ResidualBlock_1/residual_func/Concat_quantized_/encoder3/ResidualBlock_1/body/spatial_mixing/partial_conv/Conv_quantized_/encoder3/ResidualBlock_1/body/spatial_mixing/Concat_quantized_/encoder3/ResidualBlock_1/body/pw_expand/Conv_/encoder3/ResidualBlock_1/body/pw_expand_act/Relu_quantized_/encoder3/ResidualBlock_1/body/pw_contract/Conv_/encoder3/ResidualBlock_1/Add (32, 1080, 1920), (16, 16, 3, 3), (16,), (64, 32, 1, 1), (64,), (32, 64, 1, 1), (32,) -> (32, 1080, 1920)
     ComputeShaderParams computeShaderParams = {ml2c_numThreads, ml2c_groupId, ml2c_groupThreadId, ml2c_dispatchThreadId};
     FasterNetBlock<32, 1>(1.0, 1.0, 1.0, _encoder3_ResidualBlock_1_residual_func_Split_output_grouped, hwnc__encoder3_ResidualBlock_1_body_spatial_mixing_partial_conv_weight_quant_export_handler_QuantizeLinear_output_0, encoder3_ResidualBlock_1_body_spatial_mixing_partial_conv_bias, hwnc__encoder3_ResidualBlock_1_body_pw_expand_weight_quant_export_handler_QuantizeLinear_output_0, encoder3_ResidualBlock_1_body_pw_expand_bias, hwnc__encoder3_ResidualBlock_1_body_pw_contract_weight_quant_export_handler_QuantizeLinear_output_0, encoder3_ResidualBlock_1_body_pw_contract_bias, slice_10, computeShaderParams);
-    
+
 }
 #endif // #ifdef MLSR_PASS_5
 #ifdef MLSR_PASS_5_POST
@@ -761,7 +761,7 @@ void fsr4_model_v07_fp8_no_scale_pass5_post(
     const float quantizationScale_slice_11 = 1.0;
     const RWBufferStorage storage_slice_11 = { ScratchBuffer };
     const QuantizedTensor3f8_NHWC<RWBufferStorage> slice_11 = { logicalSize_slice_11, groupStart_slice_11, groupSize_slice_11, storageSize_slice_11, tensorByteStrides_slice_11, paddingBegin_slice_11, paddingEnd_slice_11, threadGroupByteOffsetInTensor_slice_11 + 132902464, quantizationScale_slice_11, storage_slice_11 };
-    
+
     StoreDefaultConstBatchOperation < 16, QuantizedTensor3f8_NHWC<RWBufferStorage> > batchOp_0 = { DefaultDword };
     ResetPaddingSeparate(slice_11, ml2c_dispatchThreadId, true, true, batchOp_0, (1, 1));
 }
@@ -781,7 +781,7 @@ void fsr4_model_v07_fp8_no_scale_pass6(
 )
 {
     const uint3 ml2c_numThreads = uint3(32, 1, 1);
-    
+
     const RWBufferStorage storage_fused_quantized_NHWC__encoder3_DownscaleStridedConv2x2_skip_func_act_quant_export_handler_QuantizeLinear_output_0 = { ScratchBuffer };
     const QuantizedTensor3f8_NHWC< RWBufferStorage > fused_quantized_NHWC__encoder3_DownscaleStridedConv2x2_skip_func_act_quant_export_handler_QuantizeLinear_output_0 = {
         uint3(1920, 1080, 32), // logicalSize
@@ -793,7 +793,7 @@ void fsr4_model_v07_fp8_no_scale_pass6(
         uint3(1, 1, 0), // paddingEnd
         132902464, // threadGroupStorageByteOffset
         1.0, storage_fused_quantized_NHWC__encoder3_DownscaleStridedConv2x2_skip_func_act_quant_export_handler_QuantizeLinear_output_0 };
-    
+
     const BufferStorage storage_hwnc__encoder3_DownscaleStridedConv2x2_downscale_conv_weight_quant_export_handler_QuantizeLinear_output_0 = { InitializerBuffer };
     const QuantizedTensor4f8_HWNC< BufferStorage > hwnc__encoder3_DownscaleStridedConv2x2_downscale_conv_weight_quant_export_handler_QuantizeLinear_output_0 = {
         uint4(2, 2, 32, 64), // logicalSize
@@ -830,7 +830,7 @@ void fsr4_model_v07_fp8_no_scale_pass6(
     // Fusedquantized_/encoder3/DownscaleStridedConv2x2/downscale_conv/Conv_quantized_outputs (32, 1080, 1920), (64, 32, 2, 2), (64,) -> (64, 540, 960)
     ComputeShaderParams computeShaderParams = {ml2c_numThreads, ml2c_groupId, ml2c_groupThreadId, ml2c_dispatchThreadId};
     FusedConv2D_k2s2b_QuantizedOutput(1.0, 1.0, fused_quantized_NHWC__encoder3_DownscaleStridedConv2x2_skip_func_act_quant_export_handler_QuantizeLinear_output_0, hwnc__encoder3_DownscaleStridedConv2x2_downscale_conv_weight_quant_export_handler_QuantizeLinear_output_0, encoder3_DownscaleStridedConv2x2_downscale_conv_bias, slice_12, computeShaderParams);
-    
+
 }
 #endif // #ifdef MLSR_PASS_6
 #ifdef MLSR_PASS_6_POST
@@ -856,7 +856,7 @@ void fsr4_model_v07_fp8_no_scale_pass6_post(
     const int threadGroupByteOffsetInTensor_slice_13 = dot(groupStart_slice_13, tensorByteStrides_slice_13);
     const RWBufferStorage storage_slice_13 = { ScratchBuffer };
     const Tensor3f8_NHWC<RWBufferStorage> slice_13 = { logicalSize_slice_13, groupStart_slice_13, groupSize_slice_13, storageSize_slice_13, tensorByteStrides_slice_13, paddingBegin_slice_13, paddingEnd_slice_13, threadGroupByteOffsetInTensor_slice_13 + 199449792, storage_slice_13 };
-    
+
     StoreDefaultConstBatchOperation < 16, Tensor3f8_NHWC<RWBufferStorage> > batchOp_0 = { DefaultDword };
     ResetPaddingSeparate(slice_13, ml2c_dispatchThreadId, true, true, batchOp_0, (1, 1));
 }
@@ -876,7 +876,7 @@ void fsr4_model_v07_fp8_no_scale_pass7(
 )
 {
     const uint3 ml2c_numThreads = uint3(32, 1, 1);
-    
+
     const RWBufferStorage storage_Fusedquantized__encoder3_DownscaleStridedConv2x2_downscale_conv_Conv_quantized_outputs_output_grouped = { ScratchBuffer };
     const Tensor3f8_NHWC< RWBufferStorage > Fusedquantized__encoder3_DownscaleStridedConv2x2_downscale_conv_Conv_quantized_outputs_output_grouped = {
         uint3(960, 540, 64), // logicalSize
@@ -888,7 +888,7 @@ void fsr4_model_v07_fp8_no_scale_pass7(
         uint3(1, 1, 0), // paddingEnd
         199449792, // threadGroupStorageByteOffset
         storage_Fusedquantized__encoder3_DownscaleStridedConv2x2_downscale_conv_Conv_quantized_outputs_output_grouped };
-    
+
     const BufferStorage storage_hwnc__bottleneck_ResidualBlock_0_body_spatial_mixing_partial_conv_weight_quant_export_handler_QuantizeLinear_output_0 = { InitializerBuffer };
     const QuantizedTensor4f8_HWNC< BufferStorage > hwnc__bottleneck_ResidualBlock_0_body_spatial_mixing_partial_conv_weight_quant_export_handler_QuantizeLinear_output_0 = {
         uint4(3, 3, 16, 32), // logicalSize
@@ -969,7 +969,7 @@ void fsr4_model_v07_fp8_no_scale_pass7(
     // Fusedquantized_/bottleneck/ResidualBlock_0/residual_func/Concat_quantized_/bottleneck/ResidualBlock_0/body/spatial_mixing/partial_conv/Conv_quantized_/bottleneck/ResidualBlock_0/body/spatial_mixing/Concat_quantized_/bottleneck/ResidualBlock_0/body/pw_expand/Conv_/bottleneck/ResidualBlock_0/body/pw_expand_act/Relu_quantized_/bottleneck/ResidualBlock_0/body/pw_contract/Conv_/bottleneck/ResidualBlock_0/Add (64, 540, 960), (32, 16, 3, 3), (32,), (128, 64, 1, 1), (128,), (64, 128, 1, 1), (64,) -> (64, 540, 960)
     ComputeShaderParams computeShaderParams = {ml2c_numThreads, ml2c_groupId, ml2c_groupThreadId, ml2c_dispatchThreadId};
     FasterNetBlock<64, 2>(1.0, 1.0, 1.0, 1.0, 1.0, Fusedquantized__encoder3_DownscaleStridedConv2x2_downscale_conv_Conv_quantized_outputs_output_grouped, hwnc__bottleneck_ResidualBlock_0_body_spatial_mixing_partial_conv_weight_quant_export_handler_QuantizeLinear_output_0, bottleneck_ResidualBlock_0_body_spatial_mixing_partial_conv_bias, hwnc__bottleneck_ResidualBlock_0_body_pw_expand_weight_quant_export_handler_QuantizeLinear_output_0, bottleneck_ResidualBlock_0_body_pw_expand_bias, hwnc__bottleneck_ResidualBlock_0_body_pw_contract_weight_quant_export_handler_QuantizeLinear_output_0, bottleneck_ResidualBlock_0_body_pw_contract_bias, slice_14, computeShaderParams);
-    
+
 }
 #endif // #ifdef MLSR_PASS_7
 #ifdef MLSR_PASS_7_POST
@@ -995,7 +995,7 @@ void fsr4_model_v07_fp8_no_scale_pass7_post(
     const int threadGroupByteOffsetInTensor_slice_15 = dot(groupStart_slice_15, tensorByteStrides_slice_15);
     const RWBufferStorage storage_slice_15 = { ScratchBuffer };
     const Tensor3f8_NHWC<RWBufferStorage> slice_15 = { logicalSize_slice_15, groupStart_slice_15, groupSize_slice_15, storageSize_slice_15, tensorByteStrides_slice_15, paddingBegin_slice_15, paddingEnd_slice_15, threadGroupByteOffsetInTensor_slice_15 + 232819648, storage_slice_15 };
-    
+
     StoreDefaultConstBatchOperation < 16, Tensor3f8_NHWC<RWBufferStorage> > batchOp_0 = { DefaultDword };
     ResetPaddingSeparate(slice_15, ml2c_dispatchThreadId, true, true, batchOp_0, (1, 1));
 }
@@ -1015,7 +1015,7 @@ void fsr4_model_v07_fp8_no_scale_pass8(
 )
 {
     const uint3 ml2c_numThreads = uint3(32, 1, 1);
-    
+
     const RWBufferStorage storage__bottleneck_ResidualBlock_1_residual_func_Split_output_grouped = { ScratchBuffer };
     const Tensor3f8_NHWC< RWBufferStorage > _bottleneck_ResidualBlock_1_residual_func_Split_output_grouped = {
         uint3(960, 540, 64), // logicalSize
@@ -1027,7 +1027,7 @@ void fsr4_model_v07_fp8_no_scale_pass8(
         uint3(1, 1, 0), // paddingEnd
         232819648, // threadGroupStorageByteOffset
         storage__bottleneck_ResidualBlock_1_residual_func_Split_output_grouped };
-    
+
     const BufferStorage storage_hwnc__bottleneck_ResidualBlock_1_body_spatial_mixing_partial_conv_weight_quant_export_handler_QuantizeLinear_output_0 = { InitializerBuffer };
     const QuantizedTensor4f8_HWNC< BufferStorage > hwnc__bottleneck_ResidualBlock_1_body_spatial_mixing_partial_conv_weight_quant_export_handler_QuantizeLinear_output_0 = {
         uint4(3, 3, 16, 32), // logicalSize
@@ -1108,7 +1108,7 @@ void fsr4_model_v07_fp8_no_scale_pass8(
     // Fusedquantized_/bottleneck/ResidualBlock_1/residual_func/Concat_quantized_/bottleneck/ResidualBlock_1/body/spatial_mixing/partial_conv/Conv_quantized_/bottleneck/ResidualBlock_1/body/spatial_mixing/Concat_quantized_/bottleneck/ResidualBlock_1/body/pw_expand/Conv_/bottleneck/ResidualBlock_1/body/pw_expand_act/Relu_quantized_/bottleneck/ResidualBlock_1/body/pw_contract/Conv_/bottleneck/ResidualBlock_1/Add (64, 540, 960), (32, 16, 3, 3), (32,), (128, 64, 1, 1), (128,), (64, 128, 1, 1), (64,) -> (64, 540, 960)
     ComputeShaderParams computeShaderParams = {ml2c_numThreads, ml2c_groupId, ml2c_groupThreadId, ml2c_dispatchThreadId};
     FasterNetBlock<64, 2>(1.0, 1.0, 1.0, 1.0, 1.0, _bottleneck_ResidualBlock_1_residual_func_Split_output_grouped, hwnc__bottleneck_ResidualBlock_1_body_spatial_mixing_partial_conv_weight_quant_export_handler_QuantizeLinear_output_0, bottleneck_ResidualBlock_1_body_spatial_mixing_partial_conv_bias, hwnc__bottleneck_ResidualBlock_1_body_pw_expand_weight_quant_export_handler_QuantizeLinear_output_0, bottleneck_ResidualBlock_1_body_pw_expand_bias, hwnc__bottleneck_ResidualBlock_1_body_pw_contract_weight_quant_export_handler_QuantizeLinear_output_0, bottleneck_ResidualBlock_1_body_pw_contract_bias, slice_16, computeShaderParams);
-    
+
 }
 #endif // #ifdef MLSR_PASS_8
 #ifdef MLSR_PASS_8_POST
@@ -1134,7 +1134,7 @@ void fsr4_model_v07_fp8_no_scale_pass8_post(
     const int threadGroupByteOffsetInTensor_slice_17 = dot(groupStart_slice_17, tensorByteStrides_slice_17);
     const RWBufferStorage storage_slice_17 = { ScratchBuffer };
     const Tensor3f8_NHWC<RWBufferStorage> slice_17 = { logicalSize_slice_17, groupStart_slice_17, groupSize_slice_17, storageSize_slice_17, tensorByteStrides_slice_17, paddingBegin_slice_17, paddingEnd_slice_17, threadGroupByteOffsetInTensor_slice_17 + 199449792, storage_slice_17 };
-    
+
     StoreDefaultConstBatchOperation < 16, Tensor3f8_NHWC<RWBufferStorage> > batchOp_0 = { DefaultDword };
     ResetPaddingSeparate(slice_17, ml2c_dispatchThreadId, true, true, batchOp_0, (1, 1));
 }
@@ -1154,7 +1154,7 @@ void fsr4_model_v07_fp8_no_scale_pass9(
 )
 {
     const uint3 ml2c_numThreads = uint3(32, 1, 1);
-    
+
     const RWBufferStorage storage__bottleneck_ResidualBlock_2_residual_func_Split_output_grouped = { ScratchBuffer };
     const Tensor3f8_NHWC< RWBufferStorage > _bottleneck_ResidualBlock_2_residual_func_Split_output_grouped = {
         uint3(960, 540, 64), // logicalSize
@@ -1166,7 +1166,7 @@ void fsr4_model_v07_fp8_no_scale_pass9(
         uint3(1, 1, 0), // paddingEnd
         199449792, // threadGroupStorageByteOffset
         storage__bottleneck_ResidualBlock_2_residual_func_Split_output_grouped };
-    
+
     const RWBufferStorage storage_fused_quantized_NHWC__encoder3_DownscaleStridedConv2x2_skip_func_act_quant_export_handler_QuantizeLinear_output_0 = { ScratchBuffer };
     const QuantizedTensor3f8_NHWC< RWBufferStorage > fused_quantized_NHWC__encoder3_DownscaleStridedConv2x2_skip_func_act_quant_export_handler_QuantizeLinear_output_0 = {
         uint3(1920, 1080, 32), // logicalSize
@@ -1178,7 +1178,7 @@ void fsr4_model_v07_fp8_no_scale_pass9(
         uint3(1, 1, 0), // paddingEnd
         132902464, // threadGroupStorageByteOffset
         1.0, storage_fused_quantized_NHWC__encoder3_DownscaleStridedConv2x2_skip_func_act_quant_export_handler_QuantizeLinear_output_0 };
-    
+
     const BufferStorage storage_hwnc__bottleneck_ResidualBlock_2_body_spatial_mixing_partial_conv_weight_quant_export_handler_QuantizeLinear_output_0 = { InitializerBuffer };
     const QuantizedTensor4f8_HWNC< BufferStorage > hwnc__bottleneck_ResidualBlock_2_body_spatial_mixing_partial_conv_weight_quant_export_handler_QuantizeLinear_output_0 = {
         uint4(3, 3, 16, 32), // logicalSize
@@ -1281,7 +1281,7 @@ void fsr4_model_v07_fp8_no_scale_pass9(
     // FusedFusedquantized_/bottleneck/ResidualBlock_2/residual_func/Concat_quantized_/bottleneck/ResidualBlock_2/body/spatial_mixing/partial_conv/Conv_quantized_/bottleneck/ResidualBlock_2/body/spatial_mixing/Concat_quantized_/bottleneck/ResidualBlock_2/body/pw_expand/Conv_/bottleneck/ResidualBlock_2/body/pw_expand_act/Relu_quantized_/bottleneck/ResidualBlock_2/body/pw_contract/Conv_/bottleneck/ResidualBlock_2/Add_Fusedquantized_/bottleneck/UpscaleConvTranspose2x2/upscale_conv/ConvTranspose_Fusedquantized_/decoder3/skip_pop_0/Add_QuantizedOutput (64, 540, 960), (32, 1080, 1920), (32, 16, 3, 3), (32,), (128, 64, 1, 1), (128,), (64, 128, 1, 1), (64,), (64, 32, 2, 2), (32,) -> (32, 1080, 1920)
     ComputeShaderParams computeShaderParams = {ml2c_numThreads, ml2c_groupId, ml2c_groupThreadId, ml2c_dispatchThreadId};
     FNB_CT2D_ADD<64, 2>(1.0, 1.0, 1.0, 1.0, 1.0, 1.0, _bottleneck_ResidualBlock_2_residual_func_Split_output_grouped, fused_quantized_NHWC__encoder3_DownscaleStridedConv2x2_skip_func_act_quant_export_handler_QuantizeLinear_output_0, hwnc__bottleneck_ResidualBlock_2_body_spatial_mixing_partial_conv_weight_quant_export_handler_QuantizeLinear_output_0, bottleneck_ResidualBlock_2_body_spatial_mixing_partial_conv_bias, hwnc__bottleneck_ResidualBlock_2_body_pw_expand_weight_quant_export_handler_QuantizeLinear_output_0, bottleneck_ResidualBlock_2_body_pw_expand_bias, hwnc__bottleneck_ResidualBlock_2_body_pw_contract_weight_quant_export_handler_QuantizeLinear_output_0, bottleneck_ResidualBlock_2_body_pw_contract_bias, hwcn__bottleneck_UpscaleConvTranspose2x2_upscale_conv_weight_quant_export_handler_QuantizeLinear_output_0, bottleneck_UpscaleConvTranspose2x2_upscale_conv_bias, slice_18, computeShaderParams);
-    
+
 }
 #endif // #ifdef MLSR_PASS_9
 #ifdef MLSR_PASS_9_POST
@@ -1307,7 +1307,7 @@ void fsr4_model_v07_fp8_no_scale_pass9_post(
     const int threadGroupByteOffsetInTensor_slice_19 = dot(groupStart_slice_19, tensorByteStrides_slice_19);
     const RWBufferStorage storage_slice_19 = { ScratchBuffer };
     const Tensor3f8_NHWC<RWBufferStorage> slice_19 = { logicalSize_slice_19, groupStart_slice_19, groupSize_slice_19, storageSize_slice_19, tensorByteStrides_slice_19, paddingBegin_slice_19, paddingEnd_slice_19, threadGroupByteOffsetInTensor_slice_19 + 232819648, storage_slice_19 };
-    
+
     StoreDefaultConstBatchOperation < 16, Tensor3f8_NHWC<RWBufferStorage> > batchOp_0 = { DefaultDword };
     ResetPaddingSeparate(slice_19, ml2c_dispatchThreadId, true, true, batchOp_0, (1, 1));
 }
@@ -1327,7 +1327,7 @@ void fsr4_model_v07_fp8_no_scale_pass10(
 )
 {
     const uint3 ml2c_numThreads = uint3(32, 1, 1);
-    
+
     const RWBufferStorage storage_FusedFusedquantized__bottleneck_ResidualBlock_2_residual_func_Concat_quantized__bottleneck_ResidualBlock_2_body_spatial_mixing_partial_conv_Conv_quantized__bottleneck_ResidualBlock_2_body_spatial_mixing_Concat_quantized__bottleneck_ResidualBlock_2_body_pw_expand_Conv__bottleneck_ResidualBlock_2_body_pw_expand_act_Relu_quantized__bottleneck_ResidualBlock_2_body_pw_contract_Conv__bottleneck_ResidualBlock_2_Add_Fusedquantized__bottleneck_UpscaleConvTranspose2x2_upscale_conv_ConvTranspose_Fusedquantized__decoder3_skip_pop_0_Add_QuantizedOutput_output_grouped = { ScratchBuffer };
     const Tensor3f8_NHWC< RWBufferStorage > FusedFusedquantized__bottleneck_ResidualBlock_2_residual_func_Concat_quantized__bottleneck_ResidualBlock_2_body_spatial_mixing_partial_conv_Conv_quantized__bottleneck_ResidualBlock_2_body_spatial_mixing_Concat_quantized__bottleneck_ResidualBlock_2_body_pw_expand_Conv__bottleneck_ResidualBlock_2_body_pw_expand_act_Relu_quantized__bottleneck_ResidualBlock_2_body_pw_contract_Conv__bottleneck_ResidualBlock_2_Add_Fusedquantized__bottleneck_UpscaleConvTranspose2x2_upscale_conv_ConvTranspose_Fusedquantized__decoder3_skip_pop_0_Add_QuantizedOutput_output_grouped = {
         uint3(1920, 1080, 32), // logicalSize
@@ -1339,7 +1339,7 @@ void fsr4_model_v07_fp8_no_scale_pass10(
         uint3(1, 1, 0), // paddingEnd
         232819648, // threadGroupStorageByteOffset
         storage_FusedFusedquantized__bottleneck_ResidualBlock_2_residual_func_Concat_quantized__bottleneck_ResidualBlock_2_body_spatial_mixing_partial_conv_Conv_quantized__bottleneck_ResidualBlock_2_body_spatial_mixing_Concat_quantized__bottleneck_ResidualBlock_2_body_pw_expand_Conv__bottleneck_ResidualBlock_2_body_pw_expand_act_Relu_quantized__bottleneck_ResidualBlock_2_body_pw_contract_Conv__bottleneck_ResidualBlock_2_Add_Fusedquantized__bottleneck_UpscaleConvTranspose2x2_upscale_conv_ConvTranspose_Fusedquantized__decoder3_skip_pop_0_Add_QuantizedOutput_output_grouped };
-    
+
     const BufferStorage storage_hwnc__decoder3_ResidualBlock_1_body_spatial_mixing_partial_conv_weight_quant_export_handler_QuantizeLinear_output_0 = { InitializerBuffer };
     const QuantizedTensor4f8_HWNC< BufferStorage > hwnc__decoder3_ResidualBlock_1_body_spatial_mixing_partial_conv_weight_quant_export_handler_QuantizeLinear_output_0 = {
         uint4(3, 3, 16, 16), // logicalSize
@@ -1420,7 +1420,7 @@ void fsr4_model_v07_fp8_no_scale_pass10(
     // Fusedquantized_/decoder3/ResidualBlock_1/residual_func/Concat_quantized_/decoder3/ResidualBlock_1/body/spatial_mixing/partial_conv/Conv_quantized_/decoder3/ResidualBlock_1/body/spatial_mixing/Concat_quantized_/decoder3/ResidualBlock_1/body/pw_expand/Conv_/decoder3/ResidualBlock_1/body/pw_expand_act/Relu_quantized_/decoder3/ResidualBlock_1/body/pw_contract/Conv_/decoder3/ResidualBlock_1/Add (32, 1080, 1920), (16, 16, 3, 3), (16,), (64, 32, 1, 1), (64,), (32, 64, 1, 1), (32,) -> (32, 1080, 1920)
     ComputeShaderParams computeShaderParams = {ml2c_numThreads, ml2c_groupId, ml2c_groupThreadId, ml2c_dispatchThreadId};
     FasterNetBlock<32, 1>(1.0, 1.0, 1.0, 1.0, 1.0, FusedFusedquantized__bottleneck_ResidualBlock_2_residual_func_Concat_quantized__bottleneck_ResidualBlock_2_body_spatial_mixing_partial_conv_Conv_quantized__bottleneck_ResidualBlock_2_body_spatial_mixing_Concat_quantized__bottleneck_ResidualBlock_2_body_pw_expand_Conv__bottleneck_ResidualBlock_2_body_pw_expand_act_Relu_quantized__bottleneck_ResidualBlock_2_body_pw_contract_Conv__bottleneck_ResidualBlock_2_Add_Fusedquantized__bottleneck_UpscaleConvTranspose2x2_upscale_conv_ConvTranspose_Fusedquantized__decoder3_skip_pop_0_Add_QuantizedOutput_output_grouped, hwnc__decoder3_ResidualBlock_1_body_spatial_mixing_partial_conv_weight_quant_export_handler_QuantizeLinear_output_0, decoder3_ResidualBlock_1_body_spatial_mixing_partial_conv_bias, hwnc__decoder3_ResidualBlock_1_body_pw_expand_weight_quant_export_handler_QuantizeLinear_output_0, decoder3_ResidualBlock_1_body_pw_expand_bias, hwnc__decoder3_ResidualBlock_1_body_pw_contract_weight_quant_export_handler_QuantizeLinear_output_0, decoder3_ResidualBlock_1_body_pw_contract_bias, slice_20, computeShaderParams);
-    
+
 }
 #endif // #ifdef MLSR_PASS_10
 #ifdef MLSR_PASS_10_POST
@@ -1446,7 +1446,7 @@ void fsr4_model_v07_fp8_no_scale_pass10_post(
     const int threadGroupByteOffsetInTensor_slice_21 = dot(groupStart_slice_21, tensorByteStrides_slice_21);
     const RWBufferStorage storage_slice_21 = { ScratchBuffer };
     const Tensor3f8_NHWC<RWBufferStorage> slice_21 = { logicalSize_slice_21, groupStart_slice_21, groupSize_slice_21, storageSize_slice_21, tensorByteStrides_slice_21, paddingBegin_slice_21, paddingEnd_slice_21, threadGroupByteOffsetInTensor_slice_21 + 132902464, storage_slice_21 };
-    
+
     StoreDefaultConstBatchOperation < 16, Tensor3f8_NHWC<RWBufferStorage> > batchOp_0 = { DefaultDword };
     ResetPaddingSeparate(slice_21, ml2c_dispatchThreadId, true, true, batchOp_0, (1, 1));
 }
@@ -1466,7 +1466,7 @@ void fsr4_model_v07_fp8_no_scale_pass11(
 )
 {
     const uint3 ml2c_numThreads = uint3(32, 1, 1);
-    
+
     const RWBufferStorage storage__decoder3_ResidualBlock_2_residual_func_Split_output_grouped = { ScratchBuffer };
     const Tensor3f8_NHWC< RWBufferStorage > _decoder3_ResidualBlock_2_residual_func_Split_output_grouped = {
         uint3(1920, 1080, 32), // logicalSize
@@ -1478,7 +1478,7 @@ void fsr4_model_v07_fp8_no_scale_pass11(
         uint3(1, 1, 0), // paddingEnd
         132902464, // threadGroupStorageByteOffset
         storage__decoder3_ResidualBlock_2_residual_func_Split_output_grouped };
-    
+
     const RWBufferStorage storage_fused_quantized_NHWC__encoder2_DownscaleStridedConv2x2_skip_func_act_quant_export_handler_QuantizeLinear_output_0 = { ScratchBuffer };
     const QuantizedTensor3f8_NHWC< RWBufferStorage > fused_quantized_NHWC__encoder2_DownscaleStridedConv2x2_skip_func_act_quant_export_handler_QuantizeLinear_output_0 = {
         uint3(3840, 2160, 16), // logicalSize
@@ -1490,7 +1490,7 @@ void fsr4_model_v07_fp8_no_scale_pass11(
         uint3(1, 1, 0), // paddingEnd
         0, // threadGroupStorageByteOffset
         1.0, storage_fused_quantized_NHWC__encoder2_DownscaleStridedConv2x2_skip_func_act_quant_export_handler_QuantizeLinear_output_0 };
-    
+
     const BufferStorage storage_hwnc__decoder3_ResidualBlock_2_body_spatial_mixing_partial_conv_weight_quant_export_handler_QuantizeLinear_output_0 = { InitializerBuffer };
     const QuantizedTensor4f8_HWNC< BufferStorage > hwnc__decoder3_ResidualBlock_2_body_spatial_mixing_partial_conv_weight_quant_export_handler_QuantizeLinear_output_0 = {
         uint4(3, 3, 16, 16), // logicalSize
@@ -1594,7 +1594,7 @@ void fsr4_model_v07_fp8_no_scale_pass11(
     // FusedFusedquantized_/decoder3/ResidualBlock_2/residual_func/Concat_quantized_/decoder3/ResidualBlock_2/body/spatial_mixing/partial_conv/Conv_quantized_/decoder3/ResidualBlock_2/body/spatial_mixing/Concat_quantized_/decoder3/ResidualBlock_2/body/pw_expand/Conv_/decoder3/ResidualBlock_2/body/pw_expand_act/Relu_quantized_/decoder3/ResidualBlock_2/body/pw_contract/Conv_/decoder3/ResidualBlock_2/Add_Fusedquantized_/decoder3/UpscaleConvTranspose2x2/upscale_conv/ConvTranspose_quantized_/decoder2/skip_pop_0/Add (32, 1080, 1920), (16, 2160, 3840), (16, 16, 3, 3), (16,), (64, 32, 1, 1), (64,), (32, 64, 1, 1), (32,), (32, 16, 2, 2), (16,) -> (16, 2160, 3840)
     ComputeShaderParams computeShaderParams = {ml2c_numThreads, ml2c_groupId, ml2c_groupThreadId, ml2c_dispatchThreadId};
     FNB_CT2D_ADD<32, 1>(1.0, 1.0, 1.0, 1.0, _decoder3_ResidualBlock_2_residual_func_Split_output_grouped, fused_quantized_NHWC__encoder2_DownscaleStridedConv2x2_skip_func_act_quant_export_handler_QuantizeLinear_output_0, hwnc__decoder3_ResidualBlock_2_body_spatial_mixing_partial_conv_weight_quant_export_handler_QuantizeLinear_output_0, decoder3_ResidualBlock_2_body_spatial_mixing_partial_conv_bias, hwnc__decoder3_ResidualBlock_2_body_pw_expand_weight_quant_export_handler_QuantizeLinear_output_0, decoder3_ResidualBlock_2_body_pw_expand_bias, hwnc__decoder3_ResidualBlock_2_body_pw_contract_weight_quant_export_handler_QuantizeLinear_output_0, decoder3_ResidualBlock_2_body_pw_contract_bias, hwcn__decoder3_UpscaleConvTranspose2x2_upscale_conv_weight_quant_export_handler_QuantizeLinear_output_0, decoder3_UpscaleConvTranspose2x2_upscale_conv_bias, slice_22, computeShaderParams);
-    
+
 }
 #endif // #ifdef MLSR_PASS_11
 #ifdef MLSR_PASS_11_POST
@@ -1621,7 +1621,7 @@ void fsr4_model_v07_fp8_no_scale_pass11_post(
     const float quantizationScale_slice_23 = 1.0;
     const RWBufferStorage storage_slice_23 = { ScratchBuffer };
     const QuantizedTensor3f8_NHWC<RWBufferStorage> slice_23 = { logicalSize_slice_23, groupStart_slice_23, groupSize_slice_23, storageSize_slice_23, tensorByteStrides_slice_23, paddingBegin_slice_23, paddingEnd_slice_23, threadGroupByteOffsetInTensor_slice_23 + 199449792, quantizationScale_slice_23, storage_slice_23 };
-    
+
     StoreDefaultConstBatchOperation < 16, QuantizedTensor3f8_NHWC<RWBufferStorage> > batchOp_0 = { DefaultDword };
     ResetPaddingSeparate(slice_23, ml2c_dispatchThreadId, true, true, batchOp_0, (1, 1));
 }
@@ -1641,7 +1641,7 @@ void fsr4_model_v07_fp8_no_scale_pass12(
 )
 {
     const uint3 ml2c_numThreads = uint3(32, 1, 1);
-    
+
     const RWBufferStorage storage_fused_fused_quantized_NHWC__decoder2_ResidualBlock_1_body_input_quantization_act_quant_export_handler_QuantizeLinear_output_0 = { ScratchBuffer };
     const QuantizedTensor3f8_NHWC< RWBufferStorage > fused_fused_quantized_NHWC__decoder2_ResidualBlock_1_body_input_quantization_act_quant_export_handler_QuantizeLinear_output_0 = {
         uint3(3840, 2160, 16), // logicalSize
@@ -1653,7 +1653,7 @@ void fsr4_model_v07_fp8_no_scale_pass12(
         uint3(1, 1, 0), // paddingEnd
         199449792, // threadGroupStorageByteOffset
         1.0, storage_fused_fused_quantized_NHWC__decoder2_ResidualBlock_1_body_input_quantization_act_quant_export_handler_QuantizeLinear_output_0 };
-    
+
     const BufferStorage storage_hwnc__decoder2_ResidualBlock_1_body_conv_dw_weight_quant_export_handler_QuantizeLinear_output_0 = { InitializerBuffer };
     const QuantizedTensor4f8_HWNC< BufferStorage > hwnc__decoder2_ResidualBlock_1_body_conv_dw_weight_quant_export_handler_QuantizeLinear_output_0 = {
         uint4(3, 3, 16, 16), // logicalSize
@@ -1735,7 +1735,7 @@ void fsr4_model_v07_fp8_no_scale_pass12(
     // ConvNextBlock (16, 2160, 3840), (16, 16, 3, 3), (16,), (32, 16, 1, 1), (32,), (16, 32, 1, 1), (16,) -> (16, 2160, 3840)
     ComputeShaderParams computeShaderParams = {ml2c_numThreads, ml2c_groupId, ml2c_groupThreadId, ml2c_dispatchThreadId};
     ConvNextBlock(1.0, 1.0, 1.0, 1.0, fused_fused_quantized_NHWC__decoder2_ResidualBlock_1_body_input_quantization_act_quant_export_handler_QuantizeLinear_output_0, hwnc__decoder2_ResidualBlock_1_body_conv_dw_weight_quant_export_handler_QuantizeLinear_output_0, decoder2_ResidualBlock_1_body_conv_dw_bias, hwnc__decoder2_ResidualBlock_1_body_conv_pw_expand_weight_quant_export_handler_QuantizeLinear_output_0, decoder2_ResidualBlock_1_body_conv_pw_expand_bias, hwnc__decoder2_ResidualBlock_1_body_conv_pw_contract_weight_quant_export_handler_QuantizeLinear_output_0, decoder2_ResidualBlock_1_body_conv_pw_contract_bias, slice_24, computeShaderParams);
-    
+
 }
 #endif // #ifdef MLSR_PASS_12
 #ifdef MLSR_PASS_12_POST
@@ -1762,7 +1762,7 @@ void fsr4_model_v07_fp8_no_scale_pass12_post(
     const float quantizationScale_slice_25 = 1.0;
     const RWBufferStorage storage_slice_25 = { ScratchBuffer };
     const QuantizedTensor3f8_NHWC<RWBufferStorage> slice_25 = { logicalSize_slice_25, groupStart_slice_25, groupSize_slice_25, storageSize_slice_25, tensorByteStrides_slice_25, paddingBegin_slice_25, paddingEnd_slice_25, threadGroupByteOffsetInTensor_slice_25 + 0, quantizationScale_slice_25, storage_slice_25 };
-    
+
     StoreDefaultConstBatchOperation < 16, QuantizedTensor3f8_NHWC<RWBufferStorage> > batchOp_0 = { DefaultDword };
     ResetPaddingSeparate(slice_25, ml2c_dispatchThreadId, true, true, batchOp_0, (1, 1));
 }
@@ -1782,7 +1782,7 @@ void fsr4_model_v07_fp8_no_scale_pass13(
 )
 {
     const uint3 ml2c_numThreads = uint3(32, 1, 1);
-    
+
     const RWBufferStorage storage_fused_quantized_NHWC__decoder2_ResidualBlock_2_body_input_quantization_act_quant_export_handler_QuantizeLinear_output_0 = { ScratchBuffer };
     const QuantizedTensor3f8_NHWC< RWBufferStorage > fused_quantized_NHWC__decoder2_ResidualBlock_2_body_input_quantization_act_quant_export_handler_QuantizeLinear_output_0 = {
         uint3(3840, 2160, 16), // logicalSize
@@ -1794,7 +1794,7 @@ void fsr4_model_v07_fp8_no_scale_pass13(
         uint3(1, 1, 0), // paddingEnd
         0, // threadGroupStorageByteOffset
         1.0, storage_fused_quantized_NHWC__decoder2_ResidualBlock_2_body_input_quantization_act_quant_export_handler_QuantizeLinear_output_0 };
-    
+
     const BufferStorage storage_hwnc__decoder2_ResidualBlock_2_body_conv_dw_weight_quant_export_handler_QuantizeLinear_output_0 = { InitializerBuffer };
     const QuantizedTensor4f8_HWNC< BufferStorage > hwnc__decoder2_ResidualBlock_2_body_conv_dw_weight_quant_export_handler_QuantizeLinear_output_0 = {
         uint4(3, 3, 16, 16), // logicalSize
@@ -1897,7 +1897,7 @@ void fsr4_model_v07_fp8_no_scale_pass13(
     // FusedConvNextBlock_quantized_/decoder2/UpscaleConvTranspose2x2/upscale_conv/ConvTranspose (16, 2160, 3840), (16, 16, 3, 3), (16,), (32, 16, 1, 1), (32,), (16, 32, 1, 1), (16,), (16, 8, 2, 2), (8,) -> (8, 4320, 7680)
     ComputeShaderParams computeShaderParams = {ml2c_numThreads, ml2c_groupId, ml2c_groupThreadId, ml2c_dispatchThreadId};
     CNB_CT2D<8>(1.0, 1.0, 1.0, 1.0, 1.0, fused_quantized_NHWC__decoder2_ResidualBlock_2_body_input_quantization_act_quant_export_handler_QuantizeLinear_output_0, hwnc__decoder2_ResidualBlock_2_body_conv_dw_weight_quant_export_handler_QuantizeLinear_output_0, decoder2_ResidualBlock_2_body_conv_dw_bias, hwnc__decoder2_ResidualBlock_2_body_conv_pw_expand_weight_quant_export_handler_QuantizeLinear_output_0, decoder2_ResidualBlock_2_body_conv_pw_expand_bias, hwnc__decoder2_ResidualBlock_2_body_conv_pw_contract_weight_quant_export_handler_QuantizeLinear_output_0, decoder2_ResidualBlock_2_body_conv_pw_contract_bias, hwcn__decoder2_UpscaleConvTranspose2x2_upscale_conv_weight_quant_export_handler_QuantizeLinear_output_0, decoder2_UpscaleConvTranspose2x2_upscale_conv_bias, fused_quantized_NHWC_output, computeShaderParams);
-    
+
 }
 #endif // #ifdef MLSR_PASS_13
 

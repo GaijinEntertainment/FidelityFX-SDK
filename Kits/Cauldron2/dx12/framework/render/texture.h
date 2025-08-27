@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -59,10 +59,10 @@ namespace cauldron
 
             return desc;
         }
-        
+
         /// A convenience function to create a texture description for 2D textures.
         ///
-        static inline TextureDesc Tex2D(const wchar_t* name, ResourceFormat format, uint32_t width, uint32_t height, uint32_t arraySize = 1, uint32_t mipLevels = 0, ResourceFlags flags = ResourceFlags::None) 
+        static inline TextureDesc Tex2D(const wchar_t* name, ResourceFormat format, uint32_t width, uint32_t height, uint32_t arraySize = 1, uint32_t mipLevels = 0, ResourceFlags flags = ResourceFlags::None)
         {
             TextureDesc desc;
             desc.Format = format;
@@ -114,7 +114,7 @@ namespace cauldron
 
     class GPUResource;
     class TextureDataBlock;
-   
+
     /// Per platform/API implementation of <c><i>Texture</i></c>
     ///
     /// @ingroup CauldronRender
@@ -131,13 +131,13 @@ namespace cauldron
     {
     public:
         typedef void (*ResizeFunction)(TextureDesc&, uint32_t, uint32_t, uint32_t, uint32_t);
-        
+
         /**
          * @brief   Texture instance creation function (generic). Implemented per api/platform to return the correct
          *          internal resource type.
          */
         static Texture* CreateTexture(const TextureDesc* pDesc, ResourceState initialState, ResizeFunction fn = nullptr);
-        
+
         /**
          * @brief   Texture instance creation function for swap chains. Implemented per api/platform to return the correct
          *          internal resource type.
@@ -177,7 +177,7 @@ namespace cauldron
         void CopyData(TextureDataBlock* pTextureDataBlock);
 
         /**
-         * @brief   Returns true if this resource is a swap chain. Used to isolate swapchain surfaces from 
+         * @brief   Returns true if this resource is a swap chain. Used to isolate swapchain surfaces from
          *          non-swap chain (specialization class exists per platform to overload this).
          */
         virtual bool IsSwapChain() const { return false; }
@@ -260,7 +260,7 @@ namespace cauldron
         uint32_t                m_CurrentBackBuffer = 0;
         Texture*                m_pCurrentTexture = nullptr;
         std::vector<Texture*>   m_AdditionalTextures;
-        std::vector<Texture*>   m_TextureResources;        
+        std::vector<Texture*>   m_TextureResources;
     };
 
     /// Per platform/API implementation of <c><i>TextureCopyDesc</i></c>

@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -31,7 +31,7 @@ namespace cauldron
     public:
         InputManagerInternal();
         virtual ~InputManagerInternal();
-        
+
         void PushWheelChange(int64_t wheelChange);
 
     protected:
@@ -46,7 +46,7 @@ namespace cauldron
         float GetTriggerValue(int32_t axisValue);
 
     protected:
-        
+
         uint32_t    m_ChangeNumber = 0; // Used to track changes in input state
         int64_t     m_WheelDelta = 0;
         std::mutex  m_WheelMutex;

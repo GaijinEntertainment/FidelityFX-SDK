@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -178,9 +178,9 @@ namespace cauldron
                 if (m_ResourceDesc.Dimension == D3D12_RESOURCE_DIMENSION_BUFFER)
                     m_OwnerType = OwnerType::Buffer;
                 else if (m_ResourceDesc.Dimension != D3D12_RESOURCE_DIMENSION_UNKNOWN) {
-                    
+
                     m_OwnerType = OwnerType::Texture;
-                    
+
                     // Update the texture desc after creation (as some parameters can auto-generate info (i.e. mip levels)
                     m_ResourceDesc.MipLevels = DX12Desc().MipLevels;
                 }

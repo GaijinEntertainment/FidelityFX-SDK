@@ -27,5 +27,5 @@ public:
     virtual ffxReturnCode_t Dispatch(ffxContext* context, const ffxDispatchDescHeader* desc) const override;
 
     static ffxProvider_FSR4 Instance;
-    
+
 };

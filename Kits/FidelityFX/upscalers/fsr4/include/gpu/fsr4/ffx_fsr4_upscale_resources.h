@@ -112,7 +112,7 @@ Texture2D<float>                      r_previous_input_exposure  : register(t16)
 Texture2D<float>                      r_auto_exposure_texture    : register(t17);
 Texture2D<float3>                     r_rcas_input               : register(t18);
 Texture2D<float>                      r_debug_visualization      : register(t19); // Written to when debug visualization is enabled. [R: <Predicted blend factor>, G: <not used>, B: <not used>, A: <not used>]
-Texture2D<float3>                     r_result_color             : register(t20); 
+Texture2D<float3>                     r_result_color             : register(t20);
 
 
 RWTexture2D<float3>                   rw_upsampled_color         : register(u0); // Written by Pre-shader used in post shader KPN.

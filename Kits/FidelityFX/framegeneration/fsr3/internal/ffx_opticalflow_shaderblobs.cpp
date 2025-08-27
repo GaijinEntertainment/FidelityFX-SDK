@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -158,7 +158,7 @@ static FfxShaderBlob opticalflowGetComputeOpticalFlowAdvancedPassV5PermutationBl
         return POPULATE_SHADER_BLOB_FFX(g_ffx_opticalflow_compute_optical_flow_advanced_pass_v5_PermutationInfo, tableIndex);
     }
 }
- 
+
 static FfxShaderBlob opticalflowGetFilterOpticalFlowPassV5PermutationBlobByIndex(uint32_t permutationOptions, bool isWave64, bool)
 {
     ffx_opticalflow_filter_optical_flow_pass_v5_PermutationKey key;
@@ -239,14 +239,14 @@ FfxErrorCode opticalflowGetPermutationBlobByIndex(
             memcpy(outBlob, &blob, sizeof(FfxShaderBlob));
             return FFX_OK;
         }
-        
+
         case FFX_OPTICALFLOW_PASS_FILTER_OPTICAL_FLOW_V5:
         {
             FfxShaderBlob blob = opticalflowGetFilterOpticalFlowPassV5PermutationBlobByIndex(permutationOptions, isWave64, is16bit);
             memcpy(outBlob, &blob, sizeof(FfxShaderBlob));
             return FFX_OK;
         }
-        
+
         case FFX_OPTICALFLOW_PASS_SCALE_OPTICAL_FLOW_ADVANCED_V5:
         {
             FfxShaderBlob blob = opticalflowGetScaleOpticalFlowAdvancedPassV5PermutationBlobByIndex(permutationOptions, isWave64, is16bit);

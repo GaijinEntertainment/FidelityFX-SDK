@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -52,10 +52,10 @@ typedef struct Fsr3UpscalerConstants {
 
     int32_t                     renderSize[2];
     int32_t                     previousFrameRenderSize[2];
-    
+
     int32_t                     upscaleSize[2];
     int32_t                     previousFrameUpscaleSize[2];
-    
+
     int32_t                     maxRenderSize[2];
     int32_t                     maxUpscaleSize[2];
 
@@ -73,7 +73,7 @@ typedef struct Fsr3UpscalerConstants {
 
     float                       deltaTime;
     float                       deltaPreExposure;
-    float                       viewSpaceToMetersFactor;    
+    float                       viewSpaceToMetersFactor;
     float                       frameIndex;
 
     float                       velocityFactor;

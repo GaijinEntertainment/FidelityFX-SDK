@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -38,26 +38,26 @@
 
 /// \def Stringize(L)
 /// Converts \L into a string in the context of a define (macro).
-/// 
+///
 /// @ingroup CauldronAssert
 #define Stringize(L)     #L
 
 /// \def MakeString(M, L)
 /// Calls passed in macro \M with parameter \L (used to make a string via <c><i>Stringize</i></c>.
-/// 
+///
 /// @ingroup CauldronAssert
 #define MakeString(M, L) M(L)
 
 /// \def $Line
 /// Macro to create a string representation out of the __LINE__ preprocessor macro.
-/// 
+///
 /// @ingroup CauldronAssert
 #define $Line            MakeString(Stringize, __LINE__)
 
 /// \def Reminder
 /// Macros for #pragma message() statements, links message to corresponding line of code.
 /// Usage: #pragma message(Reminder "message goes here")
-/// 
+///
 /// @ingroup CauldronAssert
 #define Reminder         __FILE__ "(" $Line ") : Reminder: "
 
@@ -155,7 +155,7 @@ namespace cauldron
     {
         // Format the message string
         wchar_t buffer[1024];
-        
+
         va_list args;
         va_start(args, format);
         vswprintf(buffer, 1024, format, args);

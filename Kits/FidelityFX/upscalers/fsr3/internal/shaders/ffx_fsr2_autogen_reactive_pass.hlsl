@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -56,7 +56,7 @@ void CS(uint2 uGroupId : SV_GroupID, uint2 uGroupThreadId : SV_GroupThreadID)
 
     float3 ColorPreAlpha    = LoadOpaqueOnly( FFX_MIN16_I2(uDispatchThreadId) ).rgb;
     float3 ColorPostAlpha   = LoadInputColor(uDispatchThreadId).rgb;
-    
+
     if (GenReactiveFlags() & FFX_FSR2_AUTOREACTIVEFLAGS_APPLY_TONEMAP)
     {
         ColorPreAlpha = Tonemap(ColorPreAlpha);
@@ -71,7 +71,7 @@ void CS(uint2 uGroupId : SV_GroupID, uint2 uGroupThreadId : SV_GroupThreadID)
 
     float out_reactive_value = 0.f;
     float3 delta = abs(ColorPostAlpha - ColorPreAlpha);
-    
+
     out_reactive_value = (GenReactiveFlags() & FFX_FSR2_AUTOREACTIVEFLAGS_USE_COMPONENTS_MAX) ? max(delta.x, max(delta.y, delta.z)) : length(delta);
     out_reactive_value *= GenReactiveScale();
 

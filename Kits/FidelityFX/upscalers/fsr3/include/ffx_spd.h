@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -29,7 +29,7 @@
 
 /// @defgroup FfxSpd FidelityFX SPD
 /// FidelityFX Single Pass Downsampler runtime library
-/// 
+///
 /// @ingroup SDKComponents
 
 /// FidelityFX SPD major version.
@@ -48,7 +48,7 @@
 #define FFX_SPD_VERSION_PATCH (0)
 
 /// FidelityFX SPD context count
-/// 
+///
 /// Defines the number of internal effect contexts required by SPD
 ///
 /// @ingroup FfxSpd
@@ -61,7 +61,7 @@
 
 /// If this ever changes, need to also reflect a change in number
 /// of resources in ffx_spd_resources.h
-/// 
+///
 /// @ingroup FfxSpd
 #define SPD_MAX_MIP_LEVELS 12
 

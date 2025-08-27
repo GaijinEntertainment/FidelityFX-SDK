@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -144,7 +144,7 @@
     {
         return opticalFlowBlockSize;
     }
-    
+
     FfxInt32 GetHUDLessAttachedFactor()
     {
         return HUDLessAttachedFactor;
@@ -365,7 +365,7 @@ SamplerState s_LinearClamp FFX_DECLARE_SAMPLER(0);
 
 #ifdef FFX_FRAMEINTERPOLATION_BIND_SRV_OPTICAL_FLOW
     Texture2D<FfxInt32x2> r_optical_flow FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_OPTICAL_FLOW);
-    
+
     #if defined(FFX_FRAMEINTERPOLATION_BIND_CB_FRAMEINTERPOLATION)
         FfxFloat32x2 LoadOpticalFlow(FFX_PARAMETER_IN FfxInt32x2 iPxPos)
         {
@@ -385,7 +385,7 @@ SamplerState s_LinearClamp FFX_DECLARE_SAMPLER(0);
 
 #ifdef FFX_FRAMEINTERPOLATION_BIND_SRV_OPTICAL_FLOW_CONFIDENCE
     Texture2D<FfxUInt32x2> r_optical_flow_confidence FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_OPTICAL_FLOW_CONFIDENCE);
-    
+
     FfxFloat32 LoadOpticalFlowConfidence(FFX_PARAMETER_IN FfxInt32x2 iPxPos)
     {
         return r_optical_flow_confidence[iPxPos].y;
@@ -600,7 +600,7 @@ FfxFloat32x2 LoadInputMotionVector(FfxInt32x2 iPxDilatedMotionVectorPos)
 
 #ifdef FFX_FRAMEINTERPOLATION_BIND_UAV_RECONSTRUCTED_DEPTH_INTERPOLATED_FRAME
     RWTexture2D<FfxUInt32>   rw_reconstructed_depth_interpolated_frame FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_RECONSTRUCTED_DEPTH_INTERPOLATED_FRAME);
-    
+
     FfxFloat32 RWLoadReconstructedDepthInterpolatedFrame(FFX_PARAMETER_IN FfxInt32x2 iPxPos)
     {
         return ffxAsFloat(rw_reconstructed_depth_interpolated_frame[iPxPos]);

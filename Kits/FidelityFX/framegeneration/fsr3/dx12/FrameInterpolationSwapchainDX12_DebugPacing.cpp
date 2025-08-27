@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -235,7 +235,7 @@ FfxErrorCodes verifyDebugPacingGpuResources(ID3D12Device* dx12Device, DXGI_FORMA
         {
            if(FAILED(dx12Device->CreateCommittedResource(
                 &heapProperties,
-                D3D12_HEAP_FLAG_NONE,                              
+                D3D12_HEAP_FLAG_NONE,
                 &constantBufferDesc,
                 D3D12_RESOURCE_STATE_GENERIC_READ,
                 nullptr,
@@ -283,13 +283,13 @@ FFX_API FfxErrorCode ffxFrameInterpolationDebugPacing(const FfxPresentCallbackDe
     FfxErrorCode res = verifyDebugPacingGpuResources(dx12Device, desc.Format);
     if (res != FFX_OK)
         return res;
-    
+
     ID3D12CommandList*         pCommandList            = reinterpret_cast<ID3D12CommandList*>(params->commandList);
     ID3D12GraphicsCommandList* pCmdList                = (ID3D12GraphicsCommandList*)pCommandList;
     ID3D12PipelineState*       dx12PipelineStateObject = nullptr;
 
     dx12PipelineStateObject = s_debugPacingPipeline;
-   
+
     FFX_ASSERT(nullptr != pCommandList);
     FFX_ASSERT(nullptr != pCmdList);
     FFX_ASSERT(nullptr != dx12PipelineStateObject);
@@ -314,7 +314,7 @@ FFX_API FfxErrorCode ffxFrameInterpolationDebugPacing(const FfxPresentCallbackDe
     // set up the descriptor table
     D3D12_GPU_DESCRIPTOR_HANDLE gpuView = dx12DescriptorHeap->GetGPUDescriptorHandleForHeapStart();
     gpuView.ptr += s_debugPacingDescRingBufferBase * dx12Device->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
-        
+
     D3D12_CPU_DESCRIPTOR_HANDLE cpuView = dx12DescriptorHeap->GetCPUDescriptorHandleForHeapStart();
     cpuView.ptr += s_debugPacingDescRingBufferBase * dx12Device->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
 
@@ -332,7 +332,7 @@ FFX_API FfxErrorCode ffxFrameInterpolationDebugPacing(const FfxPresentCallbackDe
 
     s_debugPacingDescRingBufferBase = (s_debugPacingDescRingBufferBase + 1) % s_debugPacingDescRingBufferSize;
     pCmdList->SetGraphicsRootDescriptorTable(0, gpuView);
-    
+
     D3D12_RENDER_TARGET_VIEW_DESC colorDesc = {};
     colorDesc.Format                        = desc.Format;
     colorDesc.ViewDimension                 = D3D12_RTV_DIMENSION_TEXTURE2D;

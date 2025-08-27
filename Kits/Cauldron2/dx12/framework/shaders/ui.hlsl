@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -115,7 +115,7 @@ void MagnifierCS(uint3 dtID : SV_DispatchThreadID)
     float3 borderColor    = float3(MagnifierCB.BorderColorRGB[0], MagnifierCB.BorderColorRGB[1], MagnifierCB.BorderColorRGB[2]);
     float3 magnifiedColor = float3(0, 0, 0);
 
-    // Apply border to small circle 
+    // Apply border to small circle
     float3 blendedOrigToBorderColor = lerp(outColor.rgb, borderColor, smoothstep(0, BORDER_THICKNESS_OFFSET, SmallMagnifierCircle));
     float3 blendedOrigToOuterColor =
         lerp(blendedOrigToBorderColor, outColor.rgb, smoothstep(BORDER_THICKNESS_OFFSET, BORDER_THICKNESS_MAX_EXTENT, SmallMagnifierCircle));
@@ -128,7 +128,7 @@ void MagnifierCS(uint3 dtID : SV_DispatchThreadID)
         const float2 magnifierUV = uvMagnifiedArea + sampleUVOffsetFromCenter;
 
         int2 screenCoordinates = GetScreenCoordinates(magnifierUV, UpscalerInfo.FullScreenScaleRatio.xy);
-        
+
         // Indexing out of bounds will return zero
         magnifiedColor = texture0[screenCoordinates].rgb;
     }
@@ -137,7 +137,7 @@ void MagnifierCS(uint3 dtID : SV_DispatchThreadID)
     float3 blendedMagnifierToBorderColor = lerp(magnifiedColor, borderColor, smoothstep(0, BORDER_THICKNESS_OFFSET, BigMagnifierCircle));
     float3 blendedMagnifierColorFinal =
         lerp(blendedMagnifierToBorderColor, blendedOrigToOuterColor.rgb, smoothstep(BORDER_THICKNESS_OFFSET, BORDER_THICKNESS_MAX_EXTENT, BigMagnifierCircle));
-    
+
     // Draw lines tangent to both circles
     float3 blendedMagnifierCirclesWithLines = blendedMagnifierColorFinal; // initialize to running blended color
 
@@ -185,7 +185,7 @@ void MagnifierCS(uint3 dtID : SV_DispatchThreadID)
     blendedMagnifierCirclesWithLines =
         lerp(blendedMagnifierCirclesWithLines, blendedMagnifierColorFinal,
              smoothstep(centerToCenterPlusAlphaLength, centerToCenterPlusAlphaLength + BORDER_THICKNESS_OFFSET, distanceOnCenterline));
-    
+
     ColorTargetDst[dtID.xy].rgb = blendedMagnifierCirclesWithLines;
 }
 

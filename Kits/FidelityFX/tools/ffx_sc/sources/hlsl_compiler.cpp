@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -219,7 +219,7 @@ HLSLCompiler::HLSLCompiler(HLSLCompiler::Backend backend,
             std::string errorMsg("Failed to load DXC library! Failed with error ");
             errorMsg += std::to_string(err);
             throw std::runtime_error(errorMsg);
-        } 
+        }
 
         // Create compiler and utils.
         HRESULT hr = m_DxcCreateInstanceFunc(CLSID_DxcUtils, IID_PPV_ARGS(&m_DxcUtils));
@@ -256,7 +256,7 @@ HLSLCompiler::HLSLCompiler(HLSLCompiler::Backend backend,
             dllPathSearch += L"bin\\XboxOne\\";
             SetDllDirectoryW(dllPathSearch.c_str());
         }
-        
+
         // Scarlett
         else
         {
@@ -387,7 +387,7 @@ bool HLSLCompiler::CompileDXC(Permutation& permutation, const std::vector<std::s
             continue;
         }
 
-        
+
         if (arguments[i] == "-I")
         {
             includePaths.push_back(arguments[i + 1].c_str());

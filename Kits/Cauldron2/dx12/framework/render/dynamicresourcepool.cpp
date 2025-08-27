@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -113,7 +113,7 @@ namespace cauldron
     const Texture* DynamicResourcePool::CreateTexture(const TextureDesc* pDesc, ResourceState initialState, TextureResizeFunction fn)
     {
         Texture* pTex = Texture::CreateTexture(pDesc, initialState, fn);
-        
+
         std::lock_guard<std::mutex> lock(m_CriticalSection);
         #ifdef _DEBUG
             // In debug make sure we are not creating resources with the same name (as it could lead to errors later if someone looks it up by name)
@@ -163,7 +163,7 @@ namespace cauldron
     const Buffer* DynamicResourcePool::CreateBuffer(const BufferDesc* pDesc, ResourceState initialState, BufferResizeFunction fn/*=nullptr*/)
     {
         Buffer* pBuf = Buffer::CreateBufferResource(pDesc, initialState, fn);
-        
+
         std::lock_guard<std::mutex> lock(m_CriticalSection);
         #ifdef _DEBUG
                 // In debug make sure we are not creating resources with the same name (as it could lead to errors later if someone looks it up by name)

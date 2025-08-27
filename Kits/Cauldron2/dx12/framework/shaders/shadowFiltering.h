@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -66,8 +66,8 @@ float DoShadow(Texture2D shadowMap[MAX_SHADOW_MAP_TEXTURES_COUNT], SamplerCompar
             shadowTexCoord.xy = lightInfo.ShadowMapTransformation[0].xy * shadowTexCoord.xy + lightInfo.ShadowMapTransformation[0].zw;  // remap to texture coords
             shadowTexCoord.z -= slopeOffset * lightInfo.PosDepthBias.w;
 
-            return FilterShadow(shadowMap[lightInfo.ShadowMapIndex0], samShadow, shadowTexCoord.xyz);   
-        }   
+            return FilterShadow(shadowMap[lightInfo.ShadowMapIndex0], samShadow, shadowTexCoord.xyz);
+        }
     }
 
     if (lightInfo.NumCascades > 1)
@@ -80,8 +80,8 @@ float DoShadow(Texture2D shadowMap[MAX_SHADOW_MAP_TEXTURES_COUNT], SamplerCompar
             shadowTexCoord.xy = lightInfo.ShadowMapTransformation[1].xy * shadowTexCoord.xy + lightInfo.ShadowMapTransformation[1].zw;  // remap to texture coords
             shadowTexCoord.z -= slopeOffset * lightInfo.PosDepthBias.w * 2;
 
-            return FilterShadow(shadowMap[lightInfo.ShadowMapIndex1], samShadow, shadowTexCoord.xyz);   
-        }   
+            return FilterShadow(shadowMap[lightInfo.ShadowMapIndex1], samShadow, shadowTexCoord.xyz);
+        }
     }
 
     if (lightInfo.NumCascades > 2)
@@ -94,8 +94,8 @@ float DoShadow(Texture2D shadowMap[MAX_SHADOW_MAP_TEXTURES_COUNT], SamplerCompar
             shadowTexCoord.xy = lightInfo.ShadowMapTransformation[2].xy * shadowTexCoord.xy + lightInfo.ShadowMapTransformation[2].zw;  // remap to texture coords
             shadowTexCoord.z -= slopeOffset * lightInfo.PosDepthBias.w * 3;
 
-            return FilterShadow(shadowMap[lightInfo.ShadowMapIndex2], samShadow, shadowTexCoord.xyz);   
-        }   
+            return FilterShadow(shadowMap[lightInfo.ShadowMapIndex2], samShadow, shadowTexCoord.xyz);
+        }
     }
 
     if (lightInfo.NumCascades > 3)
@@ -108,8 +108,8 @@ float DoShadow(Texture2D shadowMap[MAX_SHADOW_MAP_TEXTURES_COUNT], SamplerCompar
             shadowTexCoord.xy = lightInfo.ShadowMapTransformation[3].xy * shadowTexCoord.xy + lightInfo.ShadowMapTransformation[3].zw;  // remap to texture coords
             shadowTexCoord.z -= slopeOffset * lightInfo.PosDepthBias.w * 4;
 
-            return FilterShadow(shadowMap[lightInfo.ShadowMapIndex3], samShadow, shadowTexCoord.xyz);   
-        }   
+            return FilterShadow(shadowMap[lightInfo.ShadowMapIndex3], samShadow, shadowTexCoord.xyz);
+        }
     }
 
     return 1.0f;

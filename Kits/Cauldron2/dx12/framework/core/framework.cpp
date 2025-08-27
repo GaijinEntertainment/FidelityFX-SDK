@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -121,14 +121,14 @@ namespace cauldron
         {ResourceFormat::RGBA16_FLOAT, "RGBA16_FLOAT"},
         {ResourceFormat::RG32_TYPELESS, "RG32_TYPELESS"},
         {ResourceFormat::RG32_FLOAT, "RG32_FLOAT"},
-        
+
         // 96-bit
         {ResourceFormat::RGB32_FLOAT, "RGB32_FLOAT"},
 
         //128-bit
         {ResourceFormat::RGBA32_TYPELESS, "RGBA32_TYPELESS"},
         {ResourceFormat::RGBA32_FLOAT, "RGBA32_FLOAT"},
-        
+
         //Depth
         {ResourceFormat::D16_UNORM, "D16_UNORM"},
         {ResourceFormat::D32_FLOAT, "D32_FLOAT"}
@@ -2084,7 +2084,7 @@ namespace cauldron
             const Texture* pRenderTarget = m_pDynamicResourcePool->CreateRenderTexture(&uiTextureDesc, resizeFunc);
             CauldronAssert(ASSERT_CRITICAL, pRenderTarget, L"Could not create render target %ls", texName.c_str());
         }
-        
+
         return 0;
     }
 

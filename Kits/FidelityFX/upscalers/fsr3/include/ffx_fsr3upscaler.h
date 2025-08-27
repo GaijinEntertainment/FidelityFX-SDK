@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -28,7 +28,7 @@
 
 /// @defgroup ffxFsr3Upscaler FidelityFX FSR3
 /// FidelityFX Super Resolution 3 runtime library
-/// 
+///
 /// @ingroup SDKComponents
 
 /// FidelityFX Super Resolution 3 major version.
@@ -47,7 +47,7 @@
 #define FFX_FSR3UPSCALER_VERSION_PATCH      (5)
 
 /// FidelityFX Super Resolution 3 context count
-/// 
+///
 /// Defines the number of internal effect contexts required by FSR3
 ///
 /// @ingroup ffxFsr3Upscaler
@@ -82,7 +82,7 @@ extern "C" {
 typedef enum FfxFsr3UpscalerPass
 {
     FFX_FSR3UPSCALER_PASS_PREPARE_INPUTS,                           ///< A pass which prepares game inputs for later passes
-    FFX_FSR3UPSCALER_PASS_LUMA_PYRAMID,                             ///< A pass which generates the luminance mipmap chain for the current frame. 
+    FFX_FSR3UPSCALER_PASS_LUMA_PYRAMID,                             ///< A pass which generates the luminance mipmap chain for the current frame.
     FFX_FSR3UPSCALER_PASS_SHADING_CHANGE_PYRAMID,                   ///< A pass which generates the shading change detection mipmap chain for the current frame.
     FFX_FSR3UPSCALER_PASS_SHADING_CHANGE,                           ///< A pass which estimates shading changes for the current frame
     FFX_FSR3UPSCALER_PASS_PREPARE_REACTIVITY,                       ///< A pass which prepares accumulation relevant information
@@ -138,7 +138,7 @@ typedef struct FfxFsr3UpscalerContextDescription {
     FfxApiDimensions2D             maxUpscaleSize;                     ///< The size of the output resolution targeted by the upscaling process.
     FfxFsr3UpscalerMessage      fpMessage;                          ///< A pointer to a function that can receive messages from the runtime.
     FfxInterface                backendInterface;                   ///< A set of pointers to the backend implementation for FidelityFX SDK
-    
+
 } FfxFsr3UpscalerContextDescription;
 
 typedef enum FfxFsr3UpscalerDispatchFlags
@@ -466,7 +466,7 @@ FFX_API FfxErrorCode ffxFsr3UpscalerGetRenderResolutionFromQualityMode(
 /// For more detailed information about the application of camera jitter to
 /// your application's rendering please refer to the
 /// <c><i>ffxFsr3UpscalerGetJitterOffset</i></c> function.
-/// 
+///
 /// The table below shows the jitter phase count which this function
 /// would return for each of the quality presets.
 ///
@@ -516,12 +516,12 @@ FFX_API int32_t ffxFsr3UpscalerGetJitterPhaseCount(int32_t renderWidth, int32_t 
 ///     float jitterX = 0;
 ///     float jitterY = 0;
 ///     ffxFsr3UpscalerGetJitterOffset(&jitterX, &jitterY, index, jitterPhaseCount);
-/// 
+///
 ///     const float jitterX = 2.0f * jitterX / (float)renderWidth;
 ///     const float jitterY = -2.0f * jitterY / (float)renderHeight;
 ///     const Matrix4 jitterTranslationMatrix = translateMatrix(Matrix3::identity, Vector3(jitterX, jitterY, 0));
 ///     const Matrix4 jitteredProjectionMatrix = jitterTranslationMatrix * projectionMatrix;
-/// 
+///
 /// Jitter should be applied to all rendering. This includes opaque, alpha
 /// transparent, and raytraced objects. For rasterized objects, the sub-pixel
 /// jittering values calculated by the <c><i>iffxFsr3UpscalerGetJitterOffset</i></c>
@@ -529,13 +529,13 @@ FFX_API int32_t ffxFsr3UpscalerGetJitterPhaseCount(int32_t renderWidth, int32_t 
 /// used to perform transformations during vertex shading. For raytraced
 /// rendering, the sub-pixel jitter should be applied to the ray's origin,
 /// often the camera's position.
-/// 
+///
 /// Whether you elect to use the <c><i>ffxFsr3UpscalerGetJitterOffset</i></c> function
 /// or your own sequence generator, you must program the
 /// <c><i>jitterOffset</i></c> field of the
 /// <c><i>FfxFsr3UpscalerDispatchParameters</i></c> structure in order to inform FSR3
 /// of the jitter offset that has been applied in order to render each frame.
-/// 
+///
 /// If not using the recommended <c><i>ffxFsr3UpscalerGetJitterOffset</i></c> function,
 /// care should be taken that your jitter sequence never generates a null vector;
 /// that is value of 0 in both the X and Y dimensions.
@@ -544,14 +544,14 @@ FFX_API int32_t ffxFsr3UpscalerGetJitterPhaseCount(int32_t renderWidth, int32_t 
 /// @param [out] pOutY                   A pointer to a <c>float</c> which will contain the subpixel jitter offset for the y dimension.
 /// @param [in] index                   The index within the jitter sequence.
 /// @param [in] phaseCount              The length of jitter phase. See <c><i>ffxFsr3UpscalerGetJitterPhaseCount</i></c>.
-/// 
+///
 /// @retval
 /// FFX_OK                              The operation completed successfully.
 /// @retval
 /// FFX_ERROR_INVALID_POINTER           Either <c><i>outX</i></c> or <c><i>outY</i></c> was <c>NULL</c>.
 /// @retval
 /// FFX_ERROR_INVALID_ARGUMENT          Argument <c><i>phaseCount</i></c> must be greater than 0.
-/// 
+///
 /// @ingroup ffxFsr3Upscaler
 FFX_API FfxErrorCode ffxFsr3UpscalerGetJitterOffset(float* pOutX, float* pOutY, int32_t index, int32_t phaseCount);
 

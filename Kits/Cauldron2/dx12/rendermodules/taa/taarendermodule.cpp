@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -75,7 +75,7 @@ void TAARenderModule::Execute(double deltaTime, cauldron::CommandList* pCmdList)
     {
         // Disable Jitter
         //GetScene()->GetCurrentCamera()->SetJitterValues({0, 0});
-        
+
 
         m_bFirst = true;
         return;
@@ -167,7 +167,7 @@ void TAARenderModule::EnableModule(bool enabled)
 
     if (enabled)
     {
-        // Set the jitter callback to use 
+        // Set the jitter callback to use
         CameraJitterCallback jitterCallback = [this](Vec2& values) {
                 values = CalculateJitterOffsets(m_pTAAOutputBuffer->GetDesc().Width, m_pTAAOutputBuffer->GetDesc().Height, s_Seed);
             };

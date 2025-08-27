@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -152,7 +152,7 @@ ffxReturnCode_t ffxProvider_Fsr3FrameGenerationSwapChain::Query(ffxContext* cont
 {
     VERIFY(header, FFX_API_RETURN_ERROR_PARAMETER);
 
-    
+
     if (auto desc = ffx::DynamicCast<ffxQueryDescFrameGenerationSwapChainInterpolationCommandListDX12>(header))
     {
         VERIFY(context, FFX_API_RETURN_ERROR_PARAMETER);
@@ -172,7 +172,7 @@ ffxReturnCode_t ffxProvider_Fsr3FrameGenerationSwapChain::Query(ffxContext* cont
 
         InternalFgScContext* internal_context = reinterpret_cast<InternalFgScContext*>(*context);
         *desc->pOutTexture = ffxGetFrameinterpolationTextureDX12(ffxGetSwapchainDX12(internal_context->fiSwapChain));
-        
+
         return FFX_API_RETURN_OK;
     }
     else if (auto desc = ffx::DynamicCast<ffxQueryFrameGenerationSwapChainGetGPUMemoryUsageDX12>(header))

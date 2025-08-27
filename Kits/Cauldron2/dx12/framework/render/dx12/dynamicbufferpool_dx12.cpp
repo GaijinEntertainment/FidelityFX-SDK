@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -53,7 +53,7 @@ namespace cauldron
         // Map the memory
         CauldronThrowOnFail(m_pResource->GetImpl()->DX12Resource()->Map(0, nullptr, (void**)&m_pData));
     }
-    
+
     DynamicBufferPoolInternal::~DynamicBufferPoolInternal()
     {
         m_pResource->GetImpl()->DX12Resource()->Unmap(0, nullptr);
@@ -102,7 +102,7 @@ namespace cauldron
 
         uint32_t offset;
         CauldronAssert(ASSERT_CRITICAL, InternalAlloc(alignedSize, &offset), L"DynamicBufferPool has run out of memory. Please increase the allocation size.");
-        
+
         // Copy the data in
         void* pBuffer = (void*)(m_pData + offset);
         memcpy(pBuffer, pInitData, size);
@@ -178,7 +178,7 @@ namespace cauldron
         return bufferInfo;
     }
 
-   
+
 
     void DynamicBufferPoolInternal::EndFrame()
     {
@@ -192,10 +192,10 @@ namespace cauldron
             poolInfo.allocationSize = m_AllocationTotal;
             m_AllocationTotal = 0; // cleared as all allocations from here are "fresh"
         }
-        
+
         // Enqueue the information
         m_FrameAllocationQueue.push(poolInfo);
-        
+
         // Check past frame allocations to see if we can recoup them
         while(!m_FrameAllocationQueue.empty())
         {
@@ -210,7 +210,7 @@ namespace cauldron
                 std::lock_guard<std::mutex> memlock(m_Mutex);
                 m_Tail = (m_Tail + frameEntry.allocationSize) % m_TotalSize;
             }
-            m_FrameAllocationQueue.pop();            
+            m_FrameAllocationQueue.pop();
         }
     }
 

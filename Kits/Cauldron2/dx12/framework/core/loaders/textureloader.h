@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -95,7 +95,7 @@ namespace cauldron
          * @brief   Copies the texture data to the resource's backing memory.
          */
         virtual void CopyTextureData(void* pDest, uint32_t stride, uint32_t widthStride, uint32_t height, uint32_t sliceOffset) = 0;
-    
+
     private:
         NO_COPY(TextureDataBlock)
         NO_MOVE(TextureDataBlock)
@@ -121,7 +121,7 @@ namespace cauldron
          */
         virtual bool LoadTextureData(std::experimental::filesystem::path& textureFile, float alphaThreshold, TextureDesc& texDesc) override;
 
-        
+
         /**
          * @brief   Copies the texture data to the resource's backing memory. Will also generate mip-chain.
          */

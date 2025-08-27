@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -38,7 +38,7 @@ namespace cauldron
 
     class CommandList;
 
-    
+
     /// Structure holding the information of a timing capture
     ///
     /// @ingroup CauldronRender
@@ -85,7 +85,7 @@ namespace cauldron
     public:
 
         /// Maximum number of timestamps that can be captured per frame.
-        /// 
+        ///
         static const uint32_t s_MAX_TIMESTAMPS_PER_FRAME = 256;
 
         /**

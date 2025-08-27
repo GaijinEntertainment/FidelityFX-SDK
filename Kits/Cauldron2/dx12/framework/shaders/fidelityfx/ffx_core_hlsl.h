@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -256,20 +256,20 @@
 #define FFX_BROADCAST_MIN_INT16X4(a) FFX_MIN16_I(a)
 
 /// Convert FfxFloat32 to half (in lower 16-bits of output).
-/// 
+///
 /// This function implements the same fast technique that is documented here: ftp://ftp.fox-toolkit.org/pub/fasthalffloatconversion.pdf
-/// 
+///
 /// The function supports denormals.
-/// 
+///
 /// Some conversion rules are to make computations possibly "safer" on the GPU,
 ///  -INF & -NaN -> -65504
 ///  +INF & +NaN -> +65504
 ///
 /// @param [in] f               The 32bit floating point value to convert.
-/// 
+///
 /// @returns
 /// The closest 16bit floating point value to <c><i>f</i></c>.
-/// 
+///
 /// @ingroup HLSLCore
 #define ffxF32ToF16 f32tof16
 

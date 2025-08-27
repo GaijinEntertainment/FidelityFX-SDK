@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -64,7 +64,7 @@ struct OptionalTransparencyOptions
 /**
 * @class TranslucencyRenderModule
 *
-* The Translucency render module is responsible for rendering all translucent geometry 
+* The Translucency render module is responsible for rendering all translucent geometry
 * and particles in a sorted (back to front) manner.
 *
 * @ingroup CauldronRender
@@ -72,7 +72,7 @@ struct OptionalTransparencyOptions
 class TranslucencyRenderModule : public cauldron::RenderModule, public cauldron::ContentListener
 {
 public:
-    
+
     /**
     * @brief   Construction.
     */

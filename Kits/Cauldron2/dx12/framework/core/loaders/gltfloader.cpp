@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -1066,7 +1066,7 @@ namespace cauldron
         auto& animations = gltfData["animations"];
         auto& samplersJson = animations[pBufferLoadParams->BufferIndex]["samplers"];
 
-        
+
         // Create the component sampler and retrieve interpolant addresses to be populated
         AnimInterpolants* pTimeInterpolant = nullptr;
         AnimInterpolants* pValueInterpolant = nullptr;
@@ -1152,7 +1152,7 @@ namespace cauldron
                 min.setW(0);
                 if (minAccessor.size() == 4)
                     min.setW(minAccessor[3]);
-                
+
                 pSurface->Center() = (min + max) * 0.5f;
                 pSurface->Radius() = max - pMeshResource->GetSurface(i)->Center();
                 pSurface->Center().setW(1.f);

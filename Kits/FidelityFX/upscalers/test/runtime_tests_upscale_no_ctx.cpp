@@ -4,9 +4,9 @@
 
 #include <windows.h>
 #include "utest.h"
-#include "../../api/include/ffx_api.h" 
-#include "../../api/include/ffx_api_loader.h" 
-#include "../include/ffx_upscale.h" 
+#include "../../api/include/ffx_api.h"
+#include "../../api/include/ffx_api_loader.h"
+#include "../include/ffx_upscale.h"
 
 HMODULE g_dllUnderTest = {};
 ffxFunctions funcs = {};
@@ -232,19 +232,19 @@ UTEST_I(ffx_api_upscale_no_ctx, ffxQueryDescUpscaleGetRenderResolutionFromQualit
 UTEST_I(ffx_api_upscale_no_ctx, ffxQueryDescUpscaleGetJitterPhaseCount, NUM_VERSIONS) {
 
   int32_t output = 0u;
-  
+
   ffxQueryDescUpscaleGetJitterPhaseCount desc = {};
   desc.header.type = FFX_API_QUERY_DESC_TYPE_UPSCALE_GETJITTERPHASECOUNT;
   desc.header.pNext = &utest_fixture->versionOverride.header;
   desc.renderWidth = 1080;
   desc.displayWidth = 1440;
-  desc.pOutPhaseCount = &output; 
+  desc.pOutPhaseCount = &output;
 
   funcs.Query(nullptr, &desc.header);
 
   ASSERT_TRUE(output != 0u);
 }
- 
+
 UTEST_I(ffx_api_upscale_no_ctx, ffxQueryDescUpscaleGetJitterOffset, NUM_VERSIONS) {
   float output_x = -5.0f;
   float output_y = -5.0f;
@@ -254,7 +254,7 @@ UTEST_I(ffx_api_upscale_no_ctx, ffxQueryDescUpscaleGetJitterOffset, NUM_VERSIONS
   float output_y2 = -5.0f;
   uint32_t index = 1;
   uint32_t phaseCount = 10;
-  
+
   ffxQueryDescUpscaleGetJitterOffset desc = {};
   desc.header.type = FFX_API_QUERY_DESC_TYPE_UPSCALE_GETJITTEROFFSET;
   desc.header.pNext = &utest_fixture->versionOverride.header;
@@ -267,7 +267,7 @@ UTEST_I(ffx_api_upscale_no_ctx, ffxQueryDescUpscaleGetJitterOffset, NUM_VERSIONS
 
   ASSERT_TRUE(-5.0f != output_x);
   ASSERT_TRUE(-5.0f != output_y);
-  
+
   desc.index = index+1;
   desc.phaseCount = phaseCount;
   desc.pOutX = &output_x2;
@@ -277,7 +277,7 @@ UTEST_I(ffx_api_upscale_no_ctx, ffxQueryDescUpscaleGetJitterOffset, NUM_VERSIONS
 
   ASSERT_TRUE(-5.0f != output_x2 && output_x != output_x2);
   ASSERT_TRUE(-5.0f != output_y2 && output_y != output_y2);
-  
+
   desc.index = index+2;
   desc.phaseCount = phaseCount;
   desc.pOutX = &output_x3;
@@ -292,7 +292,7 @@ UTEST_I(ffx_api_upscale_no_ctx, ffxQueryDescUpscaleGetJitterOffset, NUM_VERSIONS
 UTEST_STATE();
 
 int main(int argc, const char *const argv[]) {
-  
+
   g_dllUnderTest = LoadLibraryExA("amd_fidelityfx_upscaler_dx12.dll", NULL, 0);
 
   ffxLoadFunctions(&funcs, g_dllUnderTest);
@@ -305,6 +305,6 @@ int main(int argc, const char *const argv[]) {
   versionQuery.versionIds = versions;
   versionQuery.versionNames = versionNames;
   funcs.Query(nullptr, &versionQuery.header);
-  
+
   return utest_main(argc, argv);
 }

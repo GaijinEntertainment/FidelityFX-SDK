@@ -1,7 +1,7 @@
 #include <windows.h>
 #include "utest.h"
-#include "../include/ffx_api.h" 
-#include "../include/ffx_api_loader.h" 
+#include "../include/ffx_api.h"
+#include "../include/ffx_api_loader.h"
 
 HMODULE g_dllUnderTest = {};
 
@@ -46,9 +46,9 @@ UTEST(ffx_api_load_dll, ffxLoadFunctions) {
 UTEST_STATE();
 
 int main(int argc, const char *const argv[]) {
-  
+
   g_dllUnderTest = LoadLibraryExA("amd_fidelityfx_loader_dx12.dll", NULL, 0);
-  
+
   return utest_main(argc, argv);
 }
 

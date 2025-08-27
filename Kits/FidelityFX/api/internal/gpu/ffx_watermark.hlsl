@@ -101,11 +101,11 @@ static const uint Kerning = 1;
 void main(uint2 dtid : SV_DispatchThreadID)
 {
     uint2 threadPixelPos = Offset + dtid;
-    
+
     uint2 cursor = dtid / ((FontSizeInPixels + Kerning) * FontSize);
     if (cursor.y >= 4 || cursor.x >= 120)
         return;
-    
+
     uint4 PackedWords = PackedMessage[(cursor.y * 30 + cursor.x / 4) / 4];
     uint character4 = PackedWords[(cursor.y * 30 + cursor.x / 4) % 4];
     uint character = (character4 >> (cursor.x % 4 * 8)) & 0xFF;

@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -77,7 +77,7 @@ namespace cauldron
      * @struct RenderResourceInformation
      *
      * Resource information used to create auto-generated resources.
-     * 
+     *
      * @ingroup CauldronCore
      */
     struct RenderResourceInformation
@@ -208,7 +208,7 @@ namespace cauldron
             std::wstring                        Camera = L"";                                                   ///< The camera to set as active at startup
             float                               SceneExposure = 1.f;                                            ///< Scene exposure setting at startup for content
             std::vector<ParticleSpawnerDesc>    ParticleSpawners = {};                                          ///< Particle systems to create for the sample
-            
+
             std::wstring                        DiffuseIBL  = L"..\\..\\..\\..\\..\\..\\media\\cauldronmedia\\IBL\\mud_road_puresky_Diffuse.dds";   ///< Diffuse reflection map to use for sample
             std::wstring                        SpecularIBL = L"..\\..\\..\\..\\..\\..\\media\\cauldronmedia\\IBL\\mud_road_puresky_Specular.dds";  ///< Specular reflection map to use for sample
             std::wstring                        SkyMap      = L"..\\..\\..\\..\\..\\..\\media\\cauldronmedia\\IBL\\mud_road_puresky_Specular.dds";  ///< Environment map used for rendering
@@ -320,8 +320,8 @@ namespace cauldron
      *
      * Sample-backing framework. Is responsible for application setup and tear down based
      * on runtime configuration + command line overrides.
-     * 
-     * Main framework instance holds all required constructs to handle 
+     *
+     * Main framework instance holds all required constructs to handle
      * application updates and rendering. Samples are offered override points
      * to modify sample configuration or run-time behavior.
      *
@@ -330,15 +330,15 @@ namespace cauldron
     class Framework
     {
     public:
-        
+
         /**
          * @brief   Framework initialization. Override to modify/override framework initialization.
          */
         virtual void Init();
 
         /**
-         * @brief   Framework pre-runtime callback. Called before entering main loop 
-         *          after framework/sample has been initialized. Override to modify/override 
+         * @brief   Framework pre-runtime callback. Called before entering main loop
+         *          after framework/sample has been initialized. Override to modify/override
          *          framework pre-run.
          */
         virtual void PreRun();
@@ -351,7 +351,7 @@ namespace cauldron
         virtual void PostRun();
 
         /**
-         * @brief   Framework shutdown. Called to clean everything up when we are done. 
+         * @brief   Framework shutdown. Called to clean everything up when we are done.
          *          Override to modify/override framework shutdown.
          */
         virtual void Shutdown();
@@ -382,7 +382,7 @@ namespace cauldron
         virtual void ParseSampleCmdLine(const wchar_t* cmdLine) { }
 
         /**
-         * @brief   RegisterSampleModules(). Override in sample to 
+         * @brief   RegisterSampleModules(). Override in sample to
          *          register additional render modules and components.
          */
         virtual void RegisterSampleModules() {}
@@ -586,7 +586,7 @@ namespace cauldron
         bool UpscalerEnabled() const { return m_UpscalerEnabled; }
 
         void EnableFrameInterpolation(bool enabled);
-        
+
         bool FrameInterpolationEnabled() const { return m_FrameInterpolationEnabled; }
 
         /**

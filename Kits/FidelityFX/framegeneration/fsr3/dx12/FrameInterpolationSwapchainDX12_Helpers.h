@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -34,7 +34,7 @@
 typedef int32_t FfxErrorCode;
 typedef FfxErrorCode(*FfxWaitCallbackFunc)(wchar_t* fenceName, uint64_t fenceValueToWaitFor);
 
-constexpr UINT UNKNOWN_TIMER_RESOlUTION = 0;  //Timer resolution is not known. 
+constexpr UINT UNKNOWN_TIMER_RESOlUTION = 0;  //Timer resolution is not known.
 
 IDXGIFactory*           getDXGIFactoryFromSwapChain(IDXGISwapChain* swapChain);
 bool                    isExclusiveFullscreen(IDXGISwapChain* swapChain);
@@ -73,7 +73,7 @@ inline void SafeCloseHandle(HANDLE& handle)
 // fix up format in case resource passed for SRV cannot be mapped
 static DXGI_FORMAT convertFormatSrv(DXGI_FORMAT format)
 {
-    switch (format) 
+    switch (format)
     {
         // Handle Depth
         case DXGI_FORMAT_R32G8X24_TYPELESS:
@@ -314,7 +314,7 @@ struct SimpleMovingAverage
 
         Type          average    = 0.f;
         unsigned int  iterations = (updateCount >= Size) ? Size : updateCount;
-        
+
         if (iterations > 0)
         {
             for (size_t i = 0; i < iterations; i++)

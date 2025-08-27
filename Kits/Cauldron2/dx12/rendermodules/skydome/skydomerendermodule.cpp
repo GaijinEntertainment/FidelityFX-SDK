@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -59,7 +59,7 @@ void SkyDomeRenderModule::Init(const json& initData)
     // Read in procedural defaults
     GetScene()->GetSkydomeHour() = initData.value("Hour", GetScene()->GetSkydomeHour());
     GetScene()->GetSkydomeMinute() = initData.value("Minute", GetScene()->GetSkydomeMinute());
-    
+
     m_pProceduralConstantData.Rayleigh = initData.value("Rayleigh", 2.f);
     m_pProceduralConstantData.Turbidity = initData.value("Turbidity", 10.f);
     m_pProceduralConstantData.MieCoefficient = initData.value("Mie", 0.005f);
@@ -138,7 +138,7 @@ void SkyDomeRenderModule::InitSkyDome()
     // Setup the pipeline object
     PipelineDesc psoDesc;
     psoDesc.SetRootSignature(m_pRootSignatureApplySkydome);
-    
+
     // Setup the shaders to build on the pipeline object
     ShaderBuildDesc vertexDesc = ShaderBuildDesc::Vertex(L"skydome.hlsl", L"MainVS", ShaderModel::SM6_0, nullptr);
     ShaderBuildDesc pixelDesc  = ShaderBuildDesc::Pixel(L"skydome.hlsl", L"MainPS", ShaderModel::SM6_0, nullptr);
@@ -561,7 +561,7 @@ void SkyDomeRenderModule::Execute(double deltaTime, CommandList* pCmdList)
     // write to dynamic constant buffer
     m_SkydomeConstantData.ClipToWorld = GetScene()->GetCurrentCamera()->GetInverseViewProjection();
 
-    
+
     //run procedural skydome + IBL texture generation for first frame and when time of day changes
     if (m_IsProcedural)
     {
@@ -569,7 +569,7 @@ void SkyDomeRenderModule::Execute(double deltaTime, CommandList* pCmdList)
         {
             m_pShouldRunSkydomeGeneration = true;
         }
-        // time of day changes also sets m_pShouldRunSkydomeGeneration to true 
+        // time of day changes also sets m_pShouldRunSkydomeGeneration to true
         if (m_pShouldRunSkydomeGeneration && m_CubemapGenerateReady)
         {
             m_pComputeCmdList = GetDevice()->CreateCommandList(L"SkyDomeComputeCmdList", CommandQueue::Compute);
@@ -802,7 +802,7 @@ void SkyDomeRenderModule::ExecuteSkydomeGeneration(cauldron::CommandList* pCmdLi
     cmdLists.push_back(pCmdList);
     m_SignalValue = GetDevice()->ExecuteCommandLists(cmdLists, CommandQueue::Compute);
 
-    std::function<void(void*)> waitOnQueue = [this](void*) 
+    std::function<void(void*)> waitOnQueue = [this](void*)
     {
         GetDevice()->WaitOnQueue(this->m_SignalValue, CommandQueue::Compute);
 

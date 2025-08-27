@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -52,7 +52,7 @@ void RectifyHistory(
     const FfxFloat32 fReactiveFactor        = ffxPow(params.fReactiveMask, 1.0f / 2.0f);
     const FfxFloat32 fShadingChangeFactor   = params.fShadingChange;
     const FfxFloat32 fBoxScaleT             = ffxMax(f4kVelocityFactor, ffxMax(fDistanceFactor, ffxMax(fAccumulationFactor, ffxMax(fReactiveFactor, fShadingChangeFactor))));
-    
+
     const FfxFloat32   fBoxScale     = ffxLerp(3.0f, 1.0f, fBoxScaleT);
     const FfxFloat32x3 fScaledBoxVec = data.clippingBox.boxVec * FfxFloat32x3(1.7f, 1.0f, 1.0f) * fBoxScale;
 
@@ -147,7 +147,7 @@ void Accumulate(FfxInt32x2 iPxHrPos)
     if (params.bIsExistingSample && !params.bIsNewSample) {
         ReprojectHistoryColor(params, data);
     }
-    
+
     UpdateLockStatus(params, data);
 
     ComputeBaseAccumulationWeight(params, data);

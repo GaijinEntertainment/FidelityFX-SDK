@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -60,8 +60,8 @@ float3 calcViewSpacePositionFromDepth( float2 normalizedScreenPosition, int2 tex
     normalizedScreenPosition.y += (float)texelOffset.y / (float)g_ScreenHeight;
 
     // Scale, bias and convert to texel range
-    uv.x = (0.5 + normalizedScreenPosition.x * 0.5) * (float)g_ScreenWidth; 
-    uv.y = (1-(0.5 + normalizedScreenPosition.y * 0.5)) * (float)g_ScreenHeight; 
+    uv.x = (0.5 + normalizedScreenPosition.x * 0.5) * (float)g_ScreenWidth;
+    uv.y = (1-(0.5 + normalizedScreenPosition.y * 0.5)) * (float)g_ScreenHeight;
 
     // Fetch the depth value at this point
     float depth = g_DepthBuffer.Load( uint3( uv.x, uv.y, 0 ) ).x;

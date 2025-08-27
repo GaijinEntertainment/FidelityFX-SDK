@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -207,9 +207,9 @@ FfxFloat32 CalculateStaticContentFactor(FfxFloat32x3 fCurrentInterpolationSource
     return max(fFactor.x, max(fFactor.y, fFactor.z));
 }
 
-// 
+//
 // MOTION VECTOR FIELD
-// 
+//
 
 FFX_STATIC const FfxUInt32 MOTION_VECTOR_FIELD_ENTRY_BIT_COUNT = 32;
 
@@ -296,9 +296,9 @@ void UnpackVectorFieldEntries(FfxUInt32x2 packed, out VectorFieldEntry vfElement
     vfElement.bInPainted      = false;
 }
 
-// 
+//
 // MOTION VECTOR FIELD
-// 
+//
 
 #if defined(FFX_FRAMEINTERPOLATION_BIND_SRV_INPAINTING_PYRAMID)
 FfxFloat32x4 ComputeMvInpaintingLevel(FfxFloat32x2 fUv, const FfxInt32 iMipLevel, const FfxInt32x2 iTexSize)
@@ -338,7 +338,7 @@ FfxFloat32x4 ComputeMvInpaintingLevel(FfxFloat32x2 fUv, const FfxInt32 iMipLevel
     defined(FFX_FRAMEINTERPOLATION_BIND_SRV_GAME_MOTION_VECTOR_FIELD_Y)
 
 void LoadInpaintedGameFieldMv(FfxFloat32x2 fUv, out VectorFieldEntry vfElement)
-{    
+{
     FfxInt32x2 iPxSample = FfxInt32x2(fUv * RenderSize());
     FfxUInt32x2 packedGameFieldMv = LoadGameFieldMv(iPxSample);
     UnpackVectorFieldEntries(packedGameFieldMv, vfElement);

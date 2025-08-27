@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -483,7 +483,7 @@ FfxFloat32x4 SampleLumaHistory(FfxFloat32x2 fUV)
 }
 #endif
 
-#if defined(FSR3UPSCALER_BIND_SRV_RCAS_INPUT) 
+#if defined(FSR3UPSCALER_BIND_SRV_RCAS_INPUT)
 Texture2D<FfxFloat32x4> r_rcas_input FFX_DECLARE_SRV(FSR3UPSCALER_BIND_SRV_RCAS_INPUT);
 
 FfxFloat32x4 LoadRCAS_Input(FfxInt32x2 iPxPos)

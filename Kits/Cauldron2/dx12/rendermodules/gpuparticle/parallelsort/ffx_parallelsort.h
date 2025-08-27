@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -22,12 +22,12 @@
 
 /// @defgroup FfxGPUParallelSort FidelityFX Parallel Sort
 /// FidelityFX Parallel Sort GPU documentation
-/// 
+///
 /// @ingroup FfxGPUEffects
 
-/// The number of bits we are sorting per pass. 
+/// The number of bits we are sorting per pass.
 /// Changing this value requires
-/// internal changes in LDS distribution and count, 
+/// internal changes in LDS distribution and count,
 /// reduce, scan, and scatter passes
 ///
 /// @ingroup FfxGPUParallelSort
@@ -35,7 +35,7 @@
 
 /// The number of bins used for the counting phase
 /// of the algorithm. Changing this value requires
-/// internal changes in LDS distribution and count, 
+/// internal changes in LDS distribution and count,
 /// reduce, scan, and scatter passes
 ///
 /// @ingroup FfxGPUParallelSort
@@ -86,7 +86,7 @@
     /// @param [in]  maxNumKeys              The maximum number of keys the algorithm will be asked to sort through.
     /// @param [out] scratchBufferSize       The size of the scratch buffer that needs to be allocated.
     /// @param [out] reduceScratchBufferSize The size of the reduce scratch buffer that needs to be allocated.
-    /// 
+    ///
     /// @ingroup FfxGPUParallelSort
 	inline void ffxParallelSortCalculateScratchResourceSize(uint32_t maxNumKeys, uint32_t& scratchBufferSize, uint32_t& reduceScratchBufferSize)
 	{
@@ -98,9 +98,9 @@
         reduceScratchBufferSize = FFX_PARALLELSORT_SORT_BIN_COUNT * NumReducedBlocks * sizeof(uint32_t);
 	}
 
-    /// Call to setup the constant buffer data needed to bind to 
+    /// Call to setup the constant buffer data needed to bind to
     /// the GPU for Parallel Sort execution (all passes). Note
-    /// that the implementor is left to manually modify the shift 
+    /// that the implementor is left to manually modify the shift
     /// (bit shift for each pass) value.
     ///
     /// @param [in]  numKeys                        The number of keys the algorithm will be sorting through.
@@ -108,7 +108,7 @@
     /// @param [out] constantBuffer                 The <c><i>FfxParallelSortConstants</i></c> buffer to fill with information.
     /// @param [out] numThreadGroupsToRun           The number of thread groups (dispatch size) to run for this sort run.
     /// @param [out] numReducedThreadGroupsToRun    The number of reduce thread groups (dispatch size) to run for this sort run.
-    /// 
+    ///
     /// @ingroup FfxGPUParallelSort
 	inline void ffxParallelSortSetConstantAndDispatchData(uint32_t numKeys, uint32_t maxThreadGroups, FfxParallelSortConstants& constantBuffer, uint32_t& numThreadGroupsToRun, uint32_t& numReducedThreadGroupsToRun)
 	{
@@ -226,7 +226,7 @@
         // Do wave local reduce
 #if defined(FFX_HLSL)
         FfxUInt32 waveReduced = WaveActiveSum(localSum);
-        
+
         // First lane in a wave writes out wave reduction to LDS (this accounts for num waves per group greater than HW wave size)
         // Note that some hardware with very small HW wave sizes (i.e. <= 8) may exhibit issues with this algorithm, and have not been tested.
         FfxUInt32 waveID = localID / WaveGetLaneCount();
@@ -241,7 +241,7 @@
             waveReduced = WaveActiveSum((localID < FFX_PARALLELSORT_THREADGROUP_SIZE / WaveGetLaneCount()) ? gs_FFX_PARALLELSORT_LDSSums[localID] : 0);
 
 #elif defined(FFX_GLSL)
-        
+
         FfxUInt32 waveReduced = subgroupAdd(localSum);
 
         // First lane in a wave writes out wave reduction to LDS (this accounts for num waves per group greater than HW wave size)
@@ -353,7 +353,7 @@
         return wavePrefixed;
     }
 
-    // This is to transform uncoalesced loads into coalesced loads and 
+    // This is to transform uncoalesced loads into coalesced loads and
     // then scattered loads from LDS
     FFX_GROUPSHARED FfxUInt32 gs_FFX_PARALLELSORT_LDS[FFX_PARALLELSORT_ELEMENTS_PER_THREAD][FFX_PARALLELSORT_THREADGROUP_SIZE];
     void ffxParallelSortScanPrefix(FfxUInt32 numValuesToScan, FfxUInt32 localID, FfxUInt32 groupID, FfxUInt32 BinOffset, FfxUInt32 BaseIndex, bool AddPartialSums)
@@ -387,7 +387,7 @@
         FfxUInt32 partialSum = 0;
         if (AddPartialSums)
         {
-            // Partial sum additions are a little special as they are tailored to the optimal number of 
+            // Partial sum additions are a little special as they are tailored to the optimal number of
             // thread groups we ran in the beginning, so need to take that into account
             partialSum = FfxLoadScanScratch(groupID);
         }
@@ -491,7 +491,7 @@
                     FfxUInt32 keyIndex = (localKey >> ShiftBit) & 0xf;
                     FfxUInt32 bitKey = (keyIndex >> bitShift) & 0x3;
 
-                    // Create a packed histogram 
+                    // Create a packed histogram
                     FfxUInt32 packedHistogram = 1 << (bitKey * 8);
 
                     // Sum up all the packed keys (generates counted offsets up to current thread group)

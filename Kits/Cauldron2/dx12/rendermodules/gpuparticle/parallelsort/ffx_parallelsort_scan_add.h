@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -30,7 +30,7 @@
 
 void FfxParallelSortScanAdd(FfxUInt32 LocalID, FfxUInt32 GroupID)
 {
-    // When doing adds, we need to access data differently because reduce 
+    // When doing adds, we need to access data differently because reduce
     // has a more specialized access pattern to match optimized count
     // Access needs to be done similarly to reduce
     // Figure out what bin data we are reducing
@@ -39,6 +39,6 @@ void FfxParallelSortScanAdd(FfxUInt32 LocalID, FfxUInt32 GroupID)
 
     // Get the base index for this thread group
     FfxUInt32 BaseIndex = (GroupID % NumReduceThreadgroupPerBin()) * FFX_PARALLELSORT_ELEMENTS_PER_THREAD * FFX_PARALLELSORT_THREADGROUP_SIZE;
-    
+
     ffxParallelSortScanPrefix(NumThreadGroups(), LocalID, GroupID, BinOffset, BaseIndex, true);
 }

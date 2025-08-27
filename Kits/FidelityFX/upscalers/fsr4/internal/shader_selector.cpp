@@ -129,7 +129,7 @@ FfxShaderBlob fsr4_shaders::GetPreShaderBlob(uint32_t permutationOption)
                 key.FFX_MLSR_RESOLUTION              = (uint32_t)options.maxRes;        \
                 return ASSIGN_BLOB(key.index, fsr4_model_v07_i8_ ## _qname ## _0);      \
             }
-        
+
         switch (options.preset)
         {
             FOREACH_QUALITY(GENERATOR)
@@ -166,7 +166,7 @@ FfxShaderBlob fsr4_shaders::GetPostShaderBlob(uint32_t permutationOption)
                 key.FFX_MLSR_RESOLUTION           = (uint32_t)options.maxRes;       \
                 return ASSIGN_BLOB(key.index, fsr4_model_v07_i8_ ## _qname ## _13); \
             }
-        
+
         switch (options.preset)
         {
             FOREACH_QUALITY(GENERATOR)

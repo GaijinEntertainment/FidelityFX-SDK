@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -93,7 +93,7 @@ namespace cauldron
 
     //////////////////////////////////////////////////////////////////////////
     // MessageBuffer
-    
+
     MessageBuffer::MessageBuffer()
         : MessageBuffer(0, LogLevel::LOGLEVEL_TRACE, 0)
     {
@@ -155,7 +155,7 @@ namespace cauldron
 
     //////////////////////////////////////////////////////////////////////////
     // Log
-    
+
     Log* Log::s_pLogInstance = nullptr;
 
     int Log::InitLogSystem(const wchar_t* filename)
@@ -226,7 +226,7 @@ namespace cauldron
     void Log::QueueMessage(LogLevel level, const wchar_t* filename, int line, const wchar_t* text, va_list args)
     {
         time_t now = time(0);
-        
+
         int body_len = _vscwprintf(text, args);
 
         const wchar_t* filename_format = L" (%ls: %d)";
@@ -257,7 +257,7 @@ namespace cauldron
         {
             // write in the file
             PrintMessage(m_output, msg);
-            
+
             // output to debugger console
             OutputToDebugger(msg);
 

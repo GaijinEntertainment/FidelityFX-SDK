@@ -102,7 +102,7 @@ void LoadChildModules(uint64_t type)
         idx = 1;
         break;
 
-    default: 
+    default:
         // skip trying to load DLL if unknown effect type
         return;
     }

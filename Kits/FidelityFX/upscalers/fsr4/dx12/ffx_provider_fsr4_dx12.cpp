@@ -1007,7 +1007,7 @@ static ffxReturnCode_t CreateModel(InternalFsr4Context* internal_context, fsr4_s
                                                                      &pipelineDescription,
                                                                      internal_context->effectContextId,
                                                                      &internal_context->model_pso[13]));
-                                                                     
+
     // create model PSOs
     for (uint32_t passIndex = 1; passIndex < 13; ++passIndex)
     {
@@ -1348,7 +1348,7 @@ ffxReturnCode_t ffxProvider_FSR4::DestroyContext(ffxContext* context, Allocator&
     internal_context->srvResources[FFX_FSR4UPSCALER_RESOURCE_IDENTIFIER_INPUT_COLOR] = {FFX_FSR4UPSCALER_RESOURCE_IDENTIFIER_NULL};
     internal_context->srvResources[FFX_FSR4UPSCALER_RESOURCE_IDENTIFIER_INPUT_DEPTH] = {FFX_FSR4UPSCALER_RESOURCE_IDENTIFIER_NULL};
     internal_context->srvResources[FFX_FSR4UPSCALER_RESOURCE_IDENTIFIER_INPUT_MOTION_VECTORS] = {FFX_FSR4UPSCALER_RESOURCE_IDENTIFIER_NULL};
-    internal_context->srvResources[FFX_FSR4UPSCALER_RESOURCE_IDENTIFIER_INPUT_EXPOSURE] = {FFX_FSR4UPSCALER_RESOURCE_IDENTIFIER_NULL};    
+    internal_context->srvResources[FFX_FSR4UPSCALER_RESOURCE_IDENTIFIER_INPUT_EXPOSURE] = {FFX_FSR4UPSCALER_RESOURCE_IDENTIFIER_NULL};
     internal_context->srvResources[FFX_FSR4UPSCALER_RESOURCE_IDENTIFIER_RESULT_COLOR] = {FFX_FSR4UPSCALER_RESOURCE_IDENTIFIER_NULL};
 
     internal_context->uavResources[FFX_FSR4UPSCALER_RESOURCE_IDENTIFIER_FINAL_OUTPUT] = {FFX_FSR4UPSCALER_RESOURCE_IDENTIFIER_NULL};
@@ -1446,7 +1446,7 @@ ffxReturnCode_t ffxProvider_FSR4::Query(ffxContext* context, ffxQueryDescHeader*
     {
         VERIFY(context, FFX_API_RETURN_ERROR_PARAMETER);
         VERIFY(*context, FFX_API_RETURN_ERROR_PARAMETER);
-        
+
         InternalFsr4Context* internal_context = reinterpret_cast<InternalFsr4Context*>(*context);
         auto desc = reinterpret_cast<ffxQueryDescUpscaleGetGPUMemoryUsage*>(header);
 
@@ -1507,9 +1507,9 @@ ffxReturnCode_t ffxProvider_FSR4::Query(ffxContext* context, ffxQueryDescHeader*
     }
     case FFX_API_QUERY_DESC_TYPE_UPSCALE_GET_RESOURCE_REQUIREMENTS:
     {
-        auto desc = reinterpret_cast<ffxQueryDescUpscaleGetResourceRequirements*>(header);   
-        
-        desc->required_resources = 
+        auto desc = reinterpret_cast<ffxQueryDescUpscaleGetResourceRequirements*>(header);
+
+        desc->required_resources =
             FFX_API_QUERY_RESOURCE_INPUT_COLOR |
             FFX_API_QUERY_RESOURCE_INPUT_DEPTH |
             FFX_API_QUERY_RESOURCE_INPUT_MV    |

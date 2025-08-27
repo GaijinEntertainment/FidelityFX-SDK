@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -27,7 +27,7 @@
 
 /// @defgroup ShaderCompiler Shader Compiler
 /// Documentation for the FidelityFX Shader Compiler tool
-/// 
+///
 /// @ingroup ffxSDK
 
 /// A structure encapsulating a platform agnostic shader binary interface.
@@ -86,7 +86,7 @@ struct ShaderResourceInfo
     uint32_t    space;          ///< Binding space index
 };
 
-/// A structure defining the reflection data to be exported. ReflectionData is 
+/// A structure defining the reflection data to be exported. ReflectionData is
 /// composed of a number of <c><i>ShaderResourceInfo</i></c> structs for all required
 /// resource types.
 ///
@@ -123,7 +123,7 @@ struct Permutation
     std::shared_ptr<IShaderBinary>      shaderBinary = nullptr;     ///< Shader permutation compiled binary data.
     std::shared_ptr<IReflectionData>    reflectionData = nullptr;   ///< Shader permutation <c><i>IReflectionData</i></c> data.
 
-    fs::path                            sourcePath;                 ///< Shader source file path for this permutation.    
+    fs::path                            sourcePath;                 ///< Shader source file path for this permutation.
     std::unordered_set<std::string>     dependencies;               ///< List of shader dependencies for this permutation.
     std::optional<uint32_t>             identicalTo = {};           ///< Key of other permutation that this one is identical to.
 };
@@ -145,7 +145,7 @@ protected:
 public:
 
     /// Compiler construction function
-    /// 
+    ///
     /// @param [in]  shaderPath         Path to the shader to compile
     /// @param [in]  shaderName         Shader entry point
     /// @param [in]  shaderFileName     Filename of the shader file to compile
@@ -183,7 +183,7 @@ public:
     /// @param [in]  permutation            The permutation representation to compile
     /// @param [in]  arguments              List of arguments to pass to the compiler
     /// @param [in]  wrietMutex             Mutex to use for thread safety of compile process
-    /// 
+    ///
     /// @returns
     /// true if successful, false otherwise
     ///
@@ -196,7 +196,7 @@ public:
     /// language supported (i.e. HLSL, GLSL, etc.)
     ///
     /// @param [in]  permutation            The permutation representation to extract reflection for
-    /// 
+    ///
     /// @returns
     /// true if successful, false otherwise
     ///
@@ -209,7 +209,7 @@ public:
     /// @param [in]  fp                     The file to write header information into
     /// @param [in]  permutation            The permutation representation to write to head
     /// @param [in]  wrietMutex             Mutex to use for thread safety of reflection data export
-    /// 
+    ///
     /// @returns
     /// none
     ///
@@ -220,7 +220,7 @@ public:
     /// language supported (i.e. HLSL, GLSL, etc.)
     ///
     /// @param [in]  fp                     The file to write header data structures into
-    /// 
+    ///
     /// @returns
     /// none
     ///
@@ -232,7 +232,7 @@ public:
     ///
     /// @param [in]  fp                     The file to write header information into
     /// @param [in]  permutation            The permutation representation to write to head
-    /// 
+    ///
     /// @returns
     /// none
     ///

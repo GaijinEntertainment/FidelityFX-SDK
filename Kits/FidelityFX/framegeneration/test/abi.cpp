@@ -150,7 +150,7 @@ UTEST(ffx_api_framegen_abi_size, ffxQueryDescFrameGenerationGetGPUMemoryUsage) {
 
 UTEST(ffx_api_framegen_abi_offsets, ffxQueryDescFrameGenerationGetGPUMemoryUsage) {
   EXPECT_EQ(offsetof(struct ffxQueryDescFrameGenerationGetGPUMemoryUsage, header) , 0);
-  EXPECT_EQ(offsetof(struct ffxQueryDescFrameGenerationGetGPUMemoryUsage, gpuMemoryUsageFrameGeneration) , 16); 
+  EXPECT_EQ(offsetof(struct ffxQueryDescFrameGenerationGetGPUMemoryUsage, gpuMemoryUsageFrameGeneration) , 16);
 }
 
 UTEST(ffx_api_framegen_abi_size, ffxConfigureDescFrameGenerationRegisterDistortionFieldResource) {
@@ -159,7 +159,7 @@ UTEST(ffx_api_framegen_abi_size, ffxConfigureDescFrameGenerationRegisterDistorti
 
 UTEST(ffx_api_framegen_abi_offsets, ffxConfigureDescFrameGenerationRegisterDistortionFieldResource) {
   EXPECT_EQ(offsetof(struct ffxConfigureDescFrameGenerationRegisterDistortionFieldResource, header) , 0);
-  EXPECT_EQ(offsetof(struct ffxConfigureDescFrameGenerationRegisterDistortionFieldResource, distortionField) , 16); 
+  EXPECT_EQ(offsetof(struct ffxConfigureDescFrameGenerationRegisterDistortionFieldResource, distortionField) , 16);
 }
 
 UTEST(ffx_api_framegen_abi_size, ffxDispatchDescFrameGenerationPrepareCameraInfo) {

@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -387,7 +387,7 @@ FfxConstantAllocation BackendContext_DX12::FallbackConstantAllocator(void* data,
 
     uint32_t size = FFX_ALIGN_UP(dataSize, 256);
 
-    // wrap as needed 
+    // wrap as needed
     if (constantBufferOffset + size >= constantBufferSize)
         constantBufferOffset = 0;
 
@@ -408,7 +408,7 @@ FfxConstantAllocation BackendContext_DX12::FallbackConstantAllocator(void* data,
 // fix up format in case resource passed for UAV cannot be mapped
 static DXGI_FORMAT convertFormatUav(DXGI_FORMAT format)
 {
-    switch (format) 
+    switch (format)
     {
         // Handle Depth
         case DXGI_FORMAT_R32G8X24_TYPELESS:
@@ -460,7 +460,7 @@ static DXGI_FORMAT convertFormatUav(DXGI_FORMAT format)
 // fix up format in case resource passed for SRV cannot be mapped
 static DXGI_FORMAT convertFormatSrv(DXGI_FORMAT format)
 {
-    switch (format) 
+    switch (format)
     {
         // Handle Depth
         case DXGI_FORMAT_R32G8X24_TYPELESS:
@@ -543,7 +543,7 @@ D3D12_RESOURCE_STATES ffxGetDX12StateFromResourceState(FfxApiResourceState state
 
 DXGI_FORMAT ffxGetDX12FormatFromSurfaceFormat(FfxApiSurfaceFormat surfaceFormat)
 {
-    switch (surfaceFormat) 
+    switch (surfaceFormat)
     {
         case (FFX_API_SURFACE_FORMAT_R32G32B32A32_TYPELESS):
             return DXGI_FORMAT_R32G32B32A32_TYPELESS;
@@ -674,7 +674,7 @@ FfxApiSurfaceFormat ffxGetSurfaceFormatDX12(DXGI_FORMAT format)
         case DXGI_FORMAT_R10G10B10A2_TYPELESS:
         case DXGI_FORMAT_R10G10B10A2_UNORM:
             return FFX_API_SURFACE_FORMAT_R10G10B10A2_UNORM;
-        
+
         case DXGI_FORMAT_R11G11B10_FLOAT:
             return FFX_API_SURFACE_FORMAT_R11G11B10_FLOAT;
 
@@ -745,8 +745,8 @@ FfxApiSurfaceFormat ffxGetSurfaceFormatDX12(DXGI_FORMAT format)
 
 bool IsDepthDX12(DXGI_FORMAT format)
 {
-    return (format == DXGI_FORMAT_D16_UNORM) || 
-           (format == DXGI_FORMAT_D32_FLOAT) || 
+    return (format == DXGI_FORMAT_D16_UNORM) ||
+           (format == DXGI_FORMAT_D32_FLOAT) ||
            (format == DXGI_FORMAT_D24_UNORM_S8_UINT) ||
            (format == DXGI_FORMAT_D32_FLOAT_S8X24_UINT);
 }
@@ -767,7 +767,7 @@ FfxApiResourceDescription ffxGetResourceDescriptionDX12(const ID3D12Resource* pR
     if (pResource)
     {
         D3D12_RESOURCE_DESC desc = const_cast<ID3D12Resource*>(pResource)->GetDesc();
-        
+
         if( desc.Dimension == D3D12_RESOURCE_DIMENSION_BUFFER)
         {
             resourceDescription.flags  = FFX_API_RESOURCE_FLAGS_NONE;
@@ -787,10 +787,10 @@ FfxApiResourceDescription ffxGetResourceDescriptionDX12(const ID3D12Resource* pR
         {
             // Set flags properly for resource registration
             resourceDescription.flags     = FFX_API_RESOURCE_FLAGS_NONE;
-           
+
             // Check for depth use
             resourceDescription.usage     = IsDepthDX12(desc.Format) ? FFX_API_RESOURCE_USAGE_DEPTHTARGET : FFX_API_RESOURCE_USAGE_READ_ONLY;
-            
+
             if (IsStencilDX12(desc.Format))
                 resourceDescription.usage = (FfxApiResourceUsage)(resourceDescription.usage | FFX_API_RESOURCE_USAGE_STENCILTARGET);
 
@@ -1025,7 +1025,7 @@ FfxErrorCode ffxGetResourceSizeFromDescriptionDX12(FfxDevice device, const FfxCr
         }
     }
     return FFX_ERROR_INVALID_ARGUMENT;
-    
+
 }
 
 // initialize the DX12 backend
@@ -1105,7 +1105,7 @@ FfxErrorCode CreateBackendContextDX12(FfxInterface* backendInterface, FfxEffect 
         descHeap.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;
         dx12Device->CreateDescriptorHeap(&descHeap, IID_PPV_ARGS(&backendContext->descHeapRtvCpu));
 
-        // initialize the bindless offset to *after* the ring-buffer 
+        // initialize the bindless offset to *after* the ring-buffer
         backendContext->descBindlessBase = FFX_RING_BUFFER_DESCRIPTOR_COUNT * backendContext->maxEffectContexts;
 
         // DXGI factory used for memory usage tracking
@@ -1173,7 +1173,7 @@ FfxErrorCode CreateBackendContextDX12(FfxInterface* backendInterface, FfxEffect 
                 effectContext.bindlessBufferUavHeapSize   = 0;
                 effectContext.bindlessBufferHeapStart     = 0;
                 effectContext.bindlessBufferHeapEnd       = 0;
-            }   
+            }
 
             break;
         }
@@ -1603,7 +1603,7 @@ FfxErrorCode CreateResourceDX12(
 
                 dx12SrvDescription.Buffer.FirstElement        = 0;
                 dx12SrvDescription.Buffer.StructureByteStride = backendResource->resourceDescription.stride;
-                uint32_t stride                               = backendResource->resourceDescription.stride; 
+                uint32_t stride                               = backendResource->resourceDescription.stride;
                 if (backendResource->resourceDescription.stride == 0)
                 {
                     stride = sizeof(uint32_t);
@@ -1611,7 +1611,7 @@ FfxErrorCode CreateResourceDX12(
                     dx12SrvDescription.Buffer.Flags = D3D12_BUFFER_SRV_FLAG_RAW;
                 }
                 dx12SrvDescription.Buffer.NumElements = backendResource->resourceDescription.size / stride;
-                
+
                 D3D12_CPU_DESCRIPTOR_HANDLE dx12CpuHandle     = backendContext->descHeapSrvCpu->GetCPUDescriptorHandleForHeapStart();
                 dx12CpuHandle.ptr += outTexture->internalIndex * dx12Device->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
                 dx12Device->CreateShaderResourceView(dx12Resource, &dx12SrvDescription, dx12CpuHandle);
@@ -1746,7 +1746,7 @@ FfxErrorCode DestroyResourceDX12(
 
 			backendContext->pResources[resource.internalIndex].resourcePtr = nullptr;
 		}
-        
+
         return FFX_OK;
 	}
 
@@ -1767,7 +1767,7 @@ DXGI_FORMAT patchDxgiFormatWithFfxUsage(DXGI_FORMAT dxResFmt, FfxApiSurfaceForma
     case DXGI_FORMAT_R8G8B8A8_UNORM:
     case DXGI_FORMAT_R8G8B8A8_UNORM_SRGB:
         return fromFfx;
-    
+
     // fixup depth formats as ffxGetDX12FormatFromSurfaceFormat will result in wrong format
     case DXGI_FORMAT_D32_FLOAT:
         return DXGI_FORMAT_R32_FLOAT;
@@ -2783,26 +2783,26 @@ FfxErrorCode CreatePipelineDX12(
             D3D12SerializeRootSignatureType dx12SerializeRootSignatureType = (D3D12SerializeRootSignatureType)GetProcAddress(d3d12ModuleHandle, "D3D12SerializeRootSignature");
 
             if (nullptr != dx12SerializeRootSignatureType) {
-                
+
                 HRESULT result = dx12SerializeRootSignatureType(&dx12RootSignatureDescription, D3D_ROOT_SIGNATURE_VERSION_1, &outBlob, &errorBlob);
                 if (errorBlob != nullptr) {
 
                     errorBlob->Release();
-                } 
+                }
                 if (FAILED(result)) {
 
                     if (outBlob != nullptr) {
-                        
+
                         outBlob->Release();
-                    }  
+                    }
                     return FFX_ERROR_BACKEND_API_ERROR;
                 }
 
                 result = dx12Device->CreateRootSignature(0, outBlob->GetBufferPointer(), outBlob->GetBufferSize(), IID_PPV_ARGS(reinterpret_cast<ID3D12RootSignature**>(&outPipeline->rootSignature)));
                 if (outBlob != nullptr) {
-                    
+
                     outBlob->Release();
-                }  
+                }
                 if (FAILED(result)) {
 
                     return FFX_ERROR_BACKEND_API_ERROR;
@@ -2989,7 +2989,7 @@ FfxErrorCode CreatePipelineDX12(
     // Todo when needed
     //outPipeline->samplerCount      = pShaderBlob->samplerCount;
     //outPipeline->rtAccelStructCount= pShaderBlob->rtAccelStructCount;
-        
+
     // create the PSO
     D3D12_COMPUTE_PIPELINE_STATE_DESC dx12PipelineStateDescription = {};
     dx12PipelineStateDescription.Flags = D3D12_PIPELINE_STATE_FLAG_NONE;
@@ -3065,7 +3065,7 @@ static FfxErrorCode executeGpuJobCompute(BackendContext_DX12*       backendConte
                                          FfxUInt32                  effectContextId)
 {
     ID3D12Device* dx12Device = reinterpret_cast<ID3D12Device*>(backendContext->device);
- 
+
     // Set descriptor head for binding
     ID3D12DescriptorHeap* dx12DescriptorHeap = reinterpret_cast<ID3D12DescriptorHeap*>(backendContext->descRingBuffer);
 
@@ -3140,7 +3140,7 @@ static FfxErrorCode executeGpuJobCompute(BackendContext_DX12*       backendConte
 
             // Set Buffer UAVs
             for (uint32_t currentPipelineUavIndex = 0; currentPipelineUavIndex < job->computeJobDescriptor.pipeline.uavBufferCount; ++currentPipelineUavIndex) {
-                
+
                 // continue if this is a null resource.
                 if (job->computeJobDescriptor.uavBuffers[currentPipelineUavIndex].resource.internalIndex == 0)
                     continue;
@@ -3184,7 +3184,7 @@ static FfxErrorCode executeGpuJobCompute(BackendContext_DX12*       backendConte
                 {
                     // if size is zero assume it is a static descriptor and copy it from the CPU heap
                     const uint32_t resourceIndex = job->computeJobDescriptor.uavBuffers[currentPipelineUavIndex].resource.internalIndex;
-          
+
                     const uint32_t uavIndex  = backendContext->pResources[resourceIndex].uavDescIndex;
 
                     D3D12_CPU_DESCRIPTOR_HANDLE srcHandle = backendContext->descHeapUavCpu->GetCPUDescriptorHandleForHeapStart();
@@ -3528,7 +3528,7 @@ static FfxErrorCode executeGpuJobDiscard(BackendContext_DX12*       backendConte
 
 FfxErrorCode ExecuteGpuJobsDX12(
     FfxInterface* backendInterface,
-    FfxCommandList commandList, 
+    FfxCommandList commandList,
     FfxUInt32 effectContextId)
 {
     FFX_ASSERT(NULL != backendInterface);
@@ -3542,7 +3542,7 @@ FfxErrorCode ExecuteGpuJobsDX12(
     // execute all GpuJobs
     for (uint32_t currentGpuJobIndex = 0; currentGpuJobIndex < backendContext->gpuJobCount; ++currentGpuJobIndex) {
 
-        FfxGpuJobDescription* GpuJob = &backendContext->pGpuJobs[currentGpuJobIndex];        
+        FfxGpuJobDescription* GpuJob = &backendContext->pGpuJobs[currentGpuJobIndex];
 
         // If we have a label for the job, drop a marker for it
         if (GpuJob->jobLabel[0]) {

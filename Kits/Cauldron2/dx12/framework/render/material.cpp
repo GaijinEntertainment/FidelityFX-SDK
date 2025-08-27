@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -88,7 +88,7 @@ namespace cauldron
             {
                 if (materialData["normalTexture"].find("scale") != materialData["normalTexture"].end())
                     pTexInfo->Multiplier = materialData["normalTexture"]["scale"];
-                
+
                 // Store the index of the texture this will point to for easy mapping later once textures are loaded
                 int32_t index = materialData["normalTexture"]["index"];
                 pTexInfo->pTexture = (const Texture*)((uint64_t)textureData[index]["source"]);
@@ -162,7 +162,7 @@ namespace cauldron
         {
             const json& metalRough = materialData["pbrMetallicRoughness"];
             m_MetalRough = true;
-                
+
             if (metalRough.find("metallicFactor") != metalRough.end())
                 m_PBRInfo.m_MetalRough.setX(metalRough["metallicFactor"]);
             else

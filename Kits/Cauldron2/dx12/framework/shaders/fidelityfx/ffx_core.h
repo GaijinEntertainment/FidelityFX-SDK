@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -22,27 +22,27 @@
 
 /// @defgroup FfxGPU GPU
 /// The FidelityFX SDK GPU References
-/// 
+///
 /// @ingroup ffxSDK
 
 /// @defgroup FfxHLSL HLSL References
 /// FidelityFX SDK HLSL GPU References
-/// 
+///
 /// @ingroup FfxGPU
 
 /// @defgroup FfxGLSL GLSL References
 /// FidelityFX SDK GLSL GPU References
-/// 
+///
 /// @ingroup FfxGPU
 
 /// @defgroup FfxGPUEffects FidelityFX GPU References
 /// FidelityFX Effect GPU Reference Documentation
-/// 
+///
 /// @ingroup FfxGPU
 
 /// @defgroup GPUCore GPU Core
 /// GPU defines and functions
-/// 
+///
 /// @ingroup FfxGPU
 
 #if !defined(FFX_CORE_H)

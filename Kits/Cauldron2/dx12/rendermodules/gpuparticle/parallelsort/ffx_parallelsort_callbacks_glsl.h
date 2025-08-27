@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -44,7 +44,7 @@
         FfxUInt32 padding;
     } cbParallelSort;
 #endif // #if defined(FFX_PARALLELSORT_BIND_CB_PARALLEL_SORT)
-  
+
 FfxUInt32 NumKeys()
 {
 #if defined(FFX_PARALLELSORT_BIND_CB_PARALLEL_SORT)
@@ -78,7 +78,7 @@ FfxUInt32 NumThreadGroupsWithAdditionalBlocks()
     return cbParallelSort.numThreadGroupsWithAdditionalBlocks;
 #else
     return 0;
-#endif // #if defined(FFX_PARALLELSORT_BIND_CB_PARALLEL_SORT)   
+#endif // #if defined(FFX_PARALLELSORT_BIND_CB_PARALLEL_SORT)
 }
 
 FfxUInt32 NumReduceThreadgroupPerBin()
@@ -120,7 +120,7 @@ FfxUInt32 ShiftBit()
 #if defined(FFX_PARALLELSORT_BIND_UAV_SOURCE_PAYLOADS)
     layout(set = 0, binding = FFX_PARALLELSORT_BIND_UAV_SOURCE_PAYLOADS, std430)  coherent buffer ParallelSortSrcPayload_t { uint source_payloads[]; } rw_source_payloads;
 #endif // #if defined(FFX_PARALLELSORT_BIND_UAV_SOURCE_PAYLOADS)
-    
+
 #if defined(FFX_PARALLELSORT_BIND_UAV_DEST_PAYLOADS)
     layout(set = 0, binding = FFX_PARALLELSORT_BIND_UAV_DEST_PAYLOADS, std430)  coherent buffer ParallelSortDstPayload_t { uint dest_payloads[]; } rw_dest_payloads;
 #endif // #if defined(FFX_PARALLELSORT_BIND_UAV_DEST_PAYLOADS)

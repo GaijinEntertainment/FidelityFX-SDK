@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -479,21 +479,21 @@ static FfxErrorCode createPipelineStates(FfxFsr3UpscalerContext_Private* context
     wcscpy_s(pipelineDescription.name, L"FSR3-PREPARE-REACTIVITY");
     FFX_VALIDATE(context->contextDescription.backendInterface.fpCreatePipeline(&context->contextDescription.backendInterface, &shaderBlob,
         &pipelineDescription, context->effectContextId, &context->pipelinePrepareReactivity));
-    
+
     fsr3UpscalerGetPermutationBlobByIndex(FFX_FSR3UPSCALER_PASS_SHADING_CHANGE,
                                           getPipelinePermutationFlags(contextFlags, FFX_FSR3UPSCALER_PASS_SHADING_CHANGE, supportedFP16, canForceWave64, useLut),
                                           &shaderBlob);
     wcscpy_s(pipelineDescription.name, L"FSR3-SHADING-CHANGE");
     FFX_VALIDATE(context->contextDescription.backendInterface.fpCreatePipeline(&context->contextDescription.backendInterface, &shaderBlob,
         &pipelineDescription, context->effectContextId, &context->pipelineShadingChange));
-    
+
     fsr3UpscalerGetPermutationBlobByIndex(FFX_FSR3UPSCALER_PASS_ACCUMULATE,
                                           getPipelinePermutationFlags(contextFlags, FFX_FSR3UPSCALER_PASS_ACCUMULATE, supportedFP16, canForceWave64, useLut),
                                           &shaderBlob);
     wcscpy_s(pipelineDescription.name, L"FSR3-ACCUMULATE");
     FFX_VALIDATE(context->contextDescription.backendInterface.fpCreatePipeline(&context->contextDescription.backendInterface, &shaderBlob,
         &pipelineDescription, context->effectContextId, &context->pipelineAccumulate));
-    
+
     fsr3UpscalerGetPermutationBlobByIndex(FFX_FSR3UPSCALER_PASS_ACCUMULATE_SHARPEN,
                                           getPipelinePermutationFlags(contextFlags, FFX_FSR3UPSCALER_PASS_ACCUMULATE_SHARPEN, supportedFP16, canForceWave64, useLut),
                                           &shaderBlob);
@@ -890,7 +890,7 @@ static FfxErrorCode fsr3upscalerDispatch(FfxFsr3UpscalerContext_Private* context
     if (context->firstExecution)
     {
         FfxGpuJobDescription clearJob = { FFX_GPU_JOB_CLEAR_FLOAT };
-        
+
         const float clearValuesToZeroFloat[]{ 0.f, 0.f, 0.f, 0.f };
         memcpy(clearJob.clearJobDescriptor.color, clearValuesToZeroFloat, 4 * sizeof(float));
 
@@ -1009,7 +1009,7 @@ static FfxErrorCode fsr3upscalerDispatch(FfxFsr3UpscalerContext_Private* context
 
     context->constants.previousFrameUpscaleSize[0] = context->constants.upscaleSize[0];
     context->constants.previousFrameUpscaleSize[1] = context->constants.upscaleSize[1];
-    
+
     if (params->upscaleSize.height == 0 && params->upscaleSize.width == 0)
     {
         context->constants.upscaleSize[0] = context->contextDescription.maxUpscaleSize.width;
@@ -1204,7 +1204,7 @@ static FfxErrorCode fsr3upscalerDispatch(FfxFsr3UpscalerContext_Private* context
         const int32_t dispatchY = (context->constants.upscaleSize[1] + (threadGroupWorkRegionDimRCAS - 1)) / threadGroupWorkRegionDimRCAS;
         scheduleDispatch(context, params, &context->pipelineRCAS, dispatchX, dispatchY);
     }
-    
+
     if (params->flags & FFX_FSR3UPSCALER_DISPATCH_DRAW_DEBUG_VIEW) {
         scheduleDispatch(context, params, &context->pipelineDebugView, dispatchDstX, dispatchDstY);
     }
@@ -1352,7 +1352,7 @@ FFX_API FfxErrorCode ffxFsr3UpscalerGetGpuMemoryUsage(FfxDevice device, FfxApiDi
             pVramUsage->aliasableUsageInBytes += size;
         }
     }
-    
+
     return FFX_OK;
 }
 
@@ -1491,7 +1491,7 @@ FfxErrorCode ffxFsr3UpscalerContextGenerateReactiveMask(FfxFsr3UpscalerContext* 
     FFX_RETURN_ON_ERROR(
         params->commandList,
         FFX_ERROR_INVALID_POINTER);
-    
+
     FfxFsr3UpscalerContext_Private* contextPrivate = (FfxFsr3UpscalerContext_Private*)(context);
 
     FFX_RETURN_ON_ERROR(
@@ -1511,7 +1511,7 @@ FfxErrorCode ffxFsr3UpscalerContextGenerateReactiveMask(FfxFsr3UpscalerContext* 
     contextPrivate->contextDescription.backendInterface.fpRegisterResource(&contextPrivate->contextDescription.backendInterface, &params->colorOpaqueOnly, contextPrivate->effectContextId, &contextPrivate->srvResources[FFX_FSR3UPSCALER_RESOURCE_IDENTIFIER_INPUT_OPAQUE_ONLY]);
     contextPrivate->contextDescription.backendInterface.fpRegisterResource(&contextPrivate->contextDescription.backendInterface, &params->colorPreUpscale, contextPrivate->effectContextId, &contextPrivate->srvResources[FFX_FSR3UPSCALER_RESOURCE_IDENTIFIER_INPUT_COLOR]);
     contextPrivate->contextDescription.backendInterface.fpRegisterResource(&contextPrivate->contextDescription.backendInterface, &params->outReactive, contextPrivate->effectContextId, &contextPrivate->uavResources[FFX_FSR3UPSCALER_RESOURCE_IDENTIFIER_AUTOREACTIVE]);
-    
+
     jobDescriptor.uavTextures[0].resource = contextPrivate->uavResources[FFX_FSR3UPSCALER_RESOURCE_IDENTIFIER_AUTOREACTIVE];
 
 #ifdef FFX_DEBUG

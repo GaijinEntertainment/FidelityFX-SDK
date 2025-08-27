@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -110,7 +110,7 @@ namespace cauldron
         if ((dxFormat >= DXGI_FORMAT_BC1_TYPELESS) && (dxFormat <= DXGI_FORMAT_BC7_UNORM_SRGB))
         {
             pixelsPerBlock = (4 * 4);    // BC formats have 4*4 pixels per block
-            pixelsPerBlock /= 4;        // We need to divide by 4 because GetCopyableFootprints introduces a *2 stride divides the rows /4 
+            pixelsPerBlock /= 4;        // We need to divide by 4 because GetCopyableFootprints introduces a *2 stride divides the rows /4
         }
 
         UploadHeap* pUploadHeap = GetUploadHeap();
@@ -130,10 +130,10 @@ namespace cauldron
             {
                 pTextureDataBlock->CopyTextureData(pPixels + placedTex2D[mip].Offset, placedTex2D[mip].Footprint.RowPitch, (placedTex2D[mip].Footprint.Width * formatStride) / pixelsPerBlock, numRows[mip], readOffset);
                 readOffset += ((numRows[mip] * placedTex2D[mip].Footprint.Width * formatStride) / pixelsPerBlock);
-                
+
                 D3D12_PLACED_SUBRESOURCE_FOOTPRINT slice = placedTex2D[mip];
                 slice.Offset += (pPixels - pUploadHeap->BasePtr());
-                
+
                 TextureCopyDesc copyDesc = {};
                 copyDesc.GetImpl()->Dst = CD3DX12_TEXTURE_COPY_LOCATION(m_pResource->GetImpl()->DX12Resource(), a * m_TextureDesc.MipLevels + mip);
                 copyDesc.GetImpl()->Src = CD3DX12_TEXTURE_COPY_LOCATION(pUploadHeap->GetImpl()->DX12Resource(), slice);

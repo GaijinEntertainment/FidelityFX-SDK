@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -74,7 +74,7 @@ typedef struct PacingData
         UINT64          presentIndex;
         UINT64          presentQpcDelta;
     };
-    
+
     FrameInfo frames[FrameType::Count];
 
     void invalidate()
@@ -120,7 +120,7 @@ typedef struct FrameinterpolationPresentInfo
     volatile bool       allowHybridSpin         = false;
     volatile uint32_t   hybridSpinTime          = 2; //Measured in system timer resolution units. Default is 2. Below 1 will frequently result in overshoot. Overshoots stop showing up >=2.
     volatile bool       allowWaitForSingleObjectOnFence = false;
-    
+
     FfxWaitCallbackFunc waitCallback            = nullptr;
 
     volatile int64_t    previousPresentQpc         = 0;

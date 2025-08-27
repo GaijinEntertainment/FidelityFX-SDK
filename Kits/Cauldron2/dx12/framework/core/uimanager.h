@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -187,7 +187,7 @@ namespace cauldron
         UIText(uint64_t id, const char* text, const bool& enable, bool shown = true, bool sameLine = false)
             : UIElement(id, UIElementType::Text, text, enable, shown, sameLine)
         {}
-        
+
         /**
          * @brief   Constructor. Creates the UI text without enabler.
          */
@@ -579,7 +579,7 @@ namespace cauldron
     /**
      * @enum UISection
      *
-     * A UISection is composed of 1 or more <c><i>UIElement</i></c>s. Represents a 
+     * A UISection is composed of 1 or more <c><i>UIElement</i></c>s. Represents a
      * section of UI in the general UI tab.
      *
      * @ingroup CauldronCore
@@ -730,7 +730,7 @@ namespace cauldron
         bool                m_Shown       = true;
 
         std::map<uint64_t, UIElement*> m_SectionElements;  // Section ui elements
-        
+
         uint32_t m_ElementGenerator = 0;     // Element ID in this section
         static const uint32_t LowestPriority = (std::numeric_limits<uint32_t>::max)();
     };
@@ -788,7 +788,7 @@ namespace cauldron
         void RegisterUIElements(T&& uiSectoin)
         {
             CauldronAssert(ASSERT_CRITICAL, !m_ProcessingUI, L"UI element stack cannot be updated during UI update cycle.");
-            
+
             if (uiSectoin)
             {
                 m_UIGeneralLayout.emplace(uiSectoin->ID(), std::forward<T>(uiSectoin));
@@ -808,7 +808,7 @@ namespace cauldron
             {
                 std::map<uint64_t, UISection*>::const_iterator itor = m_UIGeneralLayout.find(uiSection->ID());
                 {
-                    if (itor != m_UIGeneralLayout.cend() && 
+                    if (itor != m_UIGeneralLayout.cend() &&
                         itor->second == uiSection)
                     {
                         m_UIGeneralLayout.erase(itor);

@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -26,7 +26,7 @@
 
 #if FFX_PARALLELSORT_OPTION_HAS_PAYLOAD
 #define FFX_PARALLELSORT_BIND_UAV_SOURCE_PAYLOADS       3
-#define FFX_PARALLELSORT_BIND_UAV_DEST_PAYLOADS         4    
+#define FFX_PARALLELSORT_BIND_UAV_DEST_PAYLOADS         4
 #endif // FFX_PARALLELSORT_OPTION_HAS_PAYLOAD
 
 #define FFX_PARALLELSORT_BIND_CB_PARALLEL_SORT          0

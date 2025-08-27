@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -84,7 +84,7 @@ void RectifyHistory(
         const FfxFloat32x3 fClampedHistoryColor = clamp(fHistoryColor, boxMin, boxMax);
 
         FfxFloat32x3 fHistoryContribution = ffxMax(fLumaInstabilityFactor, fLockContributionThisFrame).xxx;
-        
+
         const FfxFloat32 fReactiveFactor = params.fDilatedReactiveFactor;
         const FfxFloat32 fReactiveContribution = 1.0f - ffxPow(fReactiveFactor, 1.0f / 2.0f);
         fHistoryContribution *= fReactiveContribution;
@@ -163,7 +163,7 @@ FfxFloat32 ComputeLumaInstabilityFactor(const AccumulationPassCommonParams param
             FfxFloat32 fDiffs1 = (fCurrentFrameLuma - fCurrentFrameLumaHistory[i]);
 
             if (sign(fDiffs0) == sign(fDiffs1)) {
-                
+
                 // Scale difference to protect historically similar values
                 const FfxFloat32 fMinBias = 1.0f;
                 fMin = ffxMin(fMin, abs(fDiffs1) * fMinBias);
@@ -204,7 +204,7 @@ FfxFloat32 ComputeTemporalReactiveFactor(const AccumulationPassCommonParams para
     if (ffxSaturate(params.fHrVelocity * 10.0f) >= 1.0f) {
         fNewFactor = ffxMax(FSR2_EPSILON, fNewFactor) * -1.0f;
     }
-    
+
     return fNewFactor;
 }
 
@@ -215,7 +215,7 @@ AccumulationPassCommonParams InitParams(FfxInt32x2 iPxHrPos)
     params.iPxHrPos = iPxHrPos;
     const FfxFloat32x2 fHrUv = (iPxHrPos + 0.5f) / DisplaySize();
     params.fHrUv = fHrUv;
-    
+
     const FfxFloat32x2 fLrUvJittered = fHrUv + Jitter() / RenderSize();
     params.fLrUv_HwSampler = ClampUv(fLrUvJittered, RenderSize(), MaxRenderSize());
 
@@ -225,7 +225,7 @@ AccumulationPassCommonParams InitParams(FfxInt32x2 iPxHrPos)
     ComputeReprojectedUVs(params, params.fReprojectedHrUv, params.bIsExistingSample);
 
     params.fDepthClipFactor = ffxSaturate(SampleDepthClip(params.fLrUv_HwSampler));
-    
+
     const FfxFloat32x2 fDilatedReactiveMasks = SampleDilatedReactiveMasks(params.fLrUv_HwSampler);
     params.fDilatedReactiveFactor = fDilatedReactiveMasks.x;
     params.fAccumulationMask = fDilatedReactiveMasks.y;
@@ -261,7 +261,7 @@ void Accumulate(FfxInt32x2 iPxHrPos)
     // Load upsampled input color
     RectificationBox clippingBox;
     FfxFloat32x4 fUpsampledColorAndWeight = ComputeUpsampledColorAndWeight(params, clippingBox, fThisFrameReactiveFactor);
-    
+
     const FfxFloat32 fLumaInstabilityFactor = ComputeLumaInstabilityFactor(params, clippingBox, fThisFrameReactiveFactor, fLuminanceDiff);
 
 

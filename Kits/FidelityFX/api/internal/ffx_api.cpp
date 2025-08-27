@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -48,7 +48,7 @@ FFX_API_ENTRY ffxReturnCode_t ffxCreateContext(ffxContext* context, ffxCreateCon
 
     const ffxProvider* provider = GetffxProvider(desc->type, GetVersionOverride(desc), GetDevice(desc));
     VERIFY(provider != nullptr, FFX_API_RETURN_NO_PROVIDER);
-    
+
     Allocator alloc{memCb};
     return provider->CreateContext(context, desc, alloc);
 }

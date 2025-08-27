@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -26,7 +26,7 @@
 #include "tonemappercommon.h"
 
 float2 BarrelDistortion(in float2 Uv)
-{    
+{
     float2 remappedUv = (Uv * 2.0f) - 1.0f;
     float r2 = remappedUv.x * remappedUv.x + remappedUv.y * remappedUv.y;
     float2 outUv = remappedUv / (1.0f + LensDistortionStrength * r2);
@@ -34,7 +34,7 @@ float2 BarrelDistortion(in float2 Uv)
 }
 
 float2 InverseBarrelDistortion(in float2 Uv)
-{  
+{
     float2 remappedUv = (Uv * 2.0f) - 1.0f;
     float ru2 = remappedUv.x * remappedUv.x +  remappedUv.y * remappedUv.y;
     float num = sqrt(1.0f - 4.0f * LensDistortionStrength * ru2) - 1.0f;

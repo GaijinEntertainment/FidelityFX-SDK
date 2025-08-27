@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -363,9 +363,9 @@ typedef FfxErrorCode (*FfxUnmapResourceFunc)(FfxInterface* backendInterface, Ffx
 ///
 /// @ingroup FfxInterface
 typedef FfxErrorCode (*FfxStageConstantBufferDataFunc)(
-    FfxInterface* backendInterface, 
-    void* data, 
-    FfxUInt32 size, 
+    FfxInterface* backendInterface,
+    void* data,
+    FfxUInt32 size,
     FfxConstantBuffer* constantBuffer);
 
 /// Create a render pipeline.
@@ -454,7 +454,7 @@ typedef FfxErrorCode (*FfxScheduleGpuJobFunc)(
 /// @ingroup FfxInterface
 typedef FfxErrorCode (*FfxExecuteGpuJobsFunc)(
     FfxInterface* backendInterface,
-    FfxCommandList commandList, 
+    FfxCommandList commandList,
     FfxUInt32 effectContextId);
 
 typedef enum FfxUiCompositionFlags
@@ -483,7 +483,7 @@ typedef struct FfxFrameGenerationConfig
     FfxApiResource                  HUDLessColor;                    ///< The hudless back buffer image to use for UI extraction from backbuffer resource
     FfxUInt32                       flags;                           ///< Flags
     bool                            onlyPresentInterpolated;         ///< Set to true to only present interpolated frame
-    FfxApiRect2D                       interpolationRect;               ///< Set the area in the backbuffer that will be interpolated 
+    FfxApiRect2D                       interpolationRect;               ///< Set the area in the backbuffer that will be interpolated
     uint64_t                        frameID;                         ///< A frame identifier used to synchronize resource usage in workloads
     bool                            drawDebugPacingLines;            ///< Sets the state of pacing debug lines. Set to true to display debug lines
 } FfxFrameGenerationConfig;
@@ -563,12 +563,12 @@ typedef struct FfxInterface {
     FfxDestroyResourceFunc             fpDestroyResource;             ///< A callback function to destroy a resource.
     FfxMapResourceFunc                 fpMapResource;                 ///< A callback function to map a resource.
     FfxUnmapResourceFunc               fpUnmapResource;               ///< A callback function to unmap a resource.
-    FfxStageConstantBufferDataFunc     fpStageConstantBufferDataFunc; ///< A callback function to copy constant buffer data into staging memory.      
+    FfxStageConstantBufferDataFunc     fpStageConstantBufferDataFunc; ///< A callback function to copy constant buffer data into staging memory.
     FfxCreatePipelineFunc              fpCreatePipeline;              ///< A callback function to create a render or compute pipeline.
     FfxDestroyPipelineFunc             fpDestroyPipeline;             ///< A callback function to destroy a render or compute pipeline.
     FfxScheduleGpuJobFunc              fpScheduleGpuJob;              ///< A callback function to schedule a render job.
     FfxExecuteGpuJobsFunc              fpExecuteGpuJobs;              ///< A callback function to execute all queued render jobs.
-    
+
     // FidelityFX SDK 1.1 callback handles
     FfxSwapChainConfigureFrameGenerationFunc    fpSwapChainConfigureFrameGeneration;    ///< A callback function to configure swap chain present callback.
 

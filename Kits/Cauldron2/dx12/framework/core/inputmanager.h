@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -41,7 +41,7 @@ namespace cauldron
         Mouse_LButton = 0,  ///< Mouse left button mapping
         Mouse_RButton,      ///< Mouse right button mapping
         Mouse_MButton,      ///< Mouse middle button mapping
-        
+
         Mouse_ButtonCount   ///< Mouse button count
     };
 
@@ -65,7 +65,7 @@ namespace cauldron
      * @enum KeyboardInputMappings
      *
      * Remaps for keyboard keys
-     * Note: Being very selective about what keys we can map in order to try and 
+     * Note: Being very selective about what keys we can map in order to try and
      * fit everything into a 64-bit state representation
      *
      * @ingroup CauldronCore
@@ -127,7 +127,7 @@ namespace cauldron
         Key_Up,
         Key_Right,
         Key_Down,
-        
+
         // Function keys
         Key_F1,
         Key_F2,
@@ -168,8 +168,8 @@ namespace cauldron
         Pad_B,              ///< Gamepad B button: XBox -> B, PS -> Circle
         Pad_X,              ///< Gamepad X button: XBox -> X, PS -> Square
         Pad_Y,              ///< Gamepad Y button: XBox -> Y, PS -> Triangle
-        
-        Pad_ButtonCount     ///< Gamepad button count 
+
+        Pad_ButtonCount     ///< Gamepad button count
     };
 
     /**
@@ -187,7 +187,7 @@ namespace cauldron
         Pad_LeftThumbY,     ///< Gamepad left thumbstick Y-axis
         Pad_RightThumbX,    ///< Gamepad right thumbstick X-axis
         Pad_RightThumbY,    ///< Gamepad right thumbstick Y-axis
-        
+
         Pad_AxisCount       ///< Gamepad axis count
     };
 
@@ -306,7 +306,7 @@ namespace cauldron
             return (GamePad.ButtonUpState & button);
         }
     };
-    
+
     /**
      * @enum InputSource
      *
@@ -352,16 +352,16 @@ namespace cauldron
     public:
 
         /**
-         * @brief   InputManager destruction. 
+         * @brief   InputManager destruction.
          */
         virtual ~InputManager();
 
         /**
-         * @brief   InputManager Update function. Called once a frame in order to poll all 
+         * @brief   InputManager Update function. Called once a frame in order to poll all
          *          connected devices to setup the <c><i>InputState</i></c> for the frame.
          */
         void Update();
-        
+
         /**
          * @brief   Query input state for the current frame (or cached frames)
          */
@@ -389,7 +389,7 @@ namespace cauldron
         virtual void PollInputStates() = 0;
 
     protected:
-        
+
         static const uint8_t s_InputStateCacheSize = 3;         // Number of frames we will cache inputs for
         InputState  m_InputStateRep[s_InputStateCacheSize] = {};
         uint32_t    m_CurrentStateID = 0;

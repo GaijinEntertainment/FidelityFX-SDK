@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -51,7 +51,7 @@ namespace cauldron
             desc.EntryPoint = entryPoint;
             desc.Stage = ShaderStage::Vertex;
             desc.Model = model;
-            
+
             if (pDefines)
                 desc.Defines = *pDefines;
 
@@ -67,7 +67,7 @@ namespace cauldron
             desc.EntryPoint = entryPoint;
             desc.Stage = ShaderStage::Pixel;
             desc.Model = model;
-            
+
             if (pDefines)
                 desc.Defines = *pDefines;
 
@@ -83,7 +83,7 @@ namespace cauldron
             desc.EntryPoint = entryPoint;
             desc.Stage = ShaderStage::Compute;
             desc.Model = model;
-            
+
             if (pDefines)
                 desc.Defines = *pDefines;
 
@@ -124,7 +124,7 @@ namespace cauldron
             return desc;
         }
     };
-    
+
     /// Initializes the shader compilation system.
     ///
     /// @ingroup CauldronRender

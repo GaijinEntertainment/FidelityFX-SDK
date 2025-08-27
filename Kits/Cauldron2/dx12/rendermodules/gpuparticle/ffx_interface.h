@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -362,9 +362,9 @@ typedef FfxErrorCode (*FfxUnmapResourceFunc)(FfxInterface* backendInterface, Ffx
 ///
 /// @ingroup FfxInterface
 typedef FfxErrorCode (*FfxStageConstantBufferDataFunc)(
-    FfxInterface* backendInterface, 
-    void* data, 
-    FfxUInt32 size, 
+    FfxInterface* backendInterface,
+    void* data,
+    FfxUInt32 size,
     FfxConstantBuffer* constantBuffer);
 
 /// Create a render pipeline.
@@ -461,7 +461,7 @@ typedef FfxErrorCode (*FfxScheduleGpuJobFunc)(
 /// @ingroup FfxInterface
 typedef FfxErrorCode (*FfxExecuteGpuJobsFunc)(
     FfxInterface* backendInterface,
-    FfxCommandList commandList, 
+    FfxCommandList commandList,
     FfxUInt32 effectContextId);
 
 typedef enum FfxUiCompositionFlags
@@ -490,7 +490,7 @@ typedef struct FfxFrameGenerationConfig
     FfxApiResource                     HUDLessColor;                    ///< The hudless back buffer image to use for UI extraction from backbuffer resource
     FfxUInt32                       flags;                           ///< Flags
     bool                            onlyPresentInterpolated;         ///< Set to true to only present interpolated frame
-    FfxRect2D                       interpolationRect;               ///< Set the area in the backbuffer that will be interpolated 
+    FfxRect2D                       interpolationRect;               ///< Set the area in the backbuffer that will be interpolated
     uint64_t                        frameID;                         ///< A frame identifier used to synchronize resource usage in workloads
     bool                            drawDebugPacingLines;            ///< Sets the state of pacing debug lines. Set to true to display debug lines
 } FfxFrameGenerationConfig;
@@ -498,16 +498,16 @@ typedef struct FfxFrameGenerationConfig
 typedef FfxErrorCode (*FfxSwapChainConfigureFrameGenerationFunc)(FfxFrameGenerationConfig const* config);
 
 /// Allocate AMD FidelityFX Breadcrumbs Library markers buffer.
-/// 
+///
 /// @param [in] backendInterface                    A pointer to the backend interface.
 /// @param [in] blockBytes                          Size in bytes of the buffer to be allocated.
 /// @param [out] blockData                          Output information about allocated AMD FidelityFX Breadcrumbs Library buffer. Filled only on success of operation.
-/// 
+///
 /// @retval
 /// FFX_OK                                          The operation completed successfully.
 /// @retval
 /// Anything else                                   The operation failed.
-/// 
+///
 /// @ingroup FfxInterface
 typedef FfxErrorCode (*FfxBreadcrumbsAllocBlockFunc)(
     FfxInterface* backendInterface,
@@ -516,10 +516,10 @@ typedef FfxErrorCode (*FfxBreadcrumbsAllocBlockFunc)(
     );
 
 /// Deallocate AMD FidelityFX Breadcrumbs Library markers buffer.
-/// 
+///
 /// @param [in] backendInterface                    A pointer to the backend interface.
 /// @param [out] blockData                          Information about buffer to be freed. All resource handles are cleared after this operation.
-/// 
+///
 /// @ingroup FfxInterface
 typedef void (*FfxBreadcrumbsFreeBlockFunc)(
     FfxInterface* backendInterface,
@@ -527,14 +527,14 @@ typedef void (*FfxBreadcrumbsFreeBlockFunc)(
     );
 
 /// Write marker to AMD FidelityFX Breadcrumbs Library buffer on the <c><i>comandList</i></c> provided.
-/// 
+///
 /// @param [in] backendInterface                    A pointer to the backend interface.
 /// @param [in] commandList                         GPU command list to record marker writing command.
 /// @param [in] value                               Marker value to be written.
 /// @param [in] gpuLocation                         GPU destination address where marker will be written.
 /// @param [in] gpuBuffer                           Destination AMD FidelityFX Breadcrumbs Library buffer.
 /// @param [in] isBegin                             <c><i>true</i></c> for writing opening marker and <c><i>false</i></c> for ending marker.
-/// 
+///
 /// @ingroup FfxInterface
 typedef void (*FfxBreadcrumbsWriteFunc)(
     FfxInterface* backendInterface,
@@ -546,13 +546,13 @@ typedef void (*FfxBreadcrumbsWriteFunc)(
     );
 
 /// Printing GPU specific info to the AMD FidelityFX Breadcrumbs Library status buffer.
-/// 
+///
 /// @param [in] backendInterface                    A pointer to the backend interface.
 /// @param [in] allocs                              A pointer to the allocation callbacks.
 /// @param [in] extendedInfo                        <c><i>true</i></c> if should print more verbose device info and <c><i>false</i></c> for standard output.
 /// @param [out] printBuffer                        String buffer for writing GPU info.
 /// @param [out] printSize                          Size of string buffer for writing GPU info.
-/// 
+///
 /// @ingroup FfxInterface
 typedef void (*FfxBreadcrumbsPrintDeviceInfoFunc)(
     FfxInterface* backendInterface,
@@ -635,12 +635,12 @@ typedef struct FfxInterface {
     FfxDestroyResourceFunc             fpDestroyResource;             ///< A callback function to destroy a resource.
     FfxMapResourceFunc                 fpMapResource;                 ///< A callback function to map a resource.
     FfxUnmapResourceFunc               fpUnmapResource;               ///< A callback function to unmap a resource.
-    FfxStageConstantBufferDataFunc     fpStageConstantBufferDataFunc; ///< A callback function to copy constant buffer data into staging memory.      
+    FfxStageConstantBufferDataFunc     fpStageConstantBufferDataFunc; ///< A callback function to copy constant buffer data into staging memory.
     FfxCreatePipelineFunc              fpCreatePipeline;              ///< A callback function to create a render or compute pipeline.
     FfxDestroyPipelineFunc             fpDestroyPipeline;             ///< A callback function to destroy a render or compute pipeline.
     FfxScheduleGpuJobFunc              fpScheduleGpuJob;              ///< A callback function to schedule a render job.
     FfxExecuteGpuJobsFunc              fpExecuteGpuJobs;              ///< A callback function to execute all queued render jobs.
-    
+
     // FidelityFX SDK 1.1 callback handles
     FfxBreadcrumbsAllocBlockFunc       fpBreadcrumbsAllocBlock;       ///< A callback function to allocate block of memory for AMD FidelityFX Breadcrumbs Library buffer.
     FfxBreadcrumbsFreeBlockFunc        fpBreadcrumbsFreeBlock;        ///< A callback function to free AMD FidelityFX Breadcrumbs Library buffer.
@@ -651,7 +651,7 @@ typedef struct FfxInterface {
     FfxSwapChainConfigureFrameGenerationFunc    fpSwapChainConfigureFrameGeneration;    ///< A callback function to configure swap chain present callback.
 
     FfxRegisterConstantBufferAllocatorFunc  fpRegisterConstantBufferAllocator;          ///< A callback function to register a custom <b>Thread Safe</b> constant buffer allocator.
-    
+
     void*                              scratchBuffer;                 ///< A preallocated buffer for memory utilized internally by the backend.
     size_t                             scratchBufferSize;             ///< Size of the buffer pointed to by <c><i>scratchBuffer</i></c>.
     FfxDevice                          device;                        ///< A backend specific device

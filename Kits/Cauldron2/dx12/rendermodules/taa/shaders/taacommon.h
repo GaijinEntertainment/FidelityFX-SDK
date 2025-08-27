@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -32,7 +32,7 @@ struct TAACBData
     uint32_t DisplayWidth = 0;
     uint32_t DisplayHeight = 0;
 };
-#else 
+#else
 cbuffer TAACBData : register(b0)
 {
     uint RenderWidth : packoffset(c0.x);

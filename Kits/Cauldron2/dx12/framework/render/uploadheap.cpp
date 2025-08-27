@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -84,7 +84,7 @@ namespace cauldron
                         pTransferInfo = m_ActiveTranfers.back();
                         break;
                     }
-                    
+
                     ++iter;
                 }
 
@@ -95,10 +95,10 @@ namespace cauldron
                     {
                         logged = true;  // Don't spam the output for the same resource
                         //CauldronWarning(L"Could not get a %zu size data block for resource data transfer. Waiting until more blocks are freed. Consider growing upload heap size.", requiredSize);
-                    }                    
+                    }
                     m_AllocationCV.wait(lock);
                 }
-            }                
+            }
         }
 
         // Got our memory, setup the transfer information, the slice pointers and fetch a command list to record the work
@@ -140,10 +140,10 @@ namespace cauldron
                 // Check if they are joinable
                 if (m_AvailableAllocations[index].pDataBegin == m_AvailableAllocations[index - 1].pDataEnd)
                 {
-                    // Merge them 
+                    // Merge them
                     m_AvailableAllocations[index - 1].pDataEnd = m_AvailableAllocations[index].pDataEnd;
                     m_AvailableAllocations[index - 1].Size += m_AvailableAllocations[index].Size;
-                    
+
                     // Remove the previous element
                     m_AvailableAllocations.erase(std::next(m_AvailableAllocations.begin(), index));
                 }

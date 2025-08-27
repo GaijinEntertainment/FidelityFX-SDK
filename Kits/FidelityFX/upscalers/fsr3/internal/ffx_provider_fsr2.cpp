@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -55,7 +55,7 @@ bool ffxProvider_FSR2::CanProvide(uint64_t type) const
 }
 
 #define STRINGIFY_(X) #X
-#define STRINGIFY(X) STRINGIFY_(X) 
+#define STRINGIFY(X) STRINGIFY_(X)
 #define MAKE_VERSION_STRING(major, minor, patch) STRINGIFY major "." STRINGIFY minor "." STRINGIFY patch
 
 uint64_t ffxProvider_FSR2::GetId() const
@@ -106,7 +106,7 @@ ffxReturnCode_t ffxProvider_FSR2::CreateContext(ffxContext* context, ffxCreateCo
 
         // Create the FSR2 context
         TRY(ffxFsr2ContextCreate(&internal_context->context, &initializationParameters));
-        
+
         ffxFsr2SetGlobalDebugMessage(reinterpret_cast<ffxMessageCallback>(desc->fpMessage), 0);
 
         *context = internal_context;
@@ -245,9 +245,9 @@ ffxReturnCode_t ffxProvider_FSR2::Query(ffxContext* context, ffxQueryDescHeader*
     }
     case FFX_API_QUERY_DESC_TYPE_UPSCALE_GET_RESOURCE_REQUIREMENTS:
     {
-        auto desc = reinterpret_cast<ffxQueryDescUpscaleGetResourceRequirements*>(header);   
-        
-        desc->required_resources = 
+        auto desc = reinterpret_cast<ffxQueryDescUpscaleGetResourceRequirements*>(header);
+
+        desc->required_resources =
             FFX_API_QUERY_RESOURCE_INPUT_COLOR |
             FFX_API_QUERY_RESOURCE_INPUT_DEPTH |
             FFX_API_QUERY_RESOURCE_INPUT_MV    |

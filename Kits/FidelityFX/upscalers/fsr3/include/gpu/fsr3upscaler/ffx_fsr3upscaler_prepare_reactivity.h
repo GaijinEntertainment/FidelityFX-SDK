@@ -1,7 +1,7 @@
 // This file is part of the FidelityFX SDK.
 //
 // Copyright (C) 2025 Advanced Micro Devices, Inc.
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -46,7 +46,7 @@ FfxFloat32 ComputeDisocclusions(FfxFloat32x2 fUv, FfxFloat32x2 fMotionVector, Ff
 
                 const FfxFloat32 fPrevNearestDepthViewSpace = GetViewSpaceDepth(LoadReconstructedPrevDepth(iSamplePos));
                 const FfxFloat32 fDepthDifference           = fCurrentDepthViewSpace - fPrevNearestDepthViewSpace;
-                
+
                 bPotentialDisocclusion = bPotentialDisocclusion && (fDepthDifference > FSR3UPSCALER_FP32_MIN);
 
                 if (bPotentialDisocclusion) {
@@ -92,7 +92,7 @@ FfxFloat32 ComputeMotionDivergence(FfxFloat32x2 fUv, FfxFloat32x2 fMotionVector,
 FfxFloat32 DilateReactiveMasks(FfxInt32x2 iPxPos, FfxFloat32x2 fUv)
 {
     FfxFloat32 fDilatedReactiveMasks = 0.0f;
-    
+
     FFX_UNROLL
     for (FfxInt32 y = -1; y <=1; y++)
     {
@@ -227,7 +227,7 @@ FfxFloat32 UpdateAccumulation(FfxInt32x2 iPxPos, FfxFloat32x2 fUv, FfxFloat32x2 
     // frame N+3 fAccumulation will be -0.333f + 0.333 * 3 == 0.666
     // frame N+4 fAccumulation will be -0.333f + 0.333 * 4 == 0.999
     fAccumulation = ffxLerp(fAccumulation, ffxMin(fMinDisocclusionAccumulation, fAccumulation), fDisocclusion);
-    
+
     fAccumulation *= FfxFloat32(round(fAccumulation * 100.0f) > 1.0f);
 
     // Update for next frame, normalize to store in unorm
