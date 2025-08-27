@@ -56,6 +56,11 @@ struct ExternalProviderData
 
 void GetExternalProviders(ID3D12Device* device, uint64_t descType)
 {
+    // Rigth now when this function is called a valid ID3D12Device*, the refcount will be increased of the device
+    // but never will be released. To avoid this object leak, just simply ignore the providers from driver.
+    // When this caching will be solved properly, this early exit can be removed.
+    return;
+
     static IAmdExtFfxApi* apiExtension = nullptr;
 
     if (nullptr != device)
