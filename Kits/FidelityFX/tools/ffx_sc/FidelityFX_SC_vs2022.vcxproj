@@ -62,7 +62,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)vcpkg_installed\x64-windows\x64-windows\include;$(SolutionDir)..\..\..\OpenSource\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)vcpkg_installed\x64-windows\include;$(SolutionDir)..\..\..\OpenSource\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -70,7 +70,7 @@
       <AdditionalDependencies>dxguid.lib;d3d12.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(SolutionDir)vcpkg_installed\x64-windows\x64-windows\bin" "$(TargetDir)" /Y</Command>
+      <Command>xcopy "$(SolutionDir)vcpkg_installed\x64-windows\bin" "$(TargetDir)" /Y</Command>
       <Message>Copy DXCompiler binaries</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -83,7 +83,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)vcpkg_installed\x64-windows\x64-windows\include;$(SolutionDir)..\..\..\OpenSource\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)vcpkg_installed\x64-windows\include;$(SolutionDir)..\..\..\OpenSource\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -93,7 +93,7 @@
       <AdditionalDependencies>dxguid.lib;d3d12.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(SolutionDir)vcpkg_installed\x64-windows\x64-windows\bin" "$(TargetDir)" /Y</Command>
+      <Command>xcopy "$(SolutionDir)vcpkg_installed\x64-windows\bin" "$(TargetDir)" /Y</Command>
       <Message>Copy DXCompiler binaries</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -121,10 +121,10 @@
   <!-- In release build, copy all needed files to the bin directory for distribution -->
   <Target Name="CopyToBin" AfterTargets="Build" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ItemGroup>
-	  <FfxShaderCompileBin Include="$(TargetDir)dxcompiler.dll" />
-	  <FfxShaderCompileBin Include="$(TargetDir)dxil.dll" />
-	  <FfxShaderCompileBin Include="$(TargetDir)FidelityFX_SC.exe" />
-	</ItemGroup>
-	<Copy SkipUnchangedFiles="true" SourceFiles="@(FfxShaderCompileBin)" DestinationFolder="$(SolutionDir)bin" />
+      <FfxShaderCompileBin Include="$(TargetDir)dxcompiler.dll" />
+      <FfxShaderCompileBin Include="$(TargetDir)dxil.dll" />
+      <FfxShaderCompileBin Include="$(TargetDir)FidelityFX_SC.exe" />
+    </ItemGroup>
+    <Copy SkipUnchangedFiles="true" SourceFiles="@(FfxShaderCompileBin)" DestinationFolder="$(SolutionDir)bin" />
   </Target>
 </Project>

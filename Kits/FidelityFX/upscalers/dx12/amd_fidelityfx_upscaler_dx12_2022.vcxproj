@@ -670,7 +670,7 @@
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\fsr4\dx12\$(PlatformName)\$(Configuration)\ffx_sc_output;$(IntDir)ffx_sc_output;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)vcpkg_installed\x64-windows\include;$(ProjectDir)..\fsr4\dx12\$(PlatformName)\$(Configuration)\ffx_sc_output;$(IntDir)ffx_sc_output;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <UseFullPaths>false</UseFullPaths>
     </ClCompile>
@@ -705,7 +705,7 @@
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\fsr4\dx12\$(PlatformName)\$(Configuration)\ffx_sc_output;$(IntDir)ffx_sc_output;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)vcpkg_installed\x64-windows\include;$(ProjectDir)..\fsr4\dx12\$(PlatformName)\$(Configuration)\ffx_sc_output;$(IntDir)ffx_sc_output;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <WholeProgramOptimization>false</WholeProgramOptimization>
       <UseFullPaths>false</UseFullPaths>
