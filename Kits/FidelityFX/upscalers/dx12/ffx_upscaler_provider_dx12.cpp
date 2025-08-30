@@ -30,6 +30,8 @@
 #include <optional>
 #include <d3d12.h>
 
+#include <wrl/client.h>
+
 static constexpr ffxProvider* providers[] = {
     &ffxProvider_FSR4::Instance,
     &ffxProvider_FSR3Upscale::Instance,
@@ -56,7 +58,7 @@ struct ExternalProviderData
 
 void GetExternalProviders(ID3D12Device* device, uint64_t descType)
 {
-    static IAmdExtFfxApi* apiExtension = nullptr;
+    Microsoft::WRL::ComPtr<IAmdExtFfxApi> apiExtension;
 
     if (nullptr != device)
     {
